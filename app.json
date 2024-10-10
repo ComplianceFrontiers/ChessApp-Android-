@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Smartup",
-    "slug": "smartup_lms_app",
+    "slug": "chess_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/appIcon/icon.png",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/appIcon/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.codeforge0.smartup_lms_app"
+      "package": "com.codeforge0.chess_app"
     },
     "web": {
       "favicon": "./assets/favIcon/favicon.png"
