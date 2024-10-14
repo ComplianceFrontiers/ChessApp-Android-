@@ -17,7 +17,7 @@
     "expo": "~50.0.17",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "18.2.0",
     "react-native": "0.73.6",
     "react-native-event-listeners": "^1.0.7",
     "react-native-modal": "^13.0.1",
