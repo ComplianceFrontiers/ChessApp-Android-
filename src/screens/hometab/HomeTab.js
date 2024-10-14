@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
 import {
   homeSliderData,
   homeTabCategories,
@@ -26,9 +27,34 @@ import MentorCarousal from "../../components/mentorcarousal/MentorCarousal";
 
 const HomeTab = () => {
   const [popularCourseTab, setPopularCourseTab] = useState("All");
+  const [userDetails, setUserDetails] = useState(null); // Add state for userDetails
   const globalStyles = useGlobalStyles();
 
   const navigation = useNavigation();
+
+  // Function to fetch and log AsyncStorage data
+  const logAsyncStorageData = async () => {
+    try {
+      console.log("localllll", AsyncStorage);
+      const email = await AsyncStorage.getItem("email");
+      const userDetailsString = await AsyncStorage.getItem("userDetails");
+
+      // Parse the userDetails string to JSON
+      const parsedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
+
+      console.log("Email from AsyncStorage:", email);
+      console.log("User Details from AsyncStorage:", parsedUserDetails);
+
+      // Set the parsed userDetails in state
+      setUserDetails(parsedUserDetails);
+    } catch (error) {
+      console.error("Error fetching data from AsyncStorage:", error);
+    }
+  };
+
+  useEffect(() => {
+    logAsyncStorageData(); // Call the function when component mounts
+  }, []);
 
   const handleTab = (item) => {
     setPopularCourseTab(item);
@@ -48,7 +74,7 @@ const HomeTab = () => {
             <Image source={require("../../assets/images/profileIcon.png")} />
           </TouchableOpacity>
           <View style={{ gap: 10 }}>
-            <Text style={globalStyles.headingFour}>Johnny Cage</Text>
+            <Text style={globalStyles.headingFour}>{userDetails?.child_name?.first || "Guest"}</Text>
             <Text style={[globalStyles.miniButton, { width: "70%" }]}>
               Learner
             </Text>

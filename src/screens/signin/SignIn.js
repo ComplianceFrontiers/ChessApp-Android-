@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Alert, // Import Alert
+  Alert,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
 import CommonButton from "../../components/commonbutton/CommonButton";
 import { signInData, singinTextInput } from "../../utils/mockData";
@@ -18,10 +18,25 @@ import Logo from "../../components/logo/Logo";
 
 const SignIn = () => {
   const [emailToSignIn, setEmailToSignIn] = useState("");
-  const [loading, setLoading] = useState(false); // For button loading state
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    const fetchEmail = async () => {
+      try {
+        const email = await AsyncStorage.getItem("email");
+        if (email) {
+          setEmailToSignIn(email);
+        }
+      } catch (error) {
+        console.error("Failed to fetch email:", error);
+      }
+    };
+
+    fetchEmail();
+  }, []);
 
   const handleSignIn = async () => {
     if (!emailToSignIn) {
@@ -31,10 +46,8 @@ const SignIn = () => {
 
     try {
       setLoading(true);
-      // Set email in AsyncStorage
       await AsyncStorage.setItem("email", emailToSignIn);
 
-      // Call the API to get user details using fetch
       const response = await fetch(
         `https://backend-chess-tau.vercel.app/getinschooldetails?email=${emailToSignIn}`,
         {
@@ -44,12 +57,21 @@ const SignIn = () => {
           },
         }
       );
+      console.log("local5",emailToSignIn,response)
 
-      // Check if response status is 200
       if (response.ok) {
+        console.log("locallll1",AsyncStorage)
         const userDetailsResponse = await response.json();
-        await AsyncStorage.setItem("userDetails", JSON.stringify(userDetailsResponse.data));
-        // Navigate to tabscreens on success
+        console.log("API Response:", userDetailsResponse);
+
+        if (!userDetailsResponse.data) {
+          Alert.alert("User details not found.");
+          return;
+        }
+        const userDetails = userDetailsResponse.data; // Just an object, no type annotation
+
+        await AsyncStorage.setItem("userDetails", JSON.stringify(userDetails));
+        console.log("locallll3",AsyncStorage)
         navigation.navigate("tabscreens");
       } else {
         Alert.alert("Failed to sign in. Please try again.");
@@ -88,13 +110,18 @@ const SignIn = () => {
                   },
                 }}
                 secureTextEntry={item.securetext}
-                onChangeText={(text) => setEmailToSignIn(text)} // Update email state
+                value={item.placeholder === "Email" ? emailToSignIn : undefined}
+                onChangeText={(text) => {
+                  if (item.placeholder === "Email") {
+                    setEmailToSignIn(text);
+                  }
+                }}
               />
             ))}
             <CommonButton
               label={loading ? "Signing In..." : "Sign In"}
               onPress={handleSignIn}
-              disabled={loading} // Disable button during loading
+              disabled={loading}
             />
           </View>
 

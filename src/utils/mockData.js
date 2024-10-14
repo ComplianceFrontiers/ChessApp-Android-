@@ -161,6 +161,7 @@ export const popularCoursesAllTab = [
   },
 ];
 
+
 export const processCarousalTab = [
   {
     id: 1,
