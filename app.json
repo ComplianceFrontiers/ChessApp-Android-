@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Smartup",
-    "slug": "chessapp-android-",
+    "slug": "smartup_lms_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/appIcon/icon.png",
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -22,16 +20,15 @@
         "foregroundImage": "./assets/appIcon/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.compliancefrontiers.chessappandroid"
+      "package": "com.codeforge0.smartup_lms_app"
     },
     "web": {
       "favicon": "./assets/favIcon/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "d95fea2b-f781-4f45-a387-3b4ebaf2d436"
+        "projectId": "32424916-129e-4fdb-874e-f3bcc59f4c8f"
       }
-    },
-    "owner": "compliancefrontiers"
+    }
   }
 }
