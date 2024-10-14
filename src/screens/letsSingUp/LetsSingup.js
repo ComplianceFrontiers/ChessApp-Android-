@@ -36,6 +36,7 @@ const LetsSingup = () => {
           <Text style={globalStyles.paragraph}>
             Login to Your Account to Continue your Courses
           </Text>
+          
           <View style={{ paddingTop: "8%", gap: 20, paddingBottom: "5%" }}>
             {singUpTextInput.map((item) => (
               <TextInput
@@ -55,7 +56,12 @@ const LetsSingup = () => {
                 secureTextEntry={item.securetext}
               />
             ))}
+             <CommonButton
+            label="Sign In with Your Account"
+            onPress={() => navigation.navigate("signin")}
+          />
           </View>
+         
           <View style={styles.checkBox}>
             <View style={styles.rememberMe}>
               <Checkbox

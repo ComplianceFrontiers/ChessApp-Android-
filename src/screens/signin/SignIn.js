@@ -35,6 +35,11 @@ const SignIn = () => {
           <Text style={globalStyles.paragraph}>
             Login to Your Account to Continue your Courses
           </Text>
+          
+          <CommonButton
+            label="Sign Up"
+            onPress={() => navigation.navigate("fillprofile")}
+          />
           <View style={{ paddingTop: "8%", gap: 20, paddingBottom: "5%" }}>
             {singinTextInput.map((item) => (
               <TextInput
@@ -54,38 +59,24 @@ const SignIn = () => {
               />
             ))}
           </View>
-          <View style={styles.checkBox}>
-            <View style={styles.rememberMe}>
-              <Checkbox
-                status={checked ? "checked" : "unchecked"}
-                onPress={handleToggle}
-                uncheckedColor="#FFB322"
-                color="#FFB322"
-                uncheckedIcon="check"
-              />
-              <Text style={{ color: theme.color }}>Remember me</Text>
-            </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("forgotpassword")}
-            >
-              <Text style={{ color: theme.color }}>Forgot Password?</Text>
-            </TouchableOpacity>
-          </View>
+          
           <CommonButton
             label="Sign In"
             onPress={() => navigation.navigate("letssignUp")}
           />
+          
           <View style={styles.continueWith}>
             <Text style={{ color: theme.color }}>Or Continue With</Text>
             <View style={styles.icons}>
               {signInData.map((item) => (
-                <TouchableOpacity style={styles.socialIcons}>
+                <TouchableOpacity key={item.id} style={styles.socialIcons}>
                   {item.icon}
                 </TouchableOpacity>
               ))}
             </View>
           </View>
         </View>
+      
         <View style={[styles.register, globalStyles.absoluteContents]}>
           <Text style={{ textAlign: "center", color: theme.color }}>
             Don’t have an Account?{" "}
