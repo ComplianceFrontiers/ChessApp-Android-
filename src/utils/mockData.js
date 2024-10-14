@@ -65,14 +65,14 @@ export const signInData = [
 ];
 
 export const singinTextInput = [
-  { id: 1, icon: "email", placeholder: " Email" },
-  {
-    id: 2,
-    icon: "lock",
-    placeholder: " Password",
-    securetext: true,
-    rightIcon: "eye",
-  },
+  { id: 1, icon: "email", placeholder: " Email" }
+  // {
+  //   id: 2,
+  //   icon: "lock",
+  //   placeholder: " Password",
+  //   securetext: true,
+  //   rightIcon: "eye",
+  // },
 ];
 
 export const singUpTextInput = [

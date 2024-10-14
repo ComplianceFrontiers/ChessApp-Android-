@@ -20,12 +20,25 @@ const SignUpScreen = () => {
         <View style={styles.childContents}>
           <Text style={globalStyles.headingOne}>Let's Get In</Text>
           <View style={{ paddingVertical: "8%", gap: 20 }}>
-            {signInData.map((item) => (
-              <TouchableOpacity style={styles.signinBTNS} key={item.id}>
-                {item.icon}
-                <Text style={{ color: theme.color }}>{item.title}</Text>
-              </TouchableOpacity>
-            ))}
+           {signInData.map((item) => (
+  <TouchableOpacity
+    style={styles.signinBTNS}
+    key={item.id}
+    onPress={() => {
+      if (item.title === "Continue with Google") {
+        // Handle Google sign-in here or navigate to Google SignIn screen
+        navigation.navigate("signin");  // Example of navigation for Google
+      } else if (item.title === "Continue with Apple") {
+        // Handle Apple sign-in here or navigate to Apple SignIn screen
+        navigation.navigate("tabscreens");  // Example of navigation for Apple
+      }
+    }}
+  >
+    {item.icon}
+    <Text style={{ color: theme.color }}>{item.title}</Text>
+  </TouchableOpacity>
+))}
+
           </View>
           <Text
             style={[
