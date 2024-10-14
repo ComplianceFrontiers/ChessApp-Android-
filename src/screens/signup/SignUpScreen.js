@@ -30,7 +30,7 @@ const SignUpScreen = () => {
         navigation.navigate("signin");  // Example of navigation for Google
       } else if (item.title === "Continue with Apple") {
         // Handle Apple sign-in here or navigate to Apple SignIn screen
-        navigation.navigate("tabscreens");  // Example of navigation for Apple
+        navigation.navigate("signin");  // Example of navigation for Apple
       }
     }}
   >
