@@ -1,5 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import SignUpScreen from "../screens/signup/SignUpScreen";
 import OnboardingScreen from "../screens/onboarding/OnboardingScreen";
 import SignIn from "../screens/signin/SignIn";
@@ -33,11 +34,41 @@ import TermsNConditions from "../screens/terms&conditions/TermsNConditions";
 import InviteFriends from "../screens/invitefriends/InviteFriends";
 import DarkMode from "../screens/darkmode/DarkMode";
 
+const Stack = createNativeStackNavigator();
+
 const AppNavigator = () => {
-  const Stack = createNativeStackNavigator();
+  const [initialRoute, setInitialRoute] = useState(null); // Default as null to indicate loading
+
+  useEffect(() => {
+    const checkOnboardingStatus = async () => {
+      try {
+        const email = await AsyncStorage.getItem('email');
+        console.log(email)
+        if (email) {
+          setInitialRoute('tabscreens'); // User has onboarded, go to SignIn
+        } else {
+          setInitialRoute('onboarding'); // User hasn't onboarded, go to Onboarding
+        }
+      } catch (error) {
+        console.error("Error checking onboarding status:", error);
+        setInitialRoute('onboarding'); // Fallback in case of error
+      }
+      console.log(initialRoute)
+    };
+
+    checkOnboardingStatus();
+  }, []);
+
+  // Don't render anything until the initial route is determined
+  if (!initialRoute) {
+    return null; // Alternatively, return a loading screen here
+  }
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={initialRoute}
+    >
       <Stack.Screen name="onboarding" component={OnboardingScreen} />
       <Stack.Screen name="signup" component={SignUpScreen} />
       <Stack.Screen name="signin" component={SignIn} />
