@@ -17,14 +17,25 @@ import ThemeContext from "../../components/Theme/ThemeContext";
 
 const Profile = () => {
   const [email, setEmail] = useState(""); // State variable for email
-  const [userDetails, setUserDetails] = useState(null); // Add state for userDetails
+  const [userDetails, setUserDetails] = useState(null); // State for userDetails
 
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
 
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.clear(); // Clear AsyncStorage
+      navigation.navigate('signup'); // Navigate to sign-in screen
+    } catch (error) {
+      console.error("Error clearing AsyncStorage:", error);
+    }
+  };
+
   const handleNavigate = (item) => {
     if (item.screen) {
       navigation.navigate(item.screen);
+    } else if (item.action === "logout") {
+      handleLogout(); // Call logout function
     } else {
       console.log("No respective screen available");
     }
@@ -93,15 +104,14 @@ const Profile = () => {
             <View style={styles.absoluteHead}>
               <View style={styles.round}>
                 {userDetails?.image ? (
-                <Image
-                source={
-                  userDetails?.image
-                    ? imageMap[userDetails.image] || require('../../assets/images/portal/b1.png') // Fallback
-                    : require('../../assets/images/portal/b4.png') // Fallback if no image
-                }
-                style={styles.profile}
-              />
-
+                  <Image
+                    source={
+                      userDetails?.image
+                        ? imageMap[userDetails.image] || require('../../assets/images/portal/b1.png') // Fallback
+                        : require('../../assets/images/portal/b4.png') // Fallback if no image
+                    }
+                    style={styles.profile}
+                  />
                 ) : (
                   <Text style={[globalStyles.headingFive, { color: theme.black }]}>
                     No Image Found
@@ -112,7 +122,6 @@ const Profile = () => {
                 <Text style={[globalStyles.headingOne, { color: theme.black }]}>
                   {userDetails?.child_name?.first || "Guest"}
                 </Text>
-                {/* Ensure email is rendered within a Text component */}
                 <Text style={[globalStyles.headingFive, { color: theme.black }]}>
                   {email ? email : "No email found"}
                 </Text>
@@ -133,7 +142,6 @@ const Profile = () => {
                       gap: 10,
                     }}
                   >
-                    {/* Wrap item.icon with a Text component if it's a string */}
                     <Text>{item.icon}</Text>
                     <View
                       style={{
@@ -169,6 +177,7 @@ const Profile = () => {
     </ScrollView>
   );
 };
+
 
 export default Profile;
 

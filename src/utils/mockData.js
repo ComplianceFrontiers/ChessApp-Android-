@@ -528,8 +528,14 @@ export const profileData = [
     icon: <InviteIcon />,
     screen: "invitefriends",
   },
-  { id: 10, title: "Logout", icon: <LogoutIcon /> },
+  {
+    id: 10,
+    title: "Logout",
+    icon: <LogoutIcon />,
+    action: "logout", // Add an action for logout
+  },
 ];
+
 
 export const profileLanguageData = [
   { id: 1, language: "English (US)" },
