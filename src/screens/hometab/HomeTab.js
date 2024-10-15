@@ -75,7 +75,7 @@ const HomeTab = () => {
           </TouchableOpacity>
           <View style={{ gap: 10 }}>
             <Text style={globalStyles.headingFour}>{userDetails?.child_name?.first || "Guest"}</Text>
-            <Text style={[globalStyles.miniButton, { width: "70%" }]}>
+            <Text style={[globalStyles.miniButton, { width: "80%" }]}>
               Learner
             </Text>
           </View>

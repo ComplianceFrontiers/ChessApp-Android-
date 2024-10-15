@@ -39,6 +39,7 @@ const SignIn = () => {
   }, []);
 
   const handleSignIn = async () => {
+    console.log("Current emailToSignIn value:", emailToSignIn);
     if (!emailToSignIn) {
       Alert.alert("Please enter your email.");
       return;
@@ -97,26 +98,27 @@ const SignIn = () => {
           <View style={{ paddingTop: "8%", gap: 20, paddingBottom: "5%" }}>
             {singinTextInput.map((item) => (
               <TextInput
-                key={item.id}
-                placeholder={item.placeholder}
-                style={globalStyles.input}
-                left={<TextInput.Icon icon={item.icon} />}
-                right={<TextInput.Icon icon={item.rightIcon} />}
-                underlineColor="transparent"
-                theme={{
-                  colors: {
-                    primary: "transparent",
-                    underlineColor: "transparent",
-                  },
-                }}
-                secureTextEntry={item.securetext}
-                value={item.placeholder === "Email" ? emailToSignIn : undefined}
-                onChangeText={(text) => {
-                  if (item.placeholder === "Email") {
-                    setEmailToSignIn(text);
-                  }
-                }}
-              />
+              key={item.id}
+              placeholder={item.placeholder}
+              style={globalStyles.input}
+              left={<TextInput.Icon icon={item.icon} />}
+              right={<TextInput.Icon icon={item.rightIcon} />}
+              underlineColor="transparent"
+              theme={{
+                colors: {
+                  primary: "transparent",
+                  underlineColor: "transparent",
+                },
+              }}
+              secureTextEntry={item.securetext}
+              value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
+              onChangeText={(text) => {
+                if (item.placeholder.trim() === "Email") {
+                  setEmailToSignIn(text);
+                }
+              }}
+            />
+            
             ))}
             <CommonButton
               label={loading ? "Signing In..." : "Sign In"}
