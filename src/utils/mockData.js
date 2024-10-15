@@ -74,7 +74,6 @@ export const singinTextInput = [
   //   rightIcon: "eye",
   // },
 ];
-
 export const singUpTextInput = [
   { id: 1, icon: "account", placeholder: " Username" },
   { id: 2, icon: "phone", placeholder: " Phone Number", type: "numeric" },

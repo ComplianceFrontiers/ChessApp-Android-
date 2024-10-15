@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   homeSliderData,
   homeTabCategories,
@@ -16,9 +16,10 @@ import {
   popularCategoriesTab,
   popularCoursesAllTab,
   processCarousalTab,
+  imageMap,
 } from "../../utils/mockData";
 import SnapCarousel from "../../components/slider/SnapCarousel";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import useGlobalStyles from "../../styles/globalStyles";
 import CategoryCarousel from "../../components/categorycarousal/CategoryCarousal";
 import PopularCourseAllTabCarousal from "../../components/popularcoursesAllTabCarousal/PopularCourseAllTabCarousal";
 import ProcessCarousal from "../../components/processcarousal/ProcessCarousal";
@@ -27,25 +28,42 @@ import MentorCarousal from "../../components/mentorcarousal/MentorCarousal";
 
 const HomeTab = () => {
   const [popularCourseTab, setPopularCourseTab] = useState("All");
-  const [userDetails, setUserDetails] = useState(null); // Add state for userDetails
+  const [userDetails, setUserDetails] = useState(null);
   const globalStyles = useGlobalStyles();
-
   const navigation = useNavigation();
 
-  // Function to fetch and log AsyncStorage data
+  // Image mapping for user profile images
+  const imageMap = {
+    "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
+    "/images/portal/g2.png": require("../../assets/images/portal/g2.png"),
+    "/images/portal/g3.png": require("../../assets/images/portal/g3.png"),
+    "/images/portal/g4.png": require("../../assets/images/portal/g4.png"),
+    "/images/portal/g5.png": require("../../assets/images/portal/g5.png"),
+    "/images/portal/g6.png": require("../../assets/images/portal/g6.png"),
+    "/images/portal/g7.png": require("../../assets/images/portal/g7.png"),
+    "/images/portal/g8.png": require("../../assets/images/portal/g8.png"),
+    "/images/portal/g9.png": require("../../assets/images/portal/g9.png"),
+    "/images/portal/b1.png": require("../../assets/images/portal/b1.png"),
+    "/images/portal/b2.png": require("../../assets/images/portal/b2.png"),
+    "/images/portal/b3.png": require("../../assets/images/portal/b3.png"),
+    "/images/portal/b4.png": require("../../assets/images/portal/b4.png"),
+    "/images/portal/b5.png": require("../../assets/images/portal/b5.png"),
+    "/images/portal/b6.png": require("../../assets/images/portal/b6.png"),
+    "/images/portal/b7.png": require("../../assets/images/portal/b7.png"),
+    "/images/portal/b8.png": require("../../assets/images/portal/b8.png"),
+    "/images/portal/b9.png": require("../../assets/images/portal/b9.png"),
+  };
+
+  // Function to fetch user details from AsyncStorage
   const logAsyncStorageData = async () => {
     try {
-      console.log("localllll", AsyncStorage);
       const email = await AsyncStorage.getItem("email");
       const userDetailsString = await AsyncStorage.getItem("userDetails");
-
-      // Parse the userDetails string to JSON
       const parsedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
 
       console.log("Email from AsyncStorage:", email);
       console.log("User Details from AsyncStorage:", parsedUserDetails);
 
-      // Set the parsed userDetails in state
       setUserDetails(parsedUserDetails);
     } catch (error) {
       console.error("Error fetching data from AsyncStorage:", error);
@@ -53,7 +71,7 @@ const HomeTab = () => {
   };
 
   useEffect(() => {
-    logAsyncStorageData(); // Call the function when component mounts
+    logAsyncStorageData(); // Fetch user details on component mount
   }, []);
 
   const handleTab = (item) => {
@@ -64,17 +82,29 @@ const HomeTab = () => {
     switch (popularCourseTab) {
       case "All":
         return <PopularCourseAllTabCarousal data={popularCoursesAllTab} />;
+      default:
+        return null; // Handle other cases if needed
     }
   };
+
   return (
     <>
       <View style={styles.profileHeader}>
-        <View style={{ flexDirection: "row", gap: 20, alignItems: "center" }}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
           <TouchableOpacity onPress={() => navigation.navigate("profile")}>
-            <Image source={require("../../assets/images/profileIcon.png")} />
+            <Image
+              source={
+                userDetails?.image && imageMap[userDetails.image]
+                  ? imageMap[userDetails.image]|| require('../../assets/images/portal/b1.png') // Fallback
+                  : require("../../assets/images/profileIcon.png") // Default icon
+              }
+              style={styles.profileIcon}
+            />
           </TouchableOpacity>
           <View style={{ gap: 10 }}>
-            <Text style={globalStyles.headingFour}>{userDetails?.child_name?.first || "Guest"}</Text>
+            <Text style={globalStyles.headingFour}>
+              {userDetails?.child_name?.first || "Guest"}
+            </Text>
             <Text style={[globalStyles.miniButton, { width: "80%" }]}>
               Learner
             </Text>
@@ -102,21 +132,11 @@ const HomeTab = () => {
         </View>
         <View style={styles.headAndBTN}>
           <Text style={globalStyles.headingFour}>Popular Courses</Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("popularcourses")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("popularcourses")}>
             <Text style={globalStyles.miniButton}>View all</Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "90%",
-            alignSelf: "center",
-            marginVertical: "5%",
-          }}
-        >
+        <View style={styles.tabContainer}>
           {popularCategoriesTab.map((item) => (
             <TouchableOpacity
               key={item.id}
@@ -125,7 +145,7 @@ const HomeTab = () => {
               <Text
                 style={
                   popularCourseTab === item.title
-                    ? styles.actveTab
+                    ? styles.activeTab
                     : styles.inactiveTab
                 }
               >
@@ -173,6 +193,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: "6%",
     paddingVertical: "2%",
   },
+  profileIcon: {
+    width: 40, // Set your desired width
+    height: 40, // Set your desired height
+    borderRadius: 20, // Optional: for rounded corners
+  },
   headerIcons: {
     flexDirection: "row",
     alignItems: "center",
@@ -185,14 +210,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  actveTab: {
+  tabContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    alignSelf: "center",
+    marginVertical: "5%",
+  },
+  activeTab: {
     backgroundColor: "#FC4F72",
     color: "white",
     fontWeight: "500",
-    alignItems: "center",
     textAlign: "center",
     borderRadius: 10,
-    justifyContent: "center",
     paddingVertical: 2,
     paddingHorizontal: 15,
   },
@@ -200,10 +230,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#f1f1f1",
     color: "black",
     fontWeight: "500",
-    alignItems: "center",
     textAlign: "center",
     borderRadius: 10,
-    justifyContent: "center",
     paddingVertical: 2,
     paddingHorizontal: 15,
   },
