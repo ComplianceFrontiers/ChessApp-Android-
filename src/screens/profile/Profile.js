@@ -47,9 +47,9 @@ const Profile = () => {
     "/images/portal/g4.png": require("../../assets/images/portal/g4.png"),
     "/images/portal/g5.png": require("../../assets/images/portal/g5.png"),
     "/images/portal/g6.png": require("../../assets/images/portal/g6.png"),
-    // "/images/portal/g7.png": require("../../assets/images/portal/g7.png"),
+    "/images/portal/g7.png": require("../../assets/images/portal/g7.png"),
     "/images/portal/g8.png": require("../../assets/images/portal/g8.png"),
-    // "/images/portal/g9.png": require("../../assets/images/portal/g9.png"),
+    "/images/portal/g9.png": require("../../assets/images/portal/g9.png"),
     "/images/portal/b1.png": require("../../assets/images/portal/b1.png"),
     "/images/portal/b2.png": require("../../assets/images/portal/b2.png"),
     "/images/portal/b3.png": require("../../assets/images/portal/b3.png"),
@@ -57,7 +57,7 @@ const Profile = () => {
     "/images/portal/b5.png": require("../../assets/images/portal/b5.png"),
     "/images/portal/b6.png": require("../../assets/images/portal/b6.png"),
     "/images/portal/b7.png": require("../../assets/images/portal/b7.png"),
-    // "/images/portal/b8.png": require("../../assets/images/portal/b8.png"),
+    "/images/portal/b8.png": require("../../assets/images/portal/b8.png"),
     "/images/portal/b9.png": require("../../assets/images/portal/b9.png"),
   };
   
