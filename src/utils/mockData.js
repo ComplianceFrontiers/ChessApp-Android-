@@ -1,6 +1,9 @@
-import OnBoardingImg1 from "../assets/svg/onboard1.svg";
-import OnBoardingImg2 from "../assets/svg/onboard2.svg";
-import OnBoardingImg3 from "../assets/svg/onboard3.svg";
+import OnBoardingImg1 from "../assets/onboardingImages/Pawn.png";
+import OnBoardingImg2 from "../assets/onboardingImages/Knight.png";
+import OnBoardingImg3 from "../assets/onboardingImages/Bishop.png";
+import OnBoardingImg4 from "../assets/onboardingImages/Rook.png";
+import OnBoardingImg5 from "../assets/onboardingImages/Queen.png";
+import OnBoardingImg6 from "../assets/onboardingImages/king.png";
 import Google from "../assets/svg/google.svg";
 import Apple from "../assets/svg/apple.svg";
 import MailIcon from "../assets/svg/mailIcon.svg";
@@ -40,19 +43,38 @@ import AudioIcon from "../components/audioIcon/AudioIcon";
 export const OnBoardingData = [
   {
     id: 1,
-    image: <OnBoardingImg1 />,
+    image: OnBoardingImg1,
     title: "Online Learning",
     para: "We Provide Classes Online Classes and Pre Recorded Leactures.!",
   },
   {
     id: 2,
-    image: <OnBoardingImg2 />,
+    image: OnBoardingImg2,
     title: "Learn at Anytime",
     para: "Booked or Same the Lectures for Future, Lorem ipsum dolor sit amet.",
   },
   {
     id: 3,
-    image: <OnBoardingImg3 />,
+    image: OnBoardingImg3,
+
+    title: "Learn Any Sphere You Like",
+    para: "More than 50 courses for various and in demand jobs & skills in one piece",
+  },
+  {
+    id: 4,
+    image: OnBoardingImg4,
+    title: "Online Learning",
+    para: "We Provide Classes Online Classes and Pre Recorded Leactures.!",
+  },
+  {
+    id: 5,
+    image: OnBoardingImg5,
+    title: "Learn at Anytime",
+    para: "Booked or Same the Lectures for Future, Lorem ipsum dolor sit amet.",
+  },
+  {
+    id: 6,
+    image: OnBoardingImg6,
 
     title: "Learn Any Sphere You Like",
     para: "More than 50 courses for various and in demand jobs & skills in one piece",

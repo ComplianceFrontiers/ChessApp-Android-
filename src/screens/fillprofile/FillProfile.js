@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Text, ScrollView, Image, Modal } from "react-native";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
-import ProfilIMG from "../../assets/svg/profileIMG.svg";
 import EditProfile from "../../assets/svg/editProfileIcon.svg";
 import { fillProfileData } from "../../utils/mockData";
 import { TextInput } from "react-native-paper";
@@ -11,12 +10,45 @@ import CommonButton from "../../components/commonbutton/CommonButton";
 import { useNavigation } from "@react-navigation/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
+// Import images
+const girlAvatars = [
+  require('../../assets/profilepics/g1.png'),
+  require('../../assets/profilepics/g2.png'),
+  require('../../assets/profilepics/g3.png'),
+  require('../../assets/profilepics/g4.png'),
+  require('../../assets/profilepics/g5.png'),
+  require('../../assets/profilepics/g6.png'),
+  require('../../assets/profilepics/g7.png'),
+  require('../../assets/profilepics/g8.png'),
+];
+
+const boyAvatars = [
+  require('../../assets/profilepics/b1.png'),
+  require('../../assets/profilepics/b2.png'),
+  require('../../assets/profilepics/b3.png'),
+  require('../../assets/profilepics/b4.png'),
+  require('../../assets/profilepics/b5.png'),
+  require('../../assets/profilepics/b6.png'),
+  require('../../assets/profilepics/b7.png'),
+  require('../../assets/profilepics/b8.png'),
+  require('../../assets/profilepics/b9.png'),
+];
+
 const FillProfile = () => {
   const navigation = useNavigation();
-  const [showDatePicker, setShowDatePicker] = useState(false);
-  const [dateOfBirth, setDateOfBirth] = useState(new Date());
-
   const globalStyles = useGlobalStyles();
+  const [showAvatarOptions, setShowAvatarOptions] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState(require("../../assets/profilepics/b7.png")); 
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(false);
+
+  const openAvatarModal = () => setShowAvatarOptions(true);
+  const closeAvatarModal = () => setShowAvatarOptions(false);
+
+  const changeProfilePic = (avatar) => {
+    setSelectedAvatar(avatar);
+    closeAvatarModal();
+  };
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || dateOfBirth;
@@ -24,74 +56,139 @@ const FillProfile = () => {
     setDateOfBirth(currentDate);
   };
 
-  const handleInputFocus = (fieldId) => {
-    if (fieldId === 2) {
-      setShowDatePicker(true);
-    } else {
-      setShowDatePicker(false);
-    }
-  };
-
   return (
     <View style={globalStyles.container}>
       <Header label="Fill Your Profile" />
-      <View style={styles.contents}>
+      {/* <ScrollView contentContainerStyle={styles.contents}> */}
         <View style={styles.profileContainer}>
-          <ProfilIMG />
-          <TouchableOpacity style={styles.editProfile}>
+          <Image source={selectedAvatar} style={styles.profileImage} />
+          <TouchableOpacity onPress={openAvatarModal} style={styles.editProfile}>
             <EditProfile />
           </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.inputFields}>
-        {fillProfileData.map((item) => (
-          <View key={item.id}>
-            <TextInput
-              placeholder={item.placeholder}
-              style={globalStyles.input}
-              left={<TextInput.Icon icon={item.icon} />}
-              underlineColor="transparent"
-              theme={{
-                colors: {
-                  primary: "transparent",
-                  underlineColor: "transparent",
-                },
-              }}
-              onFocus={() => handleInputFocus(item.id)}
-              value={item.id === 2 ? dateOfBirth.toDateString() : ""}
-            />
-            {showDatePicker && item.id === 2 && (
-              <DateTimePicker
-                testID="dateTimePicker"
-                value={dateOfBirth}
-                mode="date"
-                is24Hour={true}
-                display="default"
-                onChange={handleDateChange}
-              />
-            )}
+        
+        {/* Avatar Selection Modal */}
+        <Modal visible={showAvatarOptions} transparent animationType="slide">
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <TouchableOpacity onPress={closeAvatarModal} style={styles.closeButton}>
+                <Text style={styles.closeButtonText}>X</Text>
+              </TouchableOpacity>
+              <Text style={styles.modalTitle}>Select Profile Picture:</Text>
+              <ScrollView contentContainerStyle={styles.avatarTabs}>
+                <View style={styles.avatarTab}>
+                  <Text style={styles.tabTitle}>Girls</Text>
+                  <View style={styles.avatarList}>
+                    {girlAvatars.map((avatar, index) => (
+                      <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                        <Image source={avatar} style={styles.avatarOption} />
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                </View>
+                <View style={styles.avatarTab}>
+                  <Text style={styles.tabTitle}>Boys</Text>
+                  <View style={styles.avatarList}>
+                    {boyAvatars.map((avatar, index) => (
+                      <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                        <Image source={avatar} style={styles.avatarOption} />
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                </View>
+              </ScrollView>
+            </View>
           </View>
-        ))}
-        <CustomDropdown />
-        <View style={styles.button}>
-          <CommonButton
-            label="Continue"
-            onPress={() => navigation.navigate("createpin")}
-          />
+        </Modal>
+
+        <View style={styles.inputFields}>
+          {fillProfileData.map((item) => (
+            <View key={item.id}>
+              <TextInput
+                placeholder={item.placeholder}
+                style={globalStyles.input}
+                left={<TextInput.Icon icon={item.icon || '../../assets/profilepics/b7.png'} />}
+                underlineColor="transparent"
+                theme={{
+                  colors: {
+                    primary: "transparent",
+                    underlineColor: "transparent",
+                  },
+                }}
+                onFocus={() => setShowDatePicker(item.id)}
+                value={item.id === 2 ? dateOfBirth.toDateString() : ""}
+              />
+              {showDatePicker && item.id === 2 && (
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={dateOfBirth}
+                  mode="date"
+                  is24Hour={true}
+                  display="default"
+                  onChange={handleDateChange}
+                />
+              )}
+            </View>
+          ))}
+          <CustomDropdown />
+          <View style={styles.button}>
+            <CommonButton
+              label="Continue"
+              onPress={() => navigation.navigate("createpin")}
+            />
+          </View>
         </View>
-      </View>
     </View>
   );
 };
 
+export default FillProfile;
+
 const styles = StyleSheet.create({
+  // container: { flex: 1, backgroundColor: "#fff" },
   contents: {
     paddingTop: "10%",
+  },  profileContainer: { alignItems: "center", justifyContent: "center", marginBottom: 10 }, // Reduce margin
+  profileImage: { width: 120, height: 120, borderRadius: 60, marginBottom: 10 }, // Add margin to bottom
+  editProfile: { position: "absolute", bottom: 0, right: 10 },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  editProfile: {
+  modalContent: {
+    backgroundColor: "#ffeb3b",
+    borderRadius: 8,
+    padding: 20,
+    width: "90%",
+    height: "80%",
+    alignItems: "center",
+    position: "relative",
+  },
+  closeButton: {
     position: "absolute",
-    bottom: 0,
+    top: 10,
     right: 10,
+    backgroundColor: "transparent",
+  },
+  closeButtonText: { fontSize: 24, color: "#555" },
+  modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
+  avatarTabs: { flexGrow: 1, width: "100%" },
+  avatarTab: { marginVertical: 15 },
+  tabTitle: { fontSize: 16, fontWeight: "bold", marginBottom: 10 },
+  avatarList: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  avatarOption: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    margin: 5,
+    borderColor: "#ddd",
+    borderWidth: 2,
   },
   inputFields: {
     width: "90%",
@@ -102,5 +199,3 @@ const styles = StyleSheet.create({
     marginTop: "10%",
   },
 });
-
-export default FillProfile;

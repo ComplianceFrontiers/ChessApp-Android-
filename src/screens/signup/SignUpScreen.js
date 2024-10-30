@@ -10,7 +10,6 @@ import Logo from "../../components/logo/Logo";
 const SignUpScreen = () => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
-
   const theme = useContext(ThemeContext);
 
   return (
@@ -18,27 +17,23 @@ const SignUpScreen = () => {
       <View style={styles.contents}>
         <Logo />
         <View style={styles.childContents}>
-          <Text style={globalStyles.headingOne}>Let's Get In</Text>
           <View style={{ paddingVertical: "8%", gap: 20 }}>
-           {signInData.map((item) => (
-  <TouchableOpacity
-    style={styles.signinBTNS}
-    key={item.id}
-    onPress={() => {
-      if (item.title === "Continue with Google") {
-        // Handle Google sign-in here or navigate to Google SignIn screen
-        navigation.navigate("signin");  // Example of navigation for Google
-      } else if (item.title === "Continue with Apple") {
-        // Handle Apple sign-in here or navigate to Apple SignIn screen
-        navigation.navigate("signin");  // Example of navigation for Apple
-      }
-    }}
-  >
-    {item.icon}
-    <Text style={{ color: theme.color }}>{item.title}</Text>
-  </TouchableOpacity>
-))}
-
+            {signInData.map((item) => (
+              <TouchableOpacity
+                style={styles.signinBTNS}
+                key={item.id}
+                onPress={() => {
+                  if (item.title === "Continue with Google") {
+                    navigation.navigate("signin");
+                  } else if (item.title === "Continue with Apple") {
+                    navigation.navigate("signin");
+                  }
+                }}
+              >
+                {item.icon}
+                <Text style={{ color: theme.color }}>{item.title}</Text>
+              </TouchableOpacity>
+            ))}
           </View>
           <Text
             style={[
@@ -56,7 +51,7 @@ const SignUpScreen = () => {
             <Text style={{ textAlign: "center", color: theme.color }}>
               Don’t have an Account?{" "}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("fillprofile")}>
               <Text style={[globalStyles.yellowText, { fontWeight: "500" }]}>
                 SIGN UP
               </Text>
@@ -71,12 +66,12 @@ const SignUpScreen = () => {
 const styles = StyleSheet.create({
   contents: {
     flex: 1,
-    paddingTop: "30%",
+    paddingTop: "10%",
     alignItems: "center",
   },
   childContents: {
-    paddingTop: "20%",
-    height: "80%",
+    paddingTop: "10%",
+    height: "54%",
   },
   signinBTNS: {
     flexDirection: "row",

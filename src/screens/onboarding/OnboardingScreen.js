@@ -29,7 +29,7 @@ const OnboardingScreen = () => {
       <View
         style={[styles.slideContainer, { backgroundColor: theme.background }]}
       >
-        {item.image}
+        <Image source={item.image} style={styles.onboardingImage} />
         <View
           style={[styles.blueContainer, { backgroundColor: theme.reverseBG }]}
         >
@@ -145,6 +145,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     gap: 10,
     paddingBottom: "38%",
+  },
+  onboardingImage: {
+    width: slideWidth * 1.0,
+    height:700,
+    resizeMode: "contain",
   },
   flatListContainer: {
     flexGrow: 1,

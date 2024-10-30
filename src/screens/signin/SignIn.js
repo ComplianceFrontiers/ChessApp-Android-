@@ -58,10 +58,10 @@ const SignIn = () => {
           },
         }
       );
-      console.log("local5",emailToSignIn,response)
+      console.log("local5", emailToSignIn, response);
 
       if (response.ok) {
-        console.log("locallll1",AsyncStorage)
+        console.log("locallll1", AsyncStorage);
         const userDetailsResponse = await response.json();
         console.log("API Response:", userDetailsResponse);
 
@@ -69,10 +69,10 @@ const SignIn = () => {
           Alert.alert("User details not found.");
           return;
         }
-        const userDetails = userDetailsResponse.data; // Just an object, no type annotation
+        const userDetails = userDetailsResponse.data;
 
         await AsyncStorage.setItem("userDetails", JSON.stringify(userDetails));
-        console.log("locallll3",AsyncStorage)
+        console.log("locallll3", AsyncStorage);
         navigation.navigate("tabscreens");
       } else {
         Alert.alert("Failed to sign in. Please try again.");
@@ -98,27 +98,26 @@ const SignIn = () => {
           <View style={{ paddingTop: "8%", gap: 20, paddingBottom: "5%" }}>
             {singinTextInput.map((item) => (
               <TextInput
-              key={item.id}
-              placeholder={item.placeholder}
-              style={globalStyles.input}
-              left={<TextInput.Icon icon={item.icon} />}
-              right={<TextInput.Icon icon={item.rightIcon} />}
-              underlineColor="transparent"
-              theme={{
-                colors: {
-                  primary: "transparent",
-                  underlineColor: "transparent",
-                },
-              }}
-              secureTextEntry={item.securetext}
-              value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
-              onChangeText={(text) => {
-                if (item.placeholder.trim() === "Email") {
-                  setEmailToSignIn(text);
-                }
-              }}
-            />
-            
+                key={item.id}
+                placeholder={item.placeholder}
+                style={globalStyles.input}
+                left={<TextInput.Icon icon={item.icon} />}
+                right={<TextInput.Icon icon={item.rightIcon} />}
+                underlineColor="transparent"
+                theme={{
+                  colors: {
+                    primary: "transparent",
+                    underlineColor: "transparent",
+                  },
+                }}
+                secureTextEntry={item.securetext}
+                value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
+                onChangeText={(text) => {
+                  if (item.placeholder.trim() === "Email") {
+                    setEmailToSignIn(text);
+                  }
+                }}
+              />
             ))}
             <CommonButton
               label={loading ? "Signing In..." : "Sign In"}
@@ -127,22 +126,11 @@ const SignIn = () => {
             />
           </View>
 
-          <View style={styles.continueWith}>
-            <Text style={{ color: theme.color }}>Or Continue With</Text>
-            <View style={styles.icons}>
-              {signInData.map((item) => (
-                <TouchableOpacity key={item.id} style={styles.socialIcons}>
-                  {item.icon}
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-
           <View style={[styles.register, globalStyles.absoluteContents]}>
             <Text style={{ textAlign: "center", color: theme.color }}>
               Don’t have an Account?{" "}
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("fillprofile")}>
               <Text style={[globalStyles.yellowText, { fontWeight: "500" }]}>
                 SIGN UP
               </Text>
@@ -157,13 +145,13 @@ const SignIn = () => {
 const styles = StyleSheet.create({
   contents: {
     flex: 1,
-    paddingTop: "30%",
+    paddingTop: "20%",
     alignItems: "center",
     paddingBottom: 60,
   },
   childContents: {
     paddingTop: "20%",
-    height: "80%",
+    height: "70%",
   },
   continueWith: {
     paddingTop: "8%",
@@ -173,7 +161,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 20,
-    paddingTop: "12%",
+    paddingTop: "20%",
   },
   socialIcons: {
     backgroundColor: "lightgrey",

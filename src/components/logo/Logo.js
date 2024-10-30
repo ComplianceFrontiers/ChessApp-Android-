@@ -7,14 +7,20 @@ const Logo = () => {
   return (
     <View style={globalStyles.mainLogo}>
       <Image
-        source={require("../../../assets/appIcon/icon4.png")}
-        style={globalStyles.logoImage} // Adjust the style for the image
+        source={require("../../../assets/appIcon/ll1.png")}
+        style={styles.logoImage} // Add this line
       />
-      <Text style={globalStyles.headingFour}>Smartup</Text>
+      {/* <Text style={globalStyles.headingFour}>Smartup</Text> */}
     </View>
   );
 };
 
 export default Logo;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  logoImage: {
+    width: 300, // Set your desired width
+    height: 200, // Set your desired height
+    resizeMode: "contain", // Optional: keeps the image aspect ratio
+  },
+});
