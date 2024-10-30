@@ -17,9 +17,12 @@ import BlenderIcon from "../assets/svg/blenderIcon.svg";
 import ImprovementIcon from "../assets/svg/improvementIcon.svg";
 
 //Notification Page Data
-import Icon1 from "../assets/svg/categoryIcon.svg";
-import Icon2 from "../assets/svg/categoryIcon2.svg";
-import Icon3 from "../assets/svg/categoryIcon3.svg";
+import Icon1 from "../assets/courses/chessforschools/1.png";
+import Icon2 from "../assets/courses/chessforschools/2.png";
+import Icon3 from "../assets/courses/chessforschools/3.png";
+import Icon4 from "../assets/courses/chessforschools/4.png";
+import Icon5 from "../assets/courses/chessforschools/5.png";
+import Icon6 from "../assets/courses/chessforschools/6.png";
 
 import CreditCardIcon from "../assets/svg/creditCardIcon.svg";
 import AccountIcon from "../assets/svg/accountIcon.svg";
@@ -39,6 +42,44 @@ import LessonsIcon from "../components/lessonsIcon/LessonsIcon";
 import MobileIcon from "../components/mobileIcon/MobileIcon";
 import BeginnerIcon from "../components/beginnerIcon/BeginnerIcon";
 import AudioIcon from "../components/audioIcon/AudioIcon";
+export const notificationDataToday = [
+  {
+    id: 1,
+    title: "Pawn (Absolute Beginners)",
+    icon: Icon1,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  },
+  {
+    id: 2,
+    title: "Knight (Novice Players)",
+    icon: Icon2,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  },
+  {
+    id: 3,
+    title: "Bishop (Intermediate Players)",
+    icon: Icon3,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  },{
+    id: 4,
+    title: "Rook (Advanced Players)",
+    icon: Icon4,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  },
+  {
+    id: 5,
+    title: "Queen (Expert Players)",
+    icon: Icon5,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  },
+  {
+    id: 6,
+    title: "King (Mastery Level)",
+    icon: Icon6,
+    para: "Lorem ipsum dolor sit amet, consectetu",
+  }
+];
+
 
 export const OnBoardingData = [
   {
@@ -366,26 +407,6 @@ export const curriculumData = [
   { id: 2, title: "Setup Your Graphic De..", duration: "10" },
 ];
 
-export const notificationDataToday = [
-  {
-    id: 1,
-    title: "New Category Course.!",
-    icon: <Icon1 />,
-    para: "Lorem ipsum dolor sit amet, consectetu",
-  },
-  {
-    id: 2,
-    title: "New Category Course.!",
-    icon: <Icon2 />,
-    para: "Lorem ipsum dolor sit amet, consectetu",
-  },
-  {
-    id: 3,
-    title: "Today’s Special Offers",
-    icon: <Icon3 />,
-    para: "Lorem ipsum dolor sit amet, consectetu",
-  },
-];
 
 export const notificationDataYesterday1 = [
   {

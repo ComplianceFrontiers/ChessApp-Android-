@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import useGlobalStyles from "../../styles/globalStyles";
 import { popularCoursesDetail } from "../../utils/mockData";
 import SaveIcon from "../../assets/svg/saveIcon.svg";
 import RatingIcon from "../../assets/svg/ratingIcon.svg";
@@ -16,16 +16,21 @@ const AllCourseTab = () => {
         <TouchableOpacity
           key={item.id}
           style={styles.courses}
-          onPress={() =>
-            navigation.navigate("coursedetails", {
-              data: {
-                title: item.title,
-                category: item.category,
-                price: item.price,
-                rating: item.rating,
-              },
-            })
-          }
+          onPress={() => {
+            // Check if the item.id is 4 to navigate to notifications
+            if (item.id === 3) {
+              navigation.navigate("notifcations");
+            } else {
+              navigation.navigate("coursedetails", {
+                data: {
+                  title: item.title,
+                  category: item.category,
+                  price: item.price,
+                  rating: item.rating,
+                },
+              });
+            }
+          }}
         >
           <Image source={item.image} style={styles.image} />
           <View style={{ gap: 10, paddingVertical: 10 }}>
