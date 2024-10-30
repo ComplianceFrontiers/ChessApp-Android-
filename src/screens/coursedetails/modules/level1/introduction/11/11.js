@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -51,22 +50,7 @@ const T11 = () => {
   return (
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
-        <View style={styles.mediaContainer}>
-          {!showVideo ? (
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
-              <Image
-                source={require("../../../../../../assets/images/thumbnail.png")}
-                style={styles.thumbnail}
-              />
-            </TouchableOpacity>
-          ) : (
-            <WebView
-              source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
-              style={{ width: "100%", height: 300 }}
-              allowsFullscreenVideo
-            />
-          )}
-        </View>
+        
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
             <Header label="" backBTNCLR="white" />
