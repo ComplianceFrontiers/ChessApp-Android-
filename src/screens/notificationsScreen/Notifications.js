@@ -20,10 +20,11 @@ const Notifications = () => {
 
   const handleNotificationPress = (item) => {
     if (item.id === 4) {
-      // Navigate to the notifications screen or detail screen
-      navigation.navigate("NotificationsDetails"); // Change this to the desired screen
+      navigation.navigate("NotificationsDetails"); // Navigate to NotificationsDetails
+    } else if (item.id === 1) {
+      navigation.navigate("mycourses"); // Navigate to MyCourses for item.id 1
     }
-    // Add other navigation logic for other items if needed
+    // You can add additional conditions for other items if needed
   };
 
   return (
@@ -77,8 +78,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   icon: {
-    width: "15%",
+    width: "15%", // Adjust width as needed
     height: "100%", // Adjust height as needed
-    // resizeMode: "contain", // Maintain aspect ratio
   },
 });
