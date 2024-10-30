@@ -18,7 +18,7 @@ const girlAvatars = [
   require('../../assets/profilepics/g4.png'),
   require('../../assets/profilepics/g5.png'),
   require('../../assets/profilepics/g6.png'),
-  require('../../assets/profilepics/g7.png'),
+  // require('../../assets/profilepics/g7.png'),
   require('../../assets/profilepics/g8.png'),
 ];
 
@@ -30,7 +30,7 @@ const boyAvatars = [
   require('../../assets/profilepics/b5.png'),
   require('../../assets/profilepics/b6.png'),
   require('../../assets/profilepics/b7.png'),
-  require('../../assets/profilepics/b8.png'),
+  // require('../../assets/profilepics/b8.png'),
   require('../../assets/profilepics/b9.png'),
 ];
 

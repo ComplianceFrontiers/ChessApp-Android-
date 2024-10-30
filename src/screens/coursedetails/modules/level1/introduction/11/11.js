@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -17,7 +18,6 @@ import CommonButton from "../../../../../../components/commonbutton/CommonButton
 import ThemeContext from "../../../../../../components/Theme/ThemeContext";
 import ClassIcon from "../../../../../../components/classicon/ClassIcon";
 import TimeIcon from "../../../../../../components/timeicon/TimeIcon";
-import ReactPlayer from "react-player"; // Ensure you have this library installed
 
 const T11 = () => {
   const route = useRoute();
@@ -51,23 +51,22 @@ const T11 = () => {
   return (
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
-      <View style={styles.mediaContainer}>
-            {!showVideo ? (
+        <View style={styles.mediaContainer}>
+          {!showVideo ? (
+            <TouchableOpacity onPress={() => setShowVideo(true)}>
               <Image
-              source={require("../../../../../../assets/images/thumbnail.png")}
-              style={styles.thumbnail}
-                onClick={() => setShowVideo(true)} // Show video when image is clicked
+                source={require("../../../../../../assets/images/thumbnail.png")}
+                style={styles.thumbnail}
               />
-            ) : (
-              <ReactPlayer
-                url="https://youtu.be/LUvIdC30djI"
-                controls
-                playing
-                width="100%"
-                height="650px"
-              />
-            )}
-          </View>
+            </TouchableOpacity>
+          ) : (
+            <WebView
+              source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
+          )}
+        </View>
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
             <Header label="" backBTNCLR="white" />
@@ -129,7 +128,6 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-         
           {renderTabs()}
         </View>
       </ScrollView>
@@ -153,7 +151,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 300, // Adjust height as necessary
     marginTop: "8%",
-    cursor: 'pointer', // Ensure cursor changes to pointer
   },
   absoluteIMG: {
     position: "absolute",
