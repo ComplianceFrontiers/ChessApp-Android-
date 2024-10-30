@@ -1,84 +1,97 @@
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
-import { useNavigation } from "@react-navigation/native"; // Import useNavigation
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
-import { notificationDataToday } from "../../utils/mockData";
+import PlayBTN from "../../assets/svg/playButton.svg";
+import { myCoursesData1 } from "../../utils/mockData";
+import CommonButton from "../../components/commonbutton/CommonButton";
+import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
 
-const Notifications = () => {
+const MyCourses = () => {
+  const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
-  const navigation = useNavigation(); // Use useNavigation
   const theme = useContext(ThemeContext);
 
-  const handleNotificationPress = (item) => {
-    if (item.id === 4) {
-      navigation.navigate("NotificationsDetails"); // Navigate to NotificationsDetails
-    } else if (item.id === 1) {
-      navigation.navigate("coursedetails/modules/level1/introduction/11"); // Navigate to the specific course details
-    }
-    // Add other navigation logic for other items if needed
-  };
-
   return (
-    <ScrollView style={globalStyles.colorBG}>
-      <View style={globalStyles.container}>
-        <Header label="Notifications" />
-        <View style={globalStyles.contents}>
-          <Text
-            style={[
-              globalStyles.headingFive,
-              { alignSelf: "flex-start", marginBottom: "5%" },
-            ]}
-          >
-            Today
-          </Text>
-          {notificationDataToday.map((item) => (
-            <TouchableOpacity
-              key={item.id}
-              style={styles.notifications}
-              onPress={() => handleNotificationPress(item)} // Handle press
-            >
-              <Image source={item.icon} style={styles.icon} />
-              <View>
-                <Text
-                  style={[globalStyles.headingFive, { color: theme.black }]}
-                >
-                  {item.title}
+    <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
+      <ScrollView style={[globalStyles.colorBG, { marginBottom: "10%" }]}>
+        <View style={globalStyles.container}>
+          <Header label="My Courses" />
+          <View style={globalStyles.contents}>
+            <View style={{ marginBottom: "10%" }}>
+              <View style={styles.intro}>
+                <Text style={globalStyles.headingFive}>
+                  Section 01 -{" "}
+                  <Text style={globalStyles.redTextwithWeight}>Introduction</Text>
                 </Text>
-                <Text>{item.para}</Text>
+                <Text style={globalStyles.redText}>25 Mins</Text>
               </View>
-            </TouchableOpacity>
-          ))}
+              <View style={{ gap: 20, paddingVertical: "5%" }}>
+                {myCoursesData1.map((item) => (
+                  <TouchableOpacity
+                    key={item.id}
+                    style={styles.videoContainer}
+                    onPress={() => {
+                      if (item.id === 1) {
+                        navigation.navigate("coursedetails/modules/level1/introduction/11");
+                      }
+                      // Add more conditions here if needed for other items
+                    }}
+                  >
+                    <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+                      <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
+                      <View>
+                        <Text style={globalStyles.headingFive}>{item.title}</Text>
+                        <Text style={{ color: theme.color }}>{item.duration}</Text>
+                      </View>
+                    </View>
+                    <PlayBTN />
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </View>
+          </View>
         </View>
+      </ScrollView>
+      <View style={styles.absoluteBtn}>
+        <CommonButton
+          label="Start the course"
+          onPress={() => navigation.navigate("certificate")}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
-export default Notifications;
+export default MyCourses;
 
 const styles = StyleSheet.create({
-  notifications: {
+  mainContainer: {
+    flex: 1,
+  },
+  intro: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    backgroundColor: "#f1f1f1",
-    marginBottom: "5%",
+    width: "100%",
+    justifyContent: "space-between",
+  },
+  id: {
+    backgroundColor: "#FFC8D3",
     paddingHorizontal: "5%",
-    paddingVertical: "3%",
-    borderRadius: 15,
+    paddingVertical: "2%",
+    borderRadius: 30,
+  },
+  videoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     width: "100%",
   },
-  icon: {
-    width: "15%", // Adjust width as needed
-    height: "100%", // Adjust height as needed
+  absoluteBtn: {
+    position: "absolute",
+    bottom: 20,
+    width: "95%",
+    alignSelf: "center",
   },
 });
