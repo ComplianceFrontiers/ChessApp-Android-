@@ -22,6 +22,7 @@ import MentorDetails from "../screens/mentordetails/MentorDetails";
 import CheckOut from "../screens/checkout/CheckOut";
 import Confirmation from "../screens/confirmation/Confirmation";
 import MyCourses from "../screens/mycourses/MyCourses";
+import Level1In from "../screens/coursedetails/modules/level1/introduction/11/11"
 import CourseComplete from "../screens/certificate/CourseComplete";
 import MessageScreen from "../screens/message/MessageScreen";
 import PersonalMessageScreen from "../screens/personalmessagescreen/PersonalMessageScreen";
@@ -90,6 +91,7 @@ const AppNavigator = () => {
       <Stack.Screen name="checkout" component={CheckOut} />
       <Stack.Screen name="confirmation" component={Confirmation} />
       <Stack.Screen name="mycourses" component={MyCourses} />
+      <Stack.Screen name="coursedetails/modules/level1/introduction/11" component={Level1In} />
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="message" component={MessageScreen} />
       <Stack.Screen name="personalmessage" component={PersonalMessageScreen} />
