@@ -155,11 +155,19 @@ const T11 = () => {
 
         </View>
       </ScrollView>
-      <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>
-        <CommonButton
-          label="Buy Now"
-          onPress={() => navigation.navigate("checkout")}
-        />
+      <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
+        <TouchableOpacity 
+          style={styles.navigationButton}
+          onPress={() => navigation.goBack()} // Replace with your actual logic for Previous
+        >
+          <Text style={styles.buttonText}>Previous</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.navigationButton}
+          onPress={() => navigation.navigate("coursedetails/modules/level1/theChessboard/21")} // Replace with your next screen name
+        >
+          <Text style={styles.buttonText}>Next</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -225,10 +233,23 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "600",
   },
-  absoluteBTN: {
-    bottom: 20,
-    width: "95%",
-    alignSelf: "center",
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 20,
+    backgroundColor: "white", // Adjust if necessary
+  },
+  navigationButton: {
+    flex: 1,
+    marginHorizontal: 5,
+    padding: 15,
+    backgroundColor: "#FC4F72", // Change to your desired color
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
   },
   mainContain: {
     flex: 1,
