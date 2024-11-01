@@ -40,7 +40,10 @@ import Level1Itp7 from "../screens/coursedetails/modules/level1/introductionToPi
 import Level1Itp8 from "../screens/coursedetails/modules/level1/introductionToPieces/38/38"
 
 import Level1Aop from "../screens/coursedetails/modules/level1/arrangementOfPieces/41/41"
+import Level1Aop2 from "../screens/coursedetails/modules/level1/arrangementOfPieces/42/42"
 import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51"
+import Level1Sm2 from "../screens/coursedetails/modules/level1/specialMoves/52/52"
+import Level1Sm3 from "../screens/coursedetails/modules/level1/specialMoves/53/53"
 import CourseComplete from "../screens/certificate/CourseComplete";
 import MessageScreen from "../screens/message/MessageScreen";
 import PersonalMessageScreen from "../screens/personalmessagescreen/PersonalMessageScreen";
@@ -126,7 +129,11 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/35" component={Level1Itp5} />
 
       <Stack.Screen name="coursedetails/modules/level1/arrangementOfPieces/41" component={Level1Aop} />
+      <Stack.Screen name="coursedetails/modules/level1/arrangementOfPieces/42" component={Level1Aop2} />
+
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/51" component={Level1Sm} />
+      <Stack.Screen name="coursedetails/modules/level1/specialMoves/52" component={Level1Sm2} />
+      <Stack.Screen name="coursedetails/modules/level1/specialMoves/53" component={Level1Sm3} />
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="message" component={MessageScreen} />
       <Stack.Screen name="personalmessage" component={PersonalMessageScreen} />
