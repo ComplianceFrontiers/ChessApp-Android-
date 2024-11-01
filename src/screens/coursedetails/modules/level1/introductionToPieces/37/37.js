@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,9 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Pawns are worth one point each, making them the least valuable pieces on the board. Despite their low value, they play a crucial role in controlling key squares and forming the foundation of strategic play. Their coordinated movements can create strong structures, bolster defenses, or initiate attacks.
 
@@ -142,6 +142,8 @@ const T11 = () => {
           <strong>Movement:</strong> Pawns move forward one square at a time, but they capture by moving one square diagonally. On their first move, pawns have the option to move two squares forward instead of one. Unlike other pieces, pawns cannot move backward. Their special moves include promotion (when they reach the other side of the board) and en passant (a unique capture). We'll cover these special moves as we progress through the journey.
 
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

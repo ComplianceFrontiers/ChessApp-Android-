@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,9 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           The bishop is a long-range piece that moves diagonally across the board, confined to squares of its color complex, either light or dark. Controlling open diagonals is essential for maintaining the bishop’s activity, as it performs best when unblocked. The bishop pair, with one on each color, offers a significant advantage by covering both light and dark squares, enhancing the player’s control over the board.
 
@@ -153,6 +153,8 @@ const T11 = () => {
           <Text style={globalStyles.paragraph}>
           Similarly, the Dark Squared Bishop cannot move to F6 because it is already occupied by its own pawn. However, the bishop can move to F2, but only after capturing the opponent’s knight.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

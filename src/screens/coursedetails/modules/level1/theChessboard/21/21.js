@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,9 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Let Us Start with the Chessboard: 
   The chessboard is the battlefield where two challengers engage in a game of strategy and
@@ -150,6 +150,8 @@ const T11 = () => {
   a light-colored square. This orientation is crucial because it guarantees that the rest of the
   pieces will be aligned correctly. Remember “Right is White.”
           </Text>
+          </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
