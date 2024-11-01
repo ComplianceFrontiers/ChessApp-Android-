@@ -25,7 +25,7 @@ import MyCourses from "../screens/mycourses/MyCourses";
 import Level1In from "../screens/coursedetails/modules/level1/introduction/11/11"
 import Level1ch from "../screens/coursedetails/modules/level1/theChessboard/21/21"
 import Level1Itp from "../screens/coursedetails/modules/level1/introductionToPieces/31/31"
-import Level1Aop from "../screens/coursedetails/modules/level1/ArrangementOfPieces/41/41"
+import Level1Aop from "../screens/coursedetails/modules/level1/arrangementOfPieces/41/41"
 import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51"
 import CourseComplete from "../screens/certificate/CourseComplete";
 import MessageScreen from "../screens/message/MessageScreen";
