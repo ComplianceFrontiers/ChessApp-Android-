@@ -23,6 +23,7 @@ import CheckOut from "../screens/checkout/CheckOut";
 import Confirmation from "../screens/confirmation/Confirmation";
 import MyCourses from "../screens/mycourses/MyCourses";
 import Level1In from "../screens/coursedetails/modules/level1/introduction/11/11"
+import Level1ch from "../screens/coursedetails/modules/level1/theChessboard/21/21"
 import CourseComplete from "../screens/certificate/CourseComplete";
 import MessageScreen from "../screens/message/MessageScreen";
 import PersonalMessageScreen from "../screens/personalmessagescreen/PersonalMessageScreen";
@@ -92,6 +93,7 @@ const AppNavigator = () => {
       <Stack.Screen name="confirmation" component={Confirmation} />
       <Stack.Screen name="mycourses" component={MyCourses} />
       <Stack.Screen name="coursedetails/modules/level1/introduction/11" component={Level1In} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/21" component={Level1ch} />
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="message" component={MessageScreen} />
       <Stack.Screen name="personalmessage" component={PersonalMessageScreen} />
