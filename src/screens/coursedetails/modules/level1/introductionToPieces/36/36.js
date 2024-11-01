@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,11 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/lvEu8t9reJk" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            <WebView
+              source={{ uri: "https://youtube.com/embed/lvEu8t9reJk" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +99,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.6 Understanding the Knight
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +128,19 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          The knight, worth three points, moves in an L-shape: two squares in one direction and then one square perpendicular. This unique movement allows the knight to "jump" over other pieces, making it valuable for navigating crowded positions and executing tactical maneuvers. The knight's ability to reach squares that other pieces might not can be crucial for creating opportunities and threats.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Movement:</strong> The knight moves in an "L" shape on the chessboard. It goes two squares in one direction (either up, down, left, or right) and then one square at a right angle (to the left or right if it first moved up or down, or up or down if it first moved left or right). Unlike other pieces, the knight can jump over other pieces in its path.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Knights are strongest when centralized on the board, and they become powerful when positioned on protected squares in the opponent's territory, known as outposts. They are also skilled at creating tactical tricks, such as forks, where they can attack multiple pieces simultaneously.
+
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

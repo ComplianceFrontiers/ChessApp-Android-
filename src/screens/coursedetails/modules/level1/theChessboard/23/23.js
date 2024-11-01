@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,11 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/3sxXQOlorwY" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            <WebView
+              source={{ uri: "https://youtube.com/embed/3sxXQOlorwY" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +99,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.4 Understanding ‘File’
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +128,19 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Now, let us dive deeper into understanding Files on a chessboard.
+  As mentioned earlier, Files are the vertical columns on the board. To visualize this, imagine
+  Files as the standing lines on the chess board.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Each File is identified by its corresponding letter. The File aligned with the letter 'A' is called
+  the A-file, the one aligned with 'B' is the B-file, and so on, up to the H-file.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          These Files play a crucial role in understanding board positioning and strategy in chess.
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

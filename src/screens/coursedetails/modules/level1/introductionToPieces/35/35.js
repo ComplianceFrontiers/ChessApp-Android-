@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/V5DDauWqJqY" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+           
+            <WebView
+              source={{ uri: "https://youtube.com/embed/V5DDauWqJqY" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.5 Understanding the Rook
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,36 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          The rook moves straightforwardly—up, down, left, and right—covering any number of squares along those lines. Valued at 5 points, it plays a key role in castling and becomes especially powerful in the endgame, particularly when positioned on the seventh rank. Its ability to control open files and ranks makes it an asset in both offense and defense.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Movement:</strong> The rook can move any number of squares vertically or horizontally.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Open/ Semi-Open Files:</strong> Rooks are strong on open or semi-open files with no blocking pieces.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Castling:</strong> The rook helps in castling, which protects the king.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Coordination:</strong> Two rooks work well together on the same file or rank.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Endgame Power:</strong> Rooks are very powerful in the endgame, especially on the 7th and 8th ranks.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          The rook always moves in a straight path—up, down, left, and right—covering any number of squares along those lines.
+
+          </Text>
+
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

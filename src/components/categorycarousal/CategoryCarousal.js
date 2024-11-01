@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
+// import Carousel from "react-native-snap-carousel";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../Theme/ThemeContext";
@@ -35,7 +35,7 @@ const CategoryCarousel = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Carousel
+      {/* <Carousel
         data={data}
         renderItem={renderItem}
         sliderWidth={screenWidth}
@@ -46,7 +46,7 @@ const CategoryCarousel = ({ data }) => {
         layout="default"
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
-      />
+      /> */}
     </View>
   );
 };

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,11 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/oTuFjXndtjY" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            <WebView
+              source={{ uri: "https://youtube.com/embed/oTuFjXndtjY" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +99,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.7 Name of the Squares
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +128,17 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          As discussed earlier, every square on the board has a unique "first name" and "last name."
+  The first name corresponds to the letter of the File (the vertical column), and the last name
+  corresponds to the number of the Rank (the horizontal row).
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          For example, take the square highlighted in the image: D4. The first name is "D," which is
+  the File the square is on, and the last name is "4," representing the 4th Rank. Together, they
+  form the square's unique identifier: D4.
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

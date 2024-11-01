@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,11 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/LUvIdC30djI" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            <WebView
+              source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +99,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.1 Introduction
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +128,31 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Welcome to “Basics of Chess," a course designed for complete beginners. Whether you
+  are starting from scratch & have never played chess before, or already know a few
+  basics and want to explore the game in a systematic way, you're in the right place! We will
+  guide you step by step, making the learning process easy and enjoyable. By the end of this
+  journey, you will have the knowledge and confidence to play chess with skill.
+        </Text>
+        
+        <Text style={globalStyles.paragraph}>
+        Before we begin, let me introduce myself. My name is Sid, also known as the Chess Kid. I
+  am the founder and lead coach of Delaware Chess Champs, a scholastic chess club that
+  runs a community outreach program called “Chess for Kids.”
+        </Text>
+        
+        <Text style={globalStyles.paragraph}>
+        As a former Delaware Junior Chess Champion and one of the top one hundred players in my
+  age group in the U.S., I have played over 1,000 competitive games both domestically and
+  internationally. I am passionate about sharing my love for chess with beginners like you.
+        </Text>
+        
+        <Text style={globalStyles.paragraph}>
+        I invite you to join me on this journey—let us get started!
+        </Text>
+
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/iYKsprs2yIA" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            
+            <WebView
+              source={{ uri: "https://youtube.com/embed/iYKsprs2yIA" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.3  Letters & Numbers
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,24 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Just like a person has a first name and a last name, each square on the chessboard has a
+  unique identifier made up of two parts: a "first name" and a "last name." The first name is a
+  letter from A to H, representing the rows (also known as ranks). The last name is a number
+  from 1 to 8, representing the columns (also known as files) from the bottom row (1) to the top
+  row (8).
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Each square is uniquely identified by combining these letters and numbers, like how a
+  person is identified by their first and last names. For example, the square at the intersection
+  of the letter D (the fourth column) and the number 4 (the fourth row) is called D4. This
+  naming system allows players to communicate their moves and positions accurately,
+  ensuring clarity and precision in the game.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          We will learn more about it soon.
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

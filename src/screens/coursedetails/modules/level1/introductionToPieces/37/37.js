@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/7p_RY97wf4w" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            
+            <WebView
+              source={{ uri: "https://youtube.com/embed/7p_RY97wf4w" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.7 Understanding the Pawn
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,19 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Pawns are worth one point each, making them the least valuable pieces on the board. Despite their low value, they play a crucial role in controlling key squares and forming the foundation of strategic play. Their coordinated movements can create strong structures, bolster defenses, or initiate attacks.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Pawns move forward one square but capture diagonally. If a pawn reaches the other side of the board, it can be promoted, usually becoming a queen. Pawns can also capture using a special move called <strong>en passant</strong> when an opponent’s pawn moves two squares forward from its starting position. They form the structure of your position, protecting your pieces, and are strongest when they support each other in chains.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <strong>Movement:</strong> Pawns move forward one square at a time, but they capture by moving one square diagonally. On their first move, pawns have the option to move two squares forward instead of one. Unlike other pieces, pawns cannot move backward. Their special moves include promotion (when they reach the other side of the board) and en passant (a unique capture). We'll cover these special moves as we progress through the journey.
+
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

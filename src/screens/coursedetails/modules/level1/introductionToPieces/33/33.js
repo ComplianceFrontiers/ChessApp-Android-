@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/yJST7JjEdL8" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+           
+            <WebView
+              source={{ uri: "https://youtube.com/embed/yJST7JjEdL8" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.3 Understanding the King
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,47 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Understanding the pieces—Now, let us delve into the details of each piece and understand their unique features and movements. This will help you grasp how each piece contributes to the overall strategy of the game.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          <ul style={{ fontFamily: 'Montserrat, sans-serif', color: 'black', fontSize: '16px' }}>
+      <li>
+        <strong>King:</strong> The king is undoubtedly the most crucial piece in chess; losing it means losing the game. It moves only one square in any direction. Protecting your king through castling and attacking your opponent's king are essential strategies. In the endgame, the king's role becomes even more pivotal. If you are curious about endgames or castling, do not worry—these concepts will become clear as we advance through our journey.
+      </li><br />
+      <li>
+        The king moves one square in any direction.
+      </li><br />
+      <li>
+        The goal is to avoid checkmate while trying to checkmate the opponent at the same time.
+      </li><br />
+      <li>
+        <strong>Castling:</strong> The king can castle with a rook to move to safety.
+      </li><br />
+      <li>
+        <strong>Endgame Importance:</strong> The king becomes more active in the endgame.
+      </li><br />
+      <li>
+        <strong>Safety:</strong> Keep the king safe by castling early.
+      </li>
+    </ul><br />
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          In this position, the squares highlighted on the board indicate where the King can move. However, it is important to remember that for any piece to move to a square, it must not be blocked by one of its own pieces.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Additionally, if an opponent's piece occupies a square, your piece can move to that square only by capturing the opponent's piece.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          For example, the King cannot move to E5 because it is already occupied by its own pawn. Similarly, the King can move to E3 only after capturing the opponent’s Knight.
+
+          </Text>
+          
+
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

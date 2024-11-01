@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,11 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/VYy3Ip2RKhg" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+            <WebView
+              source={{ uri: "https://youtube.com/embed/VYy3Ip2RKhg" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +99,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.5 Understanding ‘Rank’
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +128,23 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Similarly, let us dive deeper into understanding Ranks on a chessboard.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          As mentioned earlier, Ranks are the horizontal columns on the board. To visualize this,
+          imagine ranks as the sleeping lines on the chess board.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Like Files, each Rank is also identified by its corresponding number. The rank aligned with
+  the number ‘1' is called the 1st Rank, the one aligned with ‘2' is the 2nd Rank, and so on, up to
+  the 8th Rank.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          These Ranks also play a crucial role in understanding board positioning and strategy in
+          chess.
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

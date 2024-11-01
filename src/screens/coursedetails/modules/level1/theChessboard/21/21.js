@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/LlNrGyn8dCY" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+
+            <WebView
+              source={{ uri: "https://youtube.com/embed/LlNrGyn8dCY" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          1.2 Board Set-Up
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,27 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          Let Us Start with the Chessboard: 
+  The chessboard is the battlefield where two challengers engage in a game of strategy and
+  skill. It consists of sixty-four squares arranged in an eight-by-eight grid, with alternating thirty-
+  two light and thirty-two dark squares.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Understanding the layout and naming conventions of the chessboard is crucial for any chess
+  player, as it forms the foundation of the game.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Setting up the chessboard correctly is an important step before starting a game, as it
+  ensures that all pieces are in their proper positions and the game can proceed without
+  confusion.
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Begin by placing the board so that the bottom-right square from each player's perspective is
+  a light-colored square. This orientation is crucial because it guarantees that the rest of the
+  pieces will be aligned correctly. Remember “Right is White.”
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

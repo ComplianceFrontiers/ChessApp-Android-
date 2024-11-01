@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/V2tCMSHMEl0" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+           
+            <WebView
+              source={{ uri: "https://youtube.com/embed/V2tCMSHMEl0" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.8 Understanding the Queen
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,19 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          The queen is the most powerful piece on the board, valued at 9 points. It moves any number of squares in any direction—vertically, horizontally, or diagonally—combining the strengths of both the rook and bishop. This versatility makes the queen a crucial tool for controlling the board and launching attacks, playing a central role in both strategy and tactics.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          The queen is the most versatile and powerful piece on the chessboard, able to move any number of squares in any direction. This unique combination of the movements of the rook, bishop, and pawn makes it a formidable force in both offense and defense. Centralizing the queen maximizes its control over the board, allowing it to influence a larger number of squares. Effective coordination with other pieces enhances its ability to execute powerful attacks.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          In the endgame, the queen’s role becomes crucial, either delivering checkmate or supporting pawns as they advance towards promotion, which is a topic that will be covered in the future.
+
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>

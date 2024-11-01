@@ -67,7 +67,8 @@ const useGlobalStyles = () => {
       paragraph: {
         fontSize: 16,
         fontWeight: "400",
-        lineHeight: 26,
+        lineHeight: 25,
+        marginBottom:30,
         width: "100%",
         color: theme.color,
       },

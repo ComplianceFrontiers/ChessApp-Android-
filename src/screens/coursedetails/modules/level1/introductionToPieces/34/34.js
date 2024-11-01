@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import useGlobalStyles from "../../../../../../styles/globalStyles";
 import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -60,12 +60,12 @@ const T11 = () => {
               />
             </TouchableOpacity>
           ) : (
-            <Text>hi</Text>
-            // <WebView
-            //   source={{ uri: "https://youtu.be/_llubTg0G5k" }}
-            //   style={{ width: "100%", height: 300 }}
-            //   allowsFullscreenVideo
-            // />
+          
+            <WebView
+              source={{ uri: "https://youtube.com/embed/_llubTg0G5k" }}
+              style={{ width: "100%", height: 300 }}
+              allowsFullscreenVideo
+            />
           )}
         </View>
         <View style={globalStyles.container}>
@@ -100,7 +100,7 @@ const T11 = () => {
             </View>
           </View>
           <Text style={globalStyles.headingFour}>
-            Design Principles: Organizing...
+          2.4 Understanding the Bishop
           </Text>
           <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
@@ -129,7 +129,30 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {renderTabs()}
+          {/* {renderTabs()} */}
+          <Text style={globalStyles.paragraph}>
+          The bishop is a long-range piece that moves diagonally across the board, confined to squares of its color complex, either light or dark. Controlling open diagonals is essential for maintaining the bishop’s activity, as it performs best when unblocked. The bishop pair, with one on each color, offers a significant advantage by covering both light and dark squares, enhancing the player’s control over the board.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          The squares highlighted on the board indicate where the bishop can move. Again, remember that for any piece to move to a square, it must not be blocked by one of its own pieces.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Additionally, if an opponent's piece occupies a square, your piece can move to that square only by capturing the opponent's piece.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          For example, the Light Squared Bishop cannot move to C6 because it is already occupied by its own pawn. However, the bishop can move to G2, but only after capturing the opponent’s knight.
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Previously, we looked at an example with the light-squared bishop. Now, let us look at an example with the dark-squared bishop:
+
+          </Text>
+          <Text style={globalStyles.paragraph}>
+          Similarly, the Dark Squared Bishop cannot move to F6 because it is already occupied by its own pawn. However, the bishop can move to F2, but only after capturing the opponent’s knight.
+          </Text>
         </View>
       </ScrollView>
       <View style={[styles.absoluteBTN, { backgroundColor: theme.background }]}>
