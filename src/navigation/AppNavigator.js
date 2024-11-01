@@ -123,10 +123,10 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/32" component={Level1Itp2} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/33" component={Level1Itp3} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/34" component={Level1Itp4} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/35" component={Level1Itp5} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/36" component={Level1Itp6} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/37" component={Level1Itp7} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/38" component={Level1Itp8} />
-      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/35" component={Level1Itp5} />
 
       <Stack.Screen name="coursedetails/modules/level1/arrangementOfPieces/41" component={Level1Aop} />
       <Stack.Screen name="coursedetails/modules/level1/arrangementOfPieces/42" component={Level1Aop2} />
