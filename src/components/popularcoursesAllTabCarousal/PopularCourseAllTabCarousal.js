@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
+// import Carousel from "react-native-snap-carousel";
 import SaveIcon from "../../assets/svg/saveIcon.svg";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import RatingIcon from "../../assets/svg/ratingIcon.svg";
@@ -58,7 +58,7 @@ const PopularCourseAllTabCarousal = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Carousel
+      {/* <Carousel
         data={data}
         renderItem={renderItem}
         sliderWidth={screenWidth}
@@ -69,7 +69,7 @@ const PopularCourseAllTabCarousal = ({ data }) => {
         layout="default"
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
-      />
+      /> */}
     </View>
   );
 };

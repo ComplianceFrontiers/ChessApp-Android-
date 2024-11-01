@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
+// import Carousel from "react-native-snap-carousel";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import * as Progress from "react-native-progress";
 import LessonIcon from "../../assets/svg/lessonIcon.svg";
@@ -71,7 +71,7 @@ const ProcessCarousal = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Carousel
+      {/* <Carousel
         data={data}
         renderItem={renderItem}
         sliderWidth={screenWidth}
@@ -82,7 +82,7 @@ const ProcessCarousal = ({ data }) => {
         layout="default"
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
-      />
+      /> */}
     </View>
   );
 };
