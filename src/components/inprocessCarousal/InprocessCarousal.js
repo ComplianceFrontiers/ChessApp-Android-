@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Carousel from "react-native-snap-carousel";
+// import Carousel from "react-native-snap-carousel";
 
 const InprocessCarousal = ({ data }) => {
   const screenWidth = Dimensions.get("window").width;
@@ -19,7 +19,7 @@ const InprocessCarousal = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Carousel
+      {/* <Carousel
         data={data}
         renderItem={renderItem}
         sliderWidth={screenWidth}
@@ -30,7 +30,7 @@ const InprocessCarousal = ({ data }) => {
         layout="default"
         inactiveSlideOpacity={1}
         inactiveSlideScale={1}
-      />
+      /> */}
     </View>
   );
 };

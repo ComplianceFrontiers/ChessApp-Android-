@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { View, StyleSheet, Dimensions, Image } from "react-native";
-import Carousel from "react-native-snap-carousel";
+// import Carousel from "react-native-snap-carousel";
 import ThemeContext from "../Theme/ThemeContext";
 
 const SnapCarousel = ({ data }) => {
@@ -21,7 +21,7 @@ const SnapCarousel = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Carousel
+      {/* <Carousel
         data={data}
         renderItem={renderItem}
         sliderWidth={screenWidth}
@@ -30,7 +30,7 @@ const SnapCarousel = ({ data }) => {
         autoplay={true}
         autoplayInterval={3000}
         layout="default"
-      />
+      /> */}
     </View>
   );
 };
