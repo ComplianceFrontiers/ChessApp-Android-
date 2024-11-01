@@ -409,18 +409,16 @@ export const reviewsData = [
 ];
 
 export const curriculumData = [
-  { id: 1, title: "The Chessboard", duration: "15" },
-  { id: 2, title: "Introduction To Pieces", duration: "10" },
-  { id: 3, title: "Arrangement Of Pieces", duration: "15" },
-  { id: 4, title: "Special Moves", duration: "10" },
-  { id: 5, title: "Winning In Chess", duration: "15" },
-  { id: 6, title: "Piece Exchange", duration: "10" },
-  { id: 7, title: "3 Stages Of Chess", duration: "15" },
-  { id: 8, title: "Chess Notations", duration: "10" },
-  { id: 9, title: "Chess Game", duration: "10" },
-
+  { id: 1, title: "The Chessboard", duration: "15", url: "coursedetails/modules/level1/introduction/11" },
+  { id: 2, title: "Introduction To Pieces", duration: "10", url: "coursedetails/modules/level1/introductionToPieces/31" },
+  { id: 3, title: "Arrangement Of Pieces", duration: "15", url: "coursedetails/modules/level1/arrangementOfPieces/41" },
+  { id: 4, title: "Special Moves", duration: "10", url: "coursedetails/modules/level1/specialMoves/51" },
+  { id: 5, title: "Winning In Chess", duration: "15", url: "coursedetails/modules/level1/winningInChess/61" },
+  { id: 6, title: "Piece Exchange", duration: "10", url: "coursedetails/modules/level1/pieceExchange/71" },
+  { id: 7, title: "3 Stages Of Chess", duration: "15", url: "coursedetails/modules/level1/stagesOfChess/81" },
+  { id: 8, title: "Chess Notations", duration: "10", url: "coursedetails/modules/level1/chessNotations/91" },
+  { id: 9, title: "Chess Game", duration: "10", url: "coursedetails/modules/level1/chessGame/10" },
 ];
-
 
 export const notificationDataYesterday1 = [
   {
