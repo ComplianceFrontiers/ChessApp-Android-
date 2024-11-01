@@ -155,13 +155,13 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack()} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/introduction/11")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.navigate("coursedetails/modules/level1/theChessboard/21")} // Replace with your next screen name
+          onPress={() => navigation.navigate("coursedetails/modules/level1/theChessboard/22")} // Replace with your next screen name
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>

@@ -149,7 +149,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack()} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/specialMoves/52")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
