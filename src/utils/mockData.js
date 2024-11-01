@@ -409,8 +409,16 @@ export const reviewsData = [
 ];
 
 export const curriculumData = [
-  { id: 1, title: "Why Using Graphic De..", duration: "15" },
-  { id: 2, title: "Setup Your Graphic De..", duration: "10" },
+  { id: 1, title: "The Chessboard", duration: "15" },
+  { id: 2, title: "Introduction To Pieces", duration: "10" },
+  { id: 3, title: "Arrangement Of Pieces", duration: "15" },
+  { id: 4, title: "Special Moves", duration: "10" },
+  { id: 5, title: "Winning In Chess", duration: "15" },
+  { id: 6, title: "Piece Exchange", duration: "10" },
+  { id: 7, title: "3 Stages Of Chess", duration: "15" },
+  { id: 8, title: "Chess Notations", duration: "10" },
+  { id: 9, title: "Chess Game", duration: "10" },
+
 ];
 
 
