@@ -48,35 +48,41 @@ export const notificationDataToday = [
     title: "Pawn (Absolute Beginners)",
     icon: Icon1,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 1",
   },
   {
     id: 2,
     title: "Knight (Novice Players)",
     icon: Icon2,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 2",
   },
   {
     id: 3,
     title: "Bishop (Intermediate Players)",
     icon: Icon3,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 3",
   },{
     id: 4,
     title: "Rook (Advanced Players)",
     icon: Icon4,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 4",
   },
   {
     id: 5,
     title: "Queen (Expert Players)",
     icon: Icon5,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 5",
   },
   {
     id: 6,
     title: "King (Mastery Level)",
     icon: Icon6,
     para: "Lorem ipsum dolor sit amet, consectetu",
+    level: "Level 6",
   }
 ];
 
