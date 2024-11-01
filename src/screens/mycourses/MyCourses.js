@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import useGlobalStyles from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
 import PlayBTN from "../../assets/svg/playButton.svg";
 import { myCoursesData1 } from "../../utils/mockData";
@@ -32,18 +32,13 @@ const MyCourses = () => {
                   <TouchableOpacity
                     key={item.id}
                     style={styles.videoContainer}
-                    onPress={() => {
-                      if (item.id === 1) {
-                        navigation.navigate("coursedetails/modules/level1/introduction/11");
-                      }
-                      // Add more conditions here if needed for other items
-                    }}
+                    onPress={() => navigation.navigate(item.url)} // Navigate directly to the URL
                   >
                     <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
                       <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
                       <View>
                         <Text style={globalStyles.headingFive}>{item.title}</Text>
-                        <Text style={{ color: theme.color }}>{item.duration}</Text>
+                        <Text style={{ color: theme.color }}>{item.duration} Mins</Text>
                       </View>
                     </View>
                     <PlayBTN />
