@@ -24,7 +24,21 @@ import Confirmation from "../screens/confirmation/Confirmation";
 import MyCourses from "../screens/mycourses/MyCourses";
 import Level1In from "../screens/coursedetails/modules/level1/introduction/11/11"
 import Level1ch from "../screens/coursedetails/modules/level1/theChessboard/21/21"
+import Level1ch2 from "../screens/coursedetails/modules/level1/theChessboard/22/22"
+import Level1ch3 from "../screens/coursedetails/modules/level1/theChessboard/23/23"
+import Level1ch4 from "../screens/coursedetails/modules/level1/theChessboard/24/24"
+import Level1ch5 from "../screens/coursedetails/modules/level1/theChessboard/25/25"
+import Level1ch6 from "../screens/coursedetails/modules/level1/theChessboard/26/26"
+
 import Level1Itp from "../screens/coursedetails/modules/level1/introductionToPieces/31/31"
+import Level1Itp2 from "../screens/coursedetails/modules/level1/introductionToPieces/32/32"
+import Level1Itp3 from "../screens/coursedetails/modules/level1/introductionToPieces/33/33"
+import Level1Itp4 from "../screens/coursedetails/modules/level1/introductionToPieces/34/34"
+import Level1Itp5 from "../screens/coursedetails/modules/level1/introductionToPieces/35/35"
+import Level1Itp6 from "../screens/coursedetails/modules/level1/introductionToPieces/36/36"
+import Level1Itp7 from "../screens/coursedetails/modules/level1/introductionToPieces/37/37"
+import Level1Itp8 from "../screens/coursedetails/modules/level1/introductionToPieces/38/38"
+
 import Level1Aop from "../screens/coursedetails/modules/level1/arrangementOfPieces/41/41"
 import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51"
 import CourseComplete from "../screens/certificate/CourseComplete";
@@ -97,7 +111,20 @@ const AppNavigator = () => {
       <Stack.Screen name="mycourses" component={MyCourses} />
       <Stack.Screen name="coursedetails/modules/level1/introduction/11" component={Level1In} />
       <Stack.Screen name="coursedetails/modules/level1/theChessboard/21" component={Level1ch} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/22" component={Level1ch2} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/23" component={Level1ch3} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/24" component={Level1ch4} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/25" component={Level1ch5} />
+      <Stack.Screen name="coursedetails/modules/level1/theChessboard/26" component={Level1ch6} />
       <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/31" component={Level1Itp} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/32" component={Level1Itp2} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/33" component={Level1Itp3} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/34" component={Level1Itp4} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/36" component={Level1Itp6} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/37" component={Level1Itp7} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/38" component={Level1Itp8} />
+      <Stack.Screen name="coursedetails/modules/level1/introductionToPieces/35" component={Level1Itp5} />
+
       <Stack.Screen name="coursedetails/modules/level1/arrangementOfPieces/41" component={Level1Aop} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/51" component={Level1Sm} />
       <Stack.Screen name="certificate" component={CourseComplete} />

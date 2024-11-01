@@ -154,7 +154,7 @@ const T11 = () => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.navigate("coursedetails/modules/level1/theChessboard/21")} // Replace with your next screen name
+          onPress={() => navigation.navigate("coursedetails/modules/level1/theChessboard/24")} // Replace with your next screen name
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
