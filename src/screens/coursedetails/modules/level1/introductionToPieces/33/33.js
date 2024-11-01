@@ -128,6 +128,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Understanding the pieces—Now, let us delve into the details of each piece and understand their unique features and movements. This will help you grasp how each piece contributes to the overall strategy of the game.
 
@@ -168,6 +170,8 @@ const T11 = () => {
           </Text>
           
 
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

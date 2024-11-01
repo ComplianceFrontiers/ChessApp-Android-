@@ -128,6 +128,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Now that we know about the different chess pieces, it is crucial to understand their importance in the game. This knowledge is vital when you are deciding whether to attack, defend, capture, or sacrifice a piece. Understanding the value of each piece will help you make informed decisions in these situations.
           </Text>
@@ -159,6 +161,8 @@ const T11 = () => {
           The King is the most important piece on the board, but it does not fall under either classification because its significance is unique—if the King is captured, the game is lost.
 
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

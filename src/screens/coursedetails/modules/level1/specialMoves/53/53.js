@@ -128,6 +128,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           En passant is a special pawn capture that occurs when a pawn moves two squares forward, and an adjacent opposing pawn captures it as if it had only moved one square. This capture must be made immediately after the opponent's pawn makes its two-square move, or the opportunity is lost. The en passant capture is time-sensitive; if not taken immediately, the option disappears. Strategically, en passant can be used to disrupt your opponent's pawn structure and open lines for your pieces.
 
@@ -142,6 +144,8 @@ const T11 = () => {
             referenced in game notations. For now, we will simply introduce the concept and move
             forward.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

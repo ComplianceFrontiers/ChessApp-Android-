@@ -127,6 +127,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           As discussed earlier, every square on the board has a unique "first name" and "last name."
   The first name corresponds to the letter of the File (the vertical column), and the last name
@@ -137,6 +139,8 @@ const T11 = () => {
   the File the square is on, and the last name is "4," representing the 4th Rank. Together, they
   form the square's unique identifier: D4.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

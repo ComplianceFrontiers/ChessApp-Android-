@@ -127,6 +127,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Just like in any strategic war game, chess involves two opposing sides, each striving for victory. One side uses the Light pieces, typically white, while the other uses the Dark pieces, usually black.
           </Text>
@@ -139,6 +141,8 @@ const T11 = () => {
           <Text style={globalStyles.paragraph}>
           The king is the most important piece, as the game is won by checkmating the opponent's king. The queen is the most powerful, capable of moving in multiple directions. The knight is unique in its ability to jump over other pieces. The bishop excels in long-range attacks on diagonals, while the rook is unstoppable, especially as a pair. Lastly, the pawn, though small, can deliver big damage, often determining the game's outcome.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

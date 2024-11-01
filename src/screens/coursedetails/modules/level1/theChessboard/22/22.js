@@ -128,6 +128,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Just like a person has a first name and a last name, each square on the chessboard has a
   unique identifier made up of two parts: a "first name" and a "last name." The first name is a
@@ -145,6 +147,8 @@ const T11 = () => {
           <Text style={globalStyles.paragraph}>
           We will learn more about it soon.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

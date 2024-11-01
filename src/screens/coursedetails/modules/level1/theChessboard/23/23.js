@@ -127,6 +127,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Now, let us dive deeper into understanding Files on a chessboard.
   As mentioned earlier, Files are the vertical columns on the board. To visualize this, imagine
@@ -139,6 +141,8 @@ const T11 = () => {
           <Text style={globalStyles.paragraph}>
           These Files play a crucial role in understanding board positioning and strategy in chess.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>

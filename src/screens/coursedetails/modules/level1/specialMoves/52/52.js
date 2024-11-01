@@ -128,6 +128,8 @@ const T11 = () => {
             ))}
           </View>
           {renderTabs()}
+          {activeTab === "About" && (
+  <>
           <Text style={globalStyles.paragraph}>
           Pawn promotion occurs when a pawn advances to the eighth rank (or first rank for Black) and is promoted to a queen, rook, bishop, or knight. While the queen is the most common choice for promotion due to its power, there are situations where promoting to a knight, rook, or bishop (a process known as underpromotion) can be strategically advantageous. The timing and choice of promotion are critical and can significantly impact the outcome of the game, particularly in the endgame.
 
@@ -142,6 +144,8 @@ const T11 = () => {
             referenced in game notations. For now, we will simply introduce the concept and move
             forward.
           </Text>
+         </>
+)}
         </View>
       </ScrollView>
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
