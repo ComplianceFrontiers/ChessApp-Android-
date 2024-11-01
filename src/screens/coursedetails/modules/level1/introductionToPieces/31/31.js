@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -128,7 +126,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           Just like in any strategic war game, chess involves two opposing sides, each striving for victory. One side uses the Light pieces, typically white, while the other uses the Dark pieces, usually black.
           </Text>

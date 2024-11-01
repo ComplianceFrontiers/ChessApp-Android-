@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
 

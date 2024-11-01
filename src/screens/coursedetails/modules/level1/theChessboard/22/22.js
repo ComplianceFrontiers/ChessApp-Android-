@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           Just like a person has a first name and a last name, each square on the chessboard has a
   unique identifier made up of two parts: a "first name" and a "last name." The first name is a

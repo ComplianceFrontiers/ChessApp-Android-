@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -128,7 +126,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           Now, let us dive deeper into understanding Files on a chessboard.
   As mentioned earlier, Files are the vertical columns on the board. To visualize this, imagine

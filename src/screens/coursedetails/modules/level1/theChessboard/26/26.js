@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -128,7 +126,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           As discussed earlier, every square on the board has a unique "first name" and "last name."
   The first name corresponds to the letter of the File (the vertical column), and the last name

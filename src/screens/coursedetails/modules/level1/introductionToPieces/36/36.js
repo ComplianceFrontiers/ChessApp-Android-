@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -128,7 +126,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           The knight, worth three points, moves in an L-shape: two squares in one direction and then one square perpendicular. This unique movement allows the knight to "jump" over other pieces, making it valuable for navigating crowded positions and executing tactical maneuvers. The knight's ability to reach squares that other pieces might not can be crucial for creating opportunities and threats.
 

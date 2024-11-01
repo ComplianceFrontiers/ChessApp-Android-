@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           On the dark side, the arrangement mirrors that of the light side, with the board also positioned to have a white square on the right. Here, the back row features the same sequence of pieces, but the black queen starts on a black square, maintaining symmetry. The pawns stand ready to push forward, matching their opponent’s moves. This standardized setup ensures that both sides begin with identical formations, creating a balanced and fair environment for tactical maneuvers and strategic play as the game unfolds.
 

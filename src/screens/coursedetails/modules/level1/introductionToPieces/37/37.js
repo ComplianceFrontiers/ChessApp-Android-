@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           Pawns are worth one point each, making them the least valuable pieces on the board. Despite their low value, they play a crucial role in controlling key squares and forming the foundation of strategic play. Their coordinated movements can create strong structures, bolster defenses, or initiate attacks.
 

@@ -39,8 +39,6 @@ const T11 = () => {
 
   const renderTabs = () => {
     switch (activeTab) {
-      case "About":
-        return <AboutTab />;
       case "Curriculum":
         return <CurriculumTab />;
       default:
@@ -129,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-          {/* {renderTabs()} */}
+          {renderTabs()}
           <Text style={globalStyles.paragraph}>
           From the light side perspective, the chess pieces are arranged with the board positioned so that a white square is on the player’s right-hand side. The back row, starting from left to right, is set up with a rook, knight, bishop, and the white queen on a white square, followed by the king, bishop, knight, and rook. The row in front is filled with pawns, poised to advance and control the center, setting the stage for an aggressive opening.
 
