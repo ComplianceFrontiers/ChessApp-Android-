@@ -48,16 +48,16 @@ const Notifications = () => {
   return (
     <ScrollView style={globalStyles.colorBG}>
       <View style={globalStyles.container}>
-        <Header label="Pawn" />
+        <Header label="Your Chess Journey" />
         <View style={globalStyles.contents}>
-          <Text
+          {/* <Text
             style={[
               globalStyles.headingFive,
               { alignSelf: "flex-start", marginBottom: "5%" },
             ]}
           >
             Today
-          </Text>
+          </Text> */}
           {notificationDataToday.map((item) => {
             console.log('Current item ID:', item.id); // Debugging statement
             console.log('Current item level:', item.level); // Debugging statement
@@ -82,13 +82,15 @@ const Notifications = () => {
                   >
                     {item.title}
                   </Text>
-                  <Text>{item.para}</Text>
+                  {/* <Text>{item.para}</Text> */}
                 </View>
               </TouchableOpacity>
+              
             );
           })}
         </View>
       </View>
+      
     </ScrollView>
   );
 };
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f26722", // Highlight color for the current level
   },
   icon: {
-    width: "15%",
+    width: "12%",
     height: "100%",
   },
 });
