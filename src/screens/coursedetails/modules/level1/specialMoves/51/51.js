@@ -127,7 +127,7 @@ const T11 = () => {
               </TouchableOpacity>
             ))}
           </View>
-{/* {renderTabs()} */}
+ {renderTabs()}
 {activeTab === "About" && (
   <>
     <Text style={globalStyles.paragraph}>
