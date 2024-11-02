@@ -153,13 +153,13 @@ const styles = StyleSheet.create({
     // height: 320,
   },
   parallaxContainer: {
-    marginTop: -120,
+    marginTop: -100,
     width: "100%",
-    alignItems: "flex-start",
+    alignItems: "center",
     paddingTop: "5%",
     backgroundColor: "white",
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   classDetailsAndPrice: {
     flexDirection: "row",

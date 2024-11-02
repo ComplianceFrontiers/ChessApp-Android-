@@ -78,29 +78,11 @@ const T11 = () => {
             { backgroundColor: theme.background },
           ]}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-              paddingBottom: "3%",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              <RatingIcon />
-            </View>
-          </View>
+           
           <Text style={globalStyles.headingFour}>
           4.2 Pawn Promotion
           </Text>
-          <View style={styles.classDetailsAndPrice}>
+           {/* <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>
               <ClassIcon />
               <Text style={{ color: theme.color }}>21 Classes</Text>
@@ -108,7 +90,7 @@ const T11 = () => {
               <TimeIcon />
               <Text style={{ color: theme.color }}>42 Hours</Text>
             </View>
-          </View>
+          </View> */}
           <View style={styles.tabContainer}>
             {tabs.map((item) => (
               <TouchableOpacity
@@ -183,13 +165,13 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   parallaxContainer: {
-    marginTop: -120,
+    marginTop: -100,
     width: "100%",
-    alignItems: "flex-start",
+    alignItems: "center",
     paddingTop: "5%",
     backgroundColor: "white",
-    borderTopRightRadius: 30,
-    borderTopLeftRadius: 30,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   classDetailsAndPrice: {
     flexDirection: "row",

@@ -32,7 +32,7 @@ const MyCourses = () => {
                       <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
                       <View>
                         <Text style={globalStyles.headingFive}>{item.title}</Text>
-                        {/* <Text style={{ color: theme.color }}>{item.duration} Mins</Text> */}
+                        <Text style={{ color: theme.color }}>Completion Percentage</Text>
                       </View>
                     </View>
                     <PlayBTN />
