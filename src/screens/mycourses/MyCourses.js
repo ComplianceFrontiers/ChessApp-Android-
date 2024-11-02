@@ -17,17 +17,11 @@ const MyCourses = () => {
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
       <ScrollView style={[globalStyles.colorBG, { marginBottom: "10%" }]}>
         <View style={globalStyles.container}>
-          <Header label="My Courses" />
+          <Header label="Level 1 (Pawn)" />
           <View style={globalStyles.contents}>
-            <View style={{ marginBottom: "10%" }}>
-              <View style={styles.intro}>
-                <Text style={globalStyles.headingFive}>
-                  Section 01 -{" "}
-                  <Text style={globalStyles.redTextwithWeight}>Introduction</Text>
-                </Text>
-                <Text style={globalStyles.redText}>25 Mins</Text>
-              </View>
-              <View style={{ gap: 20, paddingVertical: "5%" }}>
+            
+             
+              <View style={{ gap: 20, paddingVertical: "0%" }}>
                 {myCoursesData1.map((item) => (
                   <TouchableOpacity
                     key={item.id}
@@ -38,14 +32,14 @@ const MyCourses = () => {
                       <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
                       <View>
                         <Text style={globalStyles.headingFive}>{item.title}</Text>
-                        <Text style={{ color: theme.color }}>{item.duration} Mins</Text>
+                        {/* <Text style={{ color: theme.color }}>{item.duration} Mins</Text> */}
                       </View>
                     </View>
                     <PlayBTN />
                   </TouchableOpacity>
                 ))}
               </View>
-            </View>
+            
           </View>
         </View>
       </ScrollView>
