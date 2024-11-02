@@ -30,8 +30,8 @@ const PopularCourses = () => {
 
   return (
     <ScrollView style={globalStyles.colorBG}>
-      <View style={globalStyles.container}>
-        <Header label="Popular Courses" searchIcon={true} backBTN={false} />
+      <View >
+        {/* <Header label="Popular Courses" searchIcon={true} backBTN={false} /> */}
         <View style={globalStyles.contents}>
           <View
             style={{
@@ -46,15 +46,7 @@ const PopularCourses = () => {
                 key={item.id}
                 onPress={() => handleTab(item.title)}
               >
-                <Text
-                  style={
-                    popularCourseTab === item.title
-                      ? styles.activeTab
-                      : styles.inActiveTab
-                  }
-                >
-                  {item.title}
-                </Text>
+                 
               </TouchableOpacity>
             ))}
           </View>
