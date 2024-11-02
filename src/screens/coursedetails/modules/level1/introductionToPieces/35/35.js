@@ -60,7 +60,7 @@ const T11 = () => {
           ) : (
            
             <WebView
-              source={{ uri: "https://youtube.com/embed/V5DDauWqJqY" }}
+              source={{ uri: "https://www.youtube.com/embed/V5DDauWqJqY" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -131,33 +131,33 @@ const T11 = () => {
           {activeTab === "About" && (
   <>
           <Text style={globalStyles.paragraph}>
-          The rook moves straightforwardly—up, down, left, and right—covering any number of squares along those lines. Valued at 5 points, it plays a key role in castling and becomes especially powerful in the endgame, particularly when positioned on the seventh rank. Its ability to control open files and ranks makes it an asset in both offense and defense.
+  The rook moves straightforwardly—up, down, left, and right—covering any number of squares along those lines. Valued at 5 points, it plays a key role in castling and becomes especially powerful in the endgame, particularly when positioned on the seventh rank. Its ability to control open files and ranks makes it an asset in both offense and defense.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <strong>Movement:</strong> The rook can move any number of squares vertically or horizontally.
+<Text style={globalStyles.paragraph}>
+  <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Movement:</Text> The rook can move any number of squares vertically or horizontally.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <strong>Open/ Semi-Open Files:</strong> Rooks are strong on open or semi-open files with no blocking pieces.
+<Text style={globalStyles.paragraph}>
+  <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Open/ Semi-Open Files:</Text> Rooks are strong on open or semi-open files with no blocking pieces.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <strong>Castling:</strong> The rook helps in castling, which protects the king.
+<Text style={globalStyles.paragraph}>
+  <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Castling:</Text> The rook helps in castling, which protects the king.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <strong>Coordination:</strong> Two rooks work well together on the same file or rank.
+<Text style={globalStyles.paragraph}>
+  <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Coordination:</Text> Two rooks work well together on the same file or rank.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <strong>Endgame Power:</strong> Rooks are very powerful in the endgame, especially on the 7th and 8th ranks.
+<Text style={globalStyles.paragraph}>
+  <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Endgame Power:</Text> Rooks are very powerful in the endgame, especially on the 7th and 8th ranks.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          The rook always moves in a straight path—up, down, left, and right—covering any number of squares along those lines.
+<Text style={globalStyles.paragraph}>
+  The rook always moves in a straight path—up, down, left, and right—covering any number of squares along those lines.
+</Text>
 
-          </Text>
 
          </>
 )}

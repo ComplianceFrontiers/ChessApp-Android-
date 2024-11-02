@@ -60,7 +60,7 @@ const T11 = () => {
           ) : (
            
             <WebView
-              source={{ uri: "https://youtube.com/embed/yJST7JjEdL8" }}
+              source={{ uri: "https://www.youtube.com/embed/yJST7JjEdL8" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -131,43 +131,47 @@ const T11 = () => {
           {activeTab === "About" && (
   <>
           <Text style={globalStyles.paragraph}>
-          Understanding the pieces—Now, let us delve into the details of each piece and understand their unique features and movements. This will help you grasp how each piece contributes to the overall strategy of the game.
+  Understanding the pieces—Now, let us delve into the details of each piece and understand their unique features and movements. This will help you grasp how each piece contributes to the overall strategy of the game.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <ul style={{ fontFamily: 'Montserrat, sans-serif', color: 'black', fontSize: '16px' }}>
-      <li>
-        <strong>King:</strong> The king is undoubtedly the most crucial piece in chess; losing it means losing the game. It moves only one square in any direction. Protecting your king through castling and attacking your opponent's king are essential strategies. In the endgame, the king's role becomes even more pivotal. If you are curious about endgames or castling, do not worry—these concepts will become clear as we advance through our journey.
-      </li><br />
-      <li>
-        The king moves one square in any direction.
-      </li><br />
-      <li>
-        The goal is to avoid checkmate while trying to checkmate the opponent at the same time.
-      </li><br />
-      <li>
-        <strong>Castling:</strong> The king can castle with a rook to move to safety.
-      </li><br />
-      <li>
-        <strong>Endgame Importance:</strong> The king becomes more active in the endgame.
-      </li><br />
-      <li>
-        <strong>Safety:</strong> Keep the king safe by castling early.
-      </li>
-    </ul><br />
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          In this position, the squares highlighted on the board indicate where the King can move. However, it is important to remember that for any piece to move to a square, it must not be blocked by one of its own pieces.
+<Text style={globalStyles.paragraph}>
+  <Text style={{ fontFamily: 'Montserrat, sans-serif', color: 'black', fontSize: 16 }}>
+    <Text style={{ fontWeight: 'bold' }}>King:</Text> The king is undoubtedly the most crucial piece in chess; losing it means losing the game. It moves only one square in any direction. Protecting your king through castling and attacking your opponent's king are essential strategies. In the endgame, the king's role becomes even more pivotal. If you are curious about endgames or castling, do not worry—these concepts will become clear as we advance through our journey.
+  </Text>
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          Additionally, if an opponent's piece occupies a square, your piece can move to that square only by capturing the opponent's piece.
+<Text style={globalStyles.paragraph}>
+  The king moves one square in any direction.
+</Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          For example, the King cannot move to E5 because it is already occupied by its own pawn. Similarly, the King can move to E3 only after capturing the opponent’s Knight.
+<Text style={globalStyles.paragraph}>
+  The goal is to avoid checkmate while trying to checkmate the opponent at the same time.
+</Text>
 
-          </Text>
+<Text style={globalStyles.paragraph}>
+  <Text style={{ fontWeight: 'bold' }}>Castling:</Text> The king can castle with a rook to move to safety.
+</Text>
+
+<Text style={globalStyles.paragraph}>
+  <Text style={{ fontWeight: 'bold' }}>Endgame Importance:</Text> The king becomes more active in the endgame.
+</Text>
+
+<Text style={globalStyles.paragraph}>
+  <Text style={{ fontWeight: 'bold' }}>Safety:</Text> Keep the king safe by castling early.
+</Text>
+
+<Text style={globalStyles.paragraph}>
+  In this position, the squares highlighted on the board indicate where the King can move. However, it is important to remember that for any piece to move to a square, it must not be blocked by one of its own pieces.
+</Text>
+
+<Text style={globalStyles.paragraph}>
+  Additionally, if an opponent's piece occupies a square, your piece can move to that square only by capturing the opponent's piece.
+</Text>
+
+<Text style={globalStyles.paragraph}>
+  For example, the King cannot move to E5 because it is already occupied by its own pawn. Similarly, the King can move to E3 only after capturing the opponent’s Knight.
+</Text>
+
           
 
          </>
@@ -183,7 +187,7 @@ const T11 = () => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.navigate("ccoursedetails/modules/level1/introductionToPieces/34")} // Replace with your next screen name
+          onPress={() => navigation.navigate("coursedetails/modules/level1/introductionToPieces/34")} // Replace with your next screen name
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>

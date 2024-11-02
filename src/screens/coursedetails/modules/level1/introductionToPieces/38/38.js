@@ -60,7 +60,7 @@ const T11 = () => {
           ) : (
            
             <WebView
-              source={{ uri: "https://youtube.com/embed/V2tCMSHMEl0" }}
+              source={{ uri: "https://www.youtube.com/embed/V2tCMSHMEl0" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -155,7 +155,7 @@ const T11 = () => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.navigate("coursedetails/modules/level1/ArrangementOfPieces/41")} // Replace with your next screen name
+          onPress={() => navigation.navigate("coursedetails/modules/level1/arrangementOfPieces/41")} // Replace with your next screen name
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>

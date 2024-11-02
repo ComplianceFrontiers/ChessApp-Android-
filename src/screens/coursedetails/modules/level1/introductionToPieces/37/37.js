@@ -60,7 +60,7 @@ const T11 = () => {
           ) : (
             
             <WebView
-              source={{ uri: "https://youtube.com/embed/7p_RY97wf4w" }}
+              source={{ uri: "https://www.youtube.com/embed/7p_RY97wf4w" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -135,11 +135,11 @@ const T11 = () => {
 
           </Text>
           <Text style={globalStyles.paragraph}>
-          Pawns move forward one square but capture diagonally. If a pawn reaches the other side of the board, it can be promoted, usually becoming a queen. Pawns can also capture using a special move called <strong>en passant</strong> when an opponent’s pawn moves two squares forward from its starting position. They form the structure of your position, protecting your pieces, and are strongest when they support each other in chains.
+          Pawns move forward one square but capture diagonally. If a pawn reaches the other side of the board, it can be promoted, usually becoming a queen. Pawns can also capture using a special move called en passant when an opponent’s pawn moves two squares forward from its starting position. They form the structure of your position, protecting your pieces, and are strongest when they support each other in chains.
 
           </Text>
           <Text style={globalStyles.paragraph}>
-          <strong>Movement:</strong> Pawns move forward one square at a time, but they capture by moving one square diagonally. On their first move, pawns have the option to move two squares forward instead of one. Unlike other pieces, pawns cannot move backward. Their special moves include promotion (when they reach the other side of the board) and en passant (a unique capture). We'll cover these special moves as we progress through the journey.
+          <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Movement:</Text> Pawns move forward one square at a time, but they capture by moving one square diagonally. On their first move, pawns have the option to move two squares forward instead of one. Unlike other pieces, pawns cannot move backward. Their special moves include promotion (when they reach the other side of the board) and en passant (a unique capture). We'll cover these special moves as we progress through the journey.
 
           </Text>
          </>

@@ -59,7 +59,7 @@ const T11 = () => {
             </TouchableOpacity>
           ) : (
             <WebView
-              source={{ uri: "https://youtube.com/embed/lvEu8t9reJk" }}
+              source={{ uri: "https://www.youtube.com/embed/lvEu8t9reJk" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -134,7 +134,7 @@ const T11 = () => {
 
           </Text>
           <Text style={globalStyles.paragraph}>
-          <strong>Movement:</strong> The knight moves in an "L" shape on the chessboard. It goes two squares in one direction (either up, down, left, or right) and then one square at a right angle (to the left or right if it first moved up or down, or up or down if it first moved left or right). Unlike other pieces, the knight can jump over other pieces in its path.
+          <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Movement:</Text> The knight moves in an "L" shape on the chessboard. It goes two squares in one direction (either up, down, left, or right) and then one square at a right angle (to the left or right if it first moved up or down, or up or down if it first moved left or right). Unlike other pieces, the knight can jump over other pieces in its path.
 
           </Text>
           <Text style={globalStyles.paragraph}>

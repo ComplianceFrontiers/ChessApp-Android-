@@ -59,7 +59,7 @@ const T11 = () => {
             </TouchableOpacity>
           ) : (
             <WebView
-              source={{ uri: "https://youtube.com/embed/YK1C1ANHbdM" }}
+              source={{ uri: "https://www.youtube.com/embed/YK1C1ANHbdM" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />

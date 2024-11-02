@@ -60,7 +60,7 @@ const T11 = () => {
           ) : (
           
             <WebView
-              source={{ uri: "https://youtube.com/embed/vku6EBp4J70" }}
+              source={{ uri: "https://www.youtube.com/embed/vku6EBp4J70" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
@@ -131,36 +131,40 @@ const T11 = () => {
           {activeTab === "About" && (
   <>
           <Text style={globalStyles.paragraph}>
-          Now that we know about the different chess pieces, it is crucial to understand their importance in the game. This knowledge is vital when you are deciding whether to attack, defend, capture, or sacrifice a piece. Understanding the value of each piece will help you make informed decisions in these situations.
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          Each piece is assigned a numerical value that represents its importance in the game:
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          <ul  style={{ fontFamily: 'Montserrat, sans-serif', color: 'black', fontSize: '16px' }}>
-      <li>Queen: 9 Points</li>
-      <li>Rook: 5 Points</li>
-      <li>Bishop: 3 Points</li>
-      <li>Knight: 3 Points</li>
-      <li>Pawn: 1 Point</li>
-    </ul><br />
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          Based on their assigned values, chess pieces are classified into two categories: major (more important) pieces and minor (less important) pieces.
+        Now that we know about the different chess pieces, it is crucial to understand their importance in the game. This knowledge is vital when you are deciding whether to attack, defend, capture, or sacrifice a piece. Understanding the value of each piece will help you make informed decisions in these situations.
+      </Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          The Queen and Rook are classified as major pieces due to their higher value and significant influence on the game.
+      {/* Explanation of Piece Values */}
+      <Text style={globalStyles.paragraph}>
+        Each piece is assigned a numerical value that represents its importance in the game:
+      </Text>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          The Bishop, Knight, and Pawn are considered minor pieces, as they have lower values and more limited power.
+      {/* List of Piece Values */}
+      <View style={globalStyles.listContainer}>
+        <Text style={globalStyles.listItem}>• Queen: 9 Points</Text>
+        <Text style={globalStyles.listItem}>• Rook: 5 Points</Text>
+        <Text style={globalStyles.listItem}>• Bishop: 3 Points</Text>
+        <Text style={globalStyles.listItem}>• Knight: 3 Points</Text>
+        <Text style={globalStyles.listItem}>• Pawn: 1 Point</Text>
+      </View>
 
-          </Text>
-          <Text style={globalStyles.paragraph}>
-          The King is the most important piece on the board, but it does not fall under either classification because its significance is unique—if the King is captured, the game is lost.
+      {/* Classification of Major and Minor Pieces */}
+      <Text style={globalStyles.paragraph}>
+        Based on their assigned values, chess pieces are classified into two categories: major (more important) pieces and minor (less important) pieces.
+      </Text>
 
-          </Text>
+      <Text style={globalStyles.paragraph}>
+        The Queen and Rook are classified as major pieces due to their higher value and significant influence on the game.
+      </Text>
+
+      <Text style={globalStyles.paragraph}>
+        The Bishop, Knight, and Pawn are considered minor pieces, as they have lower values and more limited power.
+      </Text>
+
+      {/* Explanation of the King's Unique Role */}
+      <Text style={globalStyles.paragraph}>
+        The King is the most important piece on the board, but it does not fall under either classification because its significance is unique—if the King is captured, the game is lost.
+      </Text>
          </>
 )}
         </View>
