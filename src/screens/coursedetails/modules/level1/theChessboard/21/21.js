@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -50,22 +49,14 @@ const T11 = () => {
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
         <View style={styles.mediaContainer}>
-          {!showVideo ? (
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
-              <Image
-                source={require("../../../../../../assets/images/thumbnail.png")}
-                style={styles.thumbnail}
-              />
-            </TouchableOpacity>
-          ) : (
+          
 
             <WebView
               source={{ uri: "https://www.youtube.com/embed/LlNrGyn8dCY" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
-          )}
-        </View>
+           </View>
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
             <Header label="" backBTNCLR="white" />
@@ -158,11 +149,6 @@ const styles = StyleSheet.create({
   image: {
     width: "50%",
     height: 320,
-    marginTop: "8%",
-  },
-  thumbnail: {
-    width: "100%",
-    height: 300, // Adjust height as necessary
     marginTop: "8%",
   },
   absoluteIMG: {

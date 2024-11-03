@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -50,20 +49,11 @@ const T11 = () => {
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
         <View style={styles.mediaContainer}>
-          {!showVideo ? (
-            <TouchableOpacity onPress={() => setShowVideo(true)}>
-              <Image
-                source={require("../../../../../../assets/images/thumbnail.png")}
-                style={styles.thumbnail}
-              />
-            </TouchableOpacity>
-          ) : (
             <WebView
               source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
               style={{ width: "100%", height: 300 }}
               allowsFullscreenVideo
             />
-          )}
         </View>
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
@@ -81,15 +71,7 @@ const T11 = () => {
           <Text style={globalStyles.headingFour}>
           1.1 Introduction
           </Text>
-           {/* <View style={styles.classDetailsAndPrice}>
-            <View style={styles.classDetails}>
-              <ClassIcon />
-              <Text style={{ color: theme.color }}>21 Classes</Text>
-              <Text style={{ color: theme.color }}>|</Text>
-              <TimeIcon />
-              <Text style={{ color: theme.color }}>42 Hours</Text>
-            </View>
-          </View> */} 
+          
           <View style={styles.tabContainer}>
             {tabs.map((item) => (
               <TouchableOpacity
@@ -160,11 +142,6 @@ const styles = StyleSheet.create({
   image: {
     width: "50%",
     height: 320,
-    marginTop: "8%",
-  },
-  thumbnail: {
-    width: "100%",
-    height: 300, // Adjust height as necessary
     marginTop: "8%",
   },
   absoluteIMG: {
