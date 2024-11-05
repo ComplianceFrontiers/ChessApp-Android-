@@ -24,7 +24,7 @@ const MyCourses = () => {
   return (
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
       <ScrollView style={[globalStyles.colorBG, { marginBottom: "10%" }]}>
-        <View style={globalStyles.container}>
+        <View style={[globalStyles.container, { marginBottom: "20%" }]}>
           <Header label="Level 1 (Pawn)" />
           <View style={globalStyles.contents}>
               <View style={{ gap: 20, paddingVertical: "0%" }}>
@@ -62,7 +62,7 @@ const MyCourses = () => {
       <View style={styles.absoluteBtn}>
         <CommonButton
           label="Start the course"
-          onPress={() => navigation.navigate("certificate")}
+          onPress={() => navigation.navigate("coursedetails/modules/level1/introduction/11")}
         />
       </View>
     </View>
