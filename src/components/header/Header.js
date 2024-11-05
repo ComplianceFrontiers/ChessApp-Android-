@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import FilterIcon from "../../assets/svg/filterIcon.svg";
 import SearchIcon from "../searchIcon/SearchIcon";
 
-const Header = ({ label, searchIcon, filterIcon, backBTNCLR, backBTN }) => {
+const Header = ({ label,level, searchIcon, filterIcon, backBTNCLR, backBTN }) => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
 
@@ -15,7 +15,7 @@ const Header = ({ label, searchIcon, filterIcon, backBTNCLR, backBTN }) => {
       {backBTN == false ? (
         <View style={{ width: 20 }} />
       ) : (
-        <BackButton color={backBTNCLR} />
+        <BackButton level={level} color={backBTNCLR} />
       )}
 
       <Text style={[globalStyles.headingOne, styles.label]}>{label}</Text>
@@ -29,6 +29,11 @@ const Header = ({ label, searchIcon, filterIcon, backBTNCLR, backBTN }) => {
       {filterIcon && (
         <TouchableOpacity onPress={() => navigation.navigate("filterscreen")}>
           <FilterIcon />
+        </TouchableOpacity>
+      )}
+
+{level==1 && (
+        <TouchableOpacity onPress={() => navigation.navigate("notifications")}>
         </TouchableOpacity>
       )}
 
