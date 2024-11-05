@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View, Text, ScrollView, Image, Modal } from "react-native";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import { TextInput } from "react-native-paper";
+import CommonButton from "../../components/commonbutton/CommonButton";
+import CustomDropdown from "../../components/customdropdown/CustomDropdown";
+import { fillProfileData } from "../../utils/mockData";
+import useGlobalStyles from "../../styles/globalStyles"; // Assuming this is how you import global styles
 import Header from "../../components/header/Header";
 import EditProfile from "../../assets/svg/editProfileIcon.svg";
-import { fillProfileData } from "../../utils/mockData";
-import { TextInput } from "react-native-paper";
-import CustomDropdown from "../../components/customdropdown/CustomDropdown";
-import CommonButton from "../../components/commonbutton/CommonButton";
 import { useNavigation } from "@react-navigation/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
@@ -81,14 +81,14 @@ const FillProfile = () => {
       <Header label="Fill Your Profile" />
       <View style={styles.profileContainer}>
         <Image source={selectedAvatar} style={styles.profileImage} />
-          <TouchableOpacity onPress={openAvatarModal} style={styles.editProfile}>
+        <TouchableOpacity onPress={openAvatarModal} style={styles.editProfile}>
           <EditProfile />
         </TouchableOpacity>
       </View>
 
         {/* Avatar Selection Modal */}
       <Modal visible={showAvatarOptions} transparent animationType="slide">
-          <View style={styles.modalOverlay}>
+        <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <TouchableOpacity onPress={closeAvatarModal} style={styles.closeButton}>
                 <Text style={styles.closeButtonText}>X</Text>
@@ -117,12 +117,12 @@ const FillProfile = () => {
                 </View>
               </ScrollView>
             </View>
-          </View>
+        </View>
       </Modal>
 
-      <View style={styles.inputFields}>
+      <ScrollView style={styles.inputFields}>
         {fillProfileData.map((item) => (
-          <View key={item.id}>
+          <View key={item.id} style={styles.inputContainer}>
             {item.id === 5 ? (
               <CustomDropdown
                 label="Grade"
@@ -151,7 +151,7 @@ const FillProfile = () => {
         <View style={styles.button}>
           <CommonButton label="Continue" onPress={handleContinue} />
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -203,8 +203,10 @@ const styles = StyleSheet.create({
   },
   inputFields: {
     width: "90%",
-    gap: 20,
     marginTop: "10%",
+  },
+  inputContainer: {
+    marginBottom: 20, // This adds space between input fields
   },
   button: {
     marginTop: "10%",
