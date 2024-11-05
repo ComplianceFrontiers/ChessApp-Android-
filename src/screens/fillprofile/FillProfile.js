@@ -42,33 +42,48 @@ const FillProfile = () => {
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
+  // Field states and validation
   const openAvatarModal = () => setShowAvatarOptions(true);
   const closeAvatarModal = () => setShowAvatarOptions(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    school: "",
+    grade: ""
+  });
 
-  const changeProfilePic = (avatar) => {
-    setSelectedAvatar(avatar);
-    closeAvatarModal();
+  const handleInputChange = (id, value) => {
+    const field = id === 1 ? "name" : id === 2 ? "email" : id === 3 ? "phone" : id === 4 ? "school" : "grade";
+    setFormData({ ...formData, [field]: value });
   };
 
-  const handleDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || dateOfBirth;
-    setShowDatePicker(false);
-    setDateOfBirth(currentDate);
+  const validateRequiredFields = () => {
+    if (!formData.name || !formData.email) {
+      alert("Name and Email are required fields.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleContinue = () => {
+    if (validateRequiredFields()) {
+      navigation.navigate("createpin");
+    }
   };
 
   return (
     <View style={globalStyles.container}>
       <Header label="Fill Your Profile" />
-      {/* <ScrollView contentContainerStyle={styles.contents}> */}
-        <View style={styles.profileContainer}>
-          <Image source={selectedAvatar} style={styles.profileImage} />
+      <View style={styles.profileContainer}>
+        <Image source={selectedAvatar} style={styles.profileImage} />
           <TouchableOpacity onPress={openAvatarModal} style={styles.editProfile}>
-            <EditProfile />
-          </TouchableOpacity>
-        </View>
-        
+          <EditProfile />
+        </TouchableOpacity>
+      </View>
+
         {/* Avatar Selection Modal */}
-        <Modal visible={showAvatarOptions} transparent animationType="slide">
+      <Modal visible={showAvatarOptions} transparent animationType="slide">
           <View style={styles.modalOverlay}>
             <View style={styles.modalContent}>
               <TouchableOpacity onPress={closeAvatarModal} style={styles.closeButton}>
@@ -99,15 +114,24 @@ const FillProfile = () => {
               </ScrollView>
             </View>
           </View>
-        </Modal>
+      </Modal>
 
-        <View style={styles.inputFields}>
-          {fillProfileData.map((item) => (
-            <View key={item.id}>
+      <View style={styles.inputFields}>
+        {fillProfileData.map((item) => (
+          <View key={item.id}>
+            {item.id === 5 ? (
+              <CustomDropdown
+                label="Grade"
+                selectedValue={formData.grade}
+                onValueChange={(value) => handleInputChange(item.id, value)}
+              />
+            ) : (
               <TextInput
                 placeholder={item.placeholder}
                 style={globalStyles.input}
-                left={<TextInput.Icon icon={item.icon || '../../assets/profilepics/b7.png'} />}
+                left={<TextInput.Icon icon={item.icon} />}
+                value={formData[item.id === 1 ? "name" : item.id === 2 ? "email" : item.id === 3 ? "phone" : "school"]}
+                onChangeText={(value) => handleInputChange(item.id, value)}
                 underlineColor="transparent"
                 theme={{
                   colors: {
@@ -115,29 +139,15 @@ const FillProfile = () => {
                     underlineColor: "transparent",
                   },
                 }}
-                onFocus={() => setShowDatePicker(item.id)}
-                value={item.id === 2 ? dateOfBirth.toDateString() : ""}
               />
-              {showDatePicker && item.id === 2 && (
-                <DateTimePicker
-                  testID="dateTimePicker"
-                  value={dateOfBirth}
-                  mode="date"
-                  is24Hour={true}
-                  display="default"
-                  onChange={handleDateChange}
-                />
-              )}
-            </View>
-          ))}
-          <CustomDropdown />
-          <View style={styles.button}>
-            <CommonButton
-              label="Continue"
-              onPress={() => navigation.navigate("createpin")}
-            />
+            )}
           </View>
+        ))}
+
+        <View style={styles.button}>
+          <CommonButton label="Continue" onPress={handleContinue} />
         </View>
+      </View>
     </View>
   );
 };
@@ -145,11 +155,8 @@ const FillProfile = () => {
 export default FillProfile;
 
 const styles = StyleSheet.create({
-  // container: { flex: 1, backgroundColor: "#fff" },
-  contents: {
-    paddingTop: "10%",
-  },  profileContainer: { alignItems: "center", justifyContent: "center", marginBottom: 10 }, // Reduce margin
-  profileImage: { width: 120, height: 120, borderRadius: 60, marginBottom: 10 }, // Add margin to bottom
+  profileContainer: { alignItems: "center", justifyContent: "center", marginBottom: 10 },
+  profileImage: { width: 120, height: 120, borderRadius: 60, marginBottom: 10 },
   editProfile: { position: "absolute", bottom: 0, right: 10 },
   modalOverlay: {
     flex: 1,

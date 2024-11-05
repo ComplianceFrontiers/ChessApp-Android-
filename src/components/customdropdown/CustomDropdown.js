@@ -7,12 +7,12 @@ import {
   View,
 } from "react-native";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
-import { genderData } from "../../utils/mockData";
+import { gradeData } from "../../utils/mockData";
 import OpenDropdown from "../../assets/svg/dropdownClosed.svg";
 import CloseDropdown from "../../assets/svg/dropdownOpened.svg";
 
 const CustomDropdown = () => {
-  const [selectedGender, setSelectedGender] = useState("Select Gender");
+  const [selectedGrade, setSelectedGrade] = useState("Select Grade");
   const [isClicked, setIsClicked] = useState(false);
 
   const globalStyles = useGlobalStyles();
@@ -25,22 +25,21 @@ const CustomDropdown = () => {
           onPress={() => setIsClicked(!isClicked)}
         >
           <View style={{ flexDirection: "row", gap: 15, alignItems: "center" }}>
-            <Text>{selectedGender}</Text>
+            <Text>{selectedGrade}</Text>
           </View>
 
           {isClicked ? <CloseDropdown /> : <OpenDropdown />}
         </TouchableOpacity>
         {isClicked ? (
           <View style={styles.dropdownitems}>
-            {genderData.map((item, i) => (
+            {gradeData.map((item, i) => (
               <TouchableOpacity
                 key={i + 1}
-                // style={styles.drop}
                 onPress={() => (
-                  setSelectedGender(item.gender), setIsClicked(false)
+                  setSelectedGrade(item.grade), setIsClicked(false)
                 )}
               >
-                <Text>{item.gender}</Text>
+                <Text>{item.grade}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
     gap: 25,
     marginTop: "2%",
   },
-  gender: {
+  grade: {
     padding: 20,
   },
   InputDetail: {

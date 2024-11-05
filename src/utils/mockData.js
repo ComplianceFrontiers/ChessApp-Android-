@@ -149,14 +149,22 @@ export const singUpTextInput = [
 ];
 
 export const fillProfileData = [
-  { id: 1, placeholder: "Full Name", icon: "account" },
-  { id: 2, placeholder: "DOB", icon: "calendar" },
-  { id: 3, placeholder: "Email", icon: "email" },
+  { id: 1, placeholder: "Name", icon: "account" },
+  { id: 2, placeholder: "Email", icon: "email" },
+  { id: 3, placeholder: "Phone", icon: "phone" },
+  { id: 4, placeholder: "School", icon: "school" },
+  { id: 5, placeholder: "Grade", icon: "grade" },
 ];
 
-export const genderData = [
-  { id: 1, gender: "Male" },
-  { id: 2, gender: "Female" },
+export const gradeData = [
+  { id: 1, grade: "K1" },
+  { id: 2, grade: "K2" },
+  { id: 3, grade: "K3" },
+  { id: 4, grade: "K4" },
+  { id: 5, grade: "K5" },
+  { id: 6, grade: "K6" },
+  { id: 7, grade: "K7" },
+  { id: 8, grade: "Other" },
 ];
 
 export const forgotPassData = [
