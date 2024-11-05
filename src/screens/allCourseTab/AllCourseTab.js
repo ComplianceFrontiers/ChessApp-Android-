@@ -13,11 +13,11 @@ const AllCourseTab = () => {
 
   return (
     <View>
-   <View style={{ position: "fixed",marginBottom:"0%", paddingHorizontal: "0%", paddingVertical: "0%", paddingLeft: "10%", top: 0, left: 0 }}>
+   <View style={{ position: "fixed",marginBottom:"0%", paddingHorizontal: "10%", paddingVertical: "0%", paddingLeft: "10%", top: 0, left: 0 }}>
     <HomeTab />
 </View>
 
-    <View style={{ paddingHorizontal: "10%", paddingVertical: "10%" ,marginBottom:"20%"}}>
+    <View style={{ paddingHorizontal: "10%",paddingLeft: "10%",paddingRight: "10%", paddingVertical: "10%" ,marginBottom:"20%"}}>
       
       {popularCoursesDetail.map((item) => (
         <TouchableOpacity
@@ -55,7 +55,7 @@ const AllCourseTab = () => {
               <Text style={globalStyles.violetText}>${item.price}/-</Text>
               <View style={styles.absoluteRating}>
                 <RatingIcon />
-                <Text>{item.rating}</Text>
+                {/* <Text>{item.rating}</Text> */}
               </View>
             </View>
           </View>

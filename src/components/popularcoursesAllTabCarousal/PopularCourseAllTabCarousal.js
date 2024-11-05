@@ -47,8 +47,8 @@ const PopularCourseAllTabCarousal = ({ data }) => {
         <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
           <Text style={globalStyles.violetText}>${item.price}/-</Text>
           <Text> | </Text>
-          <RatingIcon />
-          <Text style={{ fontWeight: "500" }}>{item.rating}</Text>
+          {/* <RatingIcon /> */}
+          {/* <Text style={{ fontWeight: "500" }}>{item.rating}</Text> */}
           <Text> | </Text>
           <Text>{item.std} Std</Text>
         </View>

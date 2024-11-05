@@ -27,12 +27,12 @@ const MyCourses = () => {
         <View style={globalStyles.container}>
           <Header label="Level 1 (Pawn)" />
           <View style={globalStyles.contents}>
-            <View style={{ gap: 20, paddingVertical: "0%" }}>
-              {myCoursesData1.map((item) => (
+              <View style={{ gap: 20, paddingVertical: "0%" }}>
+                {myCoursesData1.map((item) => (
                 <View key={item.id}>
                   <TouchableOpacity
                     style={styles.videoContainer}
-                    onPress={() => toggleExpand(item.id)} // Toggle expand state
+                    onPress={() => navigation.navigate(item.url)} // Navigate directly to the URL
                   >
                     <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
                       <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
@@ -41,20 +41,19 @@ const MyCourses = () => {
                         <Text style={{ color: theme.color }}>Completion Percentage</Text>
                       </View>
                     </View>
-                    <PlayBTN />
-                  </TouchableOpacity>
+                    <PlayBTN onPress={() => toggleExpand(item.id)} />
+                    </TouchableOpacity>
 
-                  {/* Render submodules if this item is expanded and has submodules */}
-                  {expandedItemId === item.id && item.submodules?.map((submodule) => (
+                     {expandedItemId === item.id && item.submodules?.map((submodule) => (
                     <TouchableOpacity
                       key={submodule.id}
                       style={styles.submoduleItem}
                       onPress={() => navigation.navigate(submodule.url)}
                     >
                       <Text style={[styles.submoduleText, globalStyles.text]}>{submodule.title}</Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
+                  </TouchableOpacity>
+                ))}
+              </View>
               ))}
             </View>
           </View>
