@@ -59,7 +59,7 @@ const T11 = () => {
            </View>
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
-            <Header label="" backBTNCLR="white" />
+            <Header level = "1" label="" backBTNCLR="white" />
           </View>
         </View>
         <View
