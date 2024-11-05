@@ -18,7 +18,7 @@ const CreatePin = () => {
     if (isModalVisible) {
       const timer = setTimeout(() => {
         setIsModalVisible(false);
-        navigation.navigate("tabscreens");
+        navigation.navigate("popularcourses");
       }, 1000);
 
       return () => clearTimeout(timer);

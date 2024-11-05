@@ -67,7 +67,7 @@ const AppNavigator = () => {
         const email = await AsyncStorage.getItem('email');
         console.log(email)
         if (email) {
-          setInitialRoute('tabscreens'); // User has onboarded, go to SignIn
+          setInitialRoute('popularcourses'); // User has onboarded, go to SignIn
         } else {
           setInitialRoute('onboarding'); // User hasn't onboarded, go to Onboarding
         }

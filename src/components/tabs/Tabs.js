@@ -10,6 +10,7 @@ import ThemeContext from "../Theme/ThemeContext";
 
 const Tabs = ({ onSelectTab, activeTab }) => {
   const globalStyles = useGlobalStyles();
+  const theme = useContext(ThemeContext);
 
   const renderIcon = (title) => {
     switch (title) {
@@ -36,7 +37,6 @@ const Tabs = ({ onSelectTab, activeTab }) => {
     }
   };
 
-  const theme = useContext(ThemeContext);
   return (
     <View
       style={[

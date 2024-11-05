@@ -17,7 +17,7 @@ const AllCourseTab = () => {
     <HomeTab />
 </View>
 
-    <View style={{ paddingHorizontal: "10%", paddingVertical: "5%" }}>
+    <View style={{ paddingHorizontal: "10%", paddingVertical: "10%" ,marginBottom:"20%"}}>
       
       {popularCoursesDetail.map((item) => (
         <TouchableOpacity
@@ -40,7 +40,7 @@ const AllCourseTab = () => {
           }}
         >
           <Image source={item.image} style={styles.image} />
-          <View style={{ gap: 10, paddingVertical: 10 }}>
+          <View style={{ gap: 10, paddingVertical: 5 }}>
             <Text style={[globalStyles.redTextwithWeight]}>{item.title}</Text>
             <Text>{item.category}</Text>
             <Text>{item.std}</Text>

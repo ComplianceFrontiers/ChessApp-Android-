@@ -11,12 +11,30 @@ import AllCourseTab from "../allCourseTab/AllCourseTab";
 import { popularCategoriesTab } from "../../utils/mockData";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
+import Tabs from "../../components/tabs/Tabs";
+import HomeTab from "../hometab/HomeTab";
+import CoursesTab from "../coursestab/CoursesTab";
+import MessagesTab from "../messagestab/MessagesTab";
+import MessageScreen from "../message/MessageScreen";
 
 const PopularCourses = () => {
+  const [selectedTab, setSelectedTab] = useState("mycourses");
   const [popularCourseTab, setPopularCourseTab] = useState("All");
 
   const handleTab = (item) => {
     setPopularCourseTab(item);
+  };
+  const renderTabScreen = () => {
+    switch (selectedTab) {
+      case "Home":
+        return <HomeTab />;
+      case "My courses":
+        return <CoursesTab />;
+      case "Message":
+        return <MessageScreen />;
+      default:
+        return <HomeTab />;
+    }
   };
 
   const renderPopularCourseTabs = () => {
@@ -29,10 +47,9 @@ const PopularCourses = () => {
   const globalStyles = useGlobalStyles();
 
   return (
-    <ScrollView style={globalStyles.colorBG}>
-      <View >
-        {/* <Header label="Popular Courses" searchIcon={true} backBTN={false} /> */}
-        <View style={globalStyles.contents}>
+    <View style={globalStyles.colorBG}>
+      <ScrollView >
+         <View style={globalStyles.contents}>
           <View
             style={{
               flexDirection: "row",
@@ -41,19 +58,20 @@ const PopularCourses = () => {
               alignSelf: "center",
             }}
           >
-            {popularCategoriesTab.map((item) => (
-              <TouchableOpacity
-                key={item.id}
-                onPress={() => handleTab(item.title)}
-              >
-                 
-              </TouchableOpacity>
-            ))}
+  
           </View>
           {renderPopularCourseTabs()}
+        
         </View>
-      </View>
-    </ScrollView>
+     
+      </ScrollView>
+   
+      <Tabs
+        activeTab={selectedTab}
+        onSelectTab={(tab) => setSelectedTab(tab)}
+      />
+     
+    </View>
   );
 };
 

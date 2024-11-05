@@ -73,7 +73,7 @@ const SignIn = () => {
 
         await AsyncStorage.setItem("userDetails", JSON.stringify(userDetails));
         console.log("locallll3", AsyncStorage);
-        navigation.navigate("tabscreens");
+        navigation.navigate("popularcourses");
       } else {
         Alert.alert("Failed to sign in. Please try again.");
       }

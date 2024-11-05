@@ -8,7 +8,7 @@ import MessagesTab from "../messagestab/MessagesTab";
 import MessageScreen from "../message/MessageScreen";
 
 const TabScreens = () => {
-  const [selectedTab, setSelectedTab] = useState("Home");
+  const [selectedTab, setSelectedTab] = useState("mycourses");
   const globalStyles = useGlobalStyles();
 
   const renderTabScreen = () => {

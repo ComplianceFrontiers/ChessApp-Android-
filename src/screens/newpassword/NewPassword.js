@@ -16,7 +16,7 @@ const NewPassword = () => {
     setIsModalVisible(true);
     setTimeout(() => {
       setIsModalVisible(false);
-      navigation.navigate("tabscreens");
+      navigation.navigate("popularcourses");
     }, 2000); // Adjust the timeout duration as needed
   };
 

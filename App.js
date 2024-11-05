@@ -20,7 +20,7 @@ export default function App() {
     const checkAsyncStorage = async () => {
       const data = await AsyncStorage.getItem('email'); // Check if email exists
       if (data) {
-        setInitialRoute('tabscreens'); // Set to 'tabscreens' if email exists
+        setInitialRoute('popularcourses'); // Set to 'tabscreens' if email exists
       } else {
         setInitialRoute('onboarding'); // Set to 'onboarding' otherwise
       }
