@@ -71,6 +71,10 @@ const FillProfile = () => {
       navigation.navigate("createpin");
     }
   };
+  const changeProfilePic = (avatar) => {
+    setSelectedAvatar(avatar);
+    closeAvatarModal();
+  };
 
   return (
     <View style={globalStyles.container}>
