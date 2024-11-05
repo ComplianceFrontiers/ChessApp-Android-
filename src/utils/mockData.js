@@ -453,16 +453,116 @@ export const mentorDetailsData = [
 ];
 
 export const myCoursesData1 = [
-  { id: 1, title: "The Chessboard", duration: "15", url: "coursedetails/modules/level1/introduction/11" },
-  { id: 2, title: "Introduction To Pieces", duration: "10", url: "coursedetails/modules/level1/introductionToPieces/31" },
-  { id: 3, title: "Arrangement Of Pieces", duration: "15", url: "coursedetails/modules/level1/arrangementOfPieces/41" },
-  { id: 4, title: "Special Moves", duration: "10", url: "coursedetails/modules/level1/specialMoves/51" },
-  { id: 5, title: "Winning In Chess", duration: "15", url: "coursedetails/modules/level1/winningInChess/61" },
-  { id: 6, title: "Piece Exchange", duration: "10", url: "coursedetails/modules/level1/pieceExchange/71" },
-  { id: 7, title: "3 Stages Of Chess", duration: "15", url: "coursedetails/modules/level1/stagesOfChess/81" },
-  { id: 8, title: "Chess Notations", duration: "10", url: "coursedetails/modules/level1/chessNotations/91" },
-  { id: 9, title: "Chess Game", duration: "10", url: "coursedetails/modules/level1/chessGame/10" },
+  {
+    id: 1,
+    title: "The Chessboard",
+    duration: "15",
+    url: "coursedetails/modules/level1/introduction/11",
+    submodules: [
+      { id: "1.1", title: "Introduction", url: "coursedetails/modules/level1/introduction/11" },
+      { id: "1.2", title: "Board Set-up", url: "coursedetails/modules/level1/theChessboard/21" },
+      { id: "1.3", title: "Letters & Numbers", url: "coursedetails/modules/level1/theChessboard/22" },
+      { id: "1.4", title: "Understanding ‘File’", url: "coursedetails/modules/level1/theChessboard/23" },
+      { id: "1.5", title: "Understanding ‘Rank’", url: "coursedetails/modules/level1/theChessboard/24" },
+      { id: "1.6", title: "Understanding ‘Diagonals’", url: "coursedetails/modules/level1/theChessboard/25" },
+      { id: "1.7", title: "Name of the Squares", url: "coursedetails/modules/level1/theChessboard/26" },
+    ],
+  },
+  {
+    id: 2,
+    title: "Introduction To Pieces",
+    duration: "10",
+    url: "coursedetails/modules/level1/introductionToPieces/31",
+    submodules: [
+      { id: "2.1", title: "Know the pieces", url: "coursedetails/modules/level1/introductionToPieces/31" },
+      { id: "2.2", title: "‘Major’ and ‘Minor’ Pieces", url: "coursedetails/modules/level1/introductionToPieces/32" },
+      { id: "2.3", title: "Understanding the ‘King’", url: "coursedetails/modules/level1/introductionToPieces/33" },
+      { id: "2.4", title: "Understanding the ‘Bishop’", url: "coursedetails/modules/level1/introductionToPieces/34" },
+      { id: "2.5", title: "Understanding the ‘Rook’", url: "coursedetails/modules/level1/introductionToPieces/35" },
+      { id: "2.6", title: "Understanding the ‘Knight’", url: "coursedetails/modules/level1/introductionToPieces/36" },
+      { id: "2.7", title: "Understanding the ‘Pawn’", url: "coursedetails/modules/level1/introductionToPieces/37" },
+      { id: "2.8", title: "Understanding the ‘Queen’", url: "coursedetails/modules/level1/introductionToPieces/38" },
+    ],
+  },
+  {
+    id: 3,
+    title: "Arrangement Of Pieces",
+    duration: "15",
+    url: "coursedetails/modules/level1/arrangementOfPieces/41",
+    submodules: [
+      { id: "3.1", title: "Light Side", url: "coursedetails/modules/level1/ArrangnmentOfPieces/41" },
+      { id: "3.2", title: "Dark Side", url: "coursedetails/modules/level1/ArrangnmentOfPieces/42" },
+    ],
+  },
+  {
+    id: 4,
+    title: "Special Moves",
+    duration: "10",
+    url: "coursedetails/modules/level1/specialMoves/51",
+    submodules: [
+      { id: "4.1", title: "Castling", url: "coursedetails/modules/level1/specialMoves/51" },
+      { id: "4.2", title: "Promotion", url: "coursedetails/modules/level1/specialMoves/52" },
+      { id: "4.3", title: "En-passant", url: "coursedetails/modules/level1/specialMoves/53" },
+    ],
+  },
+  {
+    id: 5,
+    title: "Winning In Chess",
+    duration: "15",
+    url: "coursedetails/modules/level1/winningInChess/61",
+    submodules: [
+      { id: "5.1", title: "Checkmate", url: "coursedetails/modules/level1/winningInChess/61" },
+      { id: "5.2", title: "Checks", url: "coursedetails/modules/level1/winningInChess/62" },
+      { id: "5.3", title: "Stalemate", url: "coursedetails/modules/level1/winningInChess/63" },
+      { id: "5.4", title: "Attack & Defense", url: "coursedetails/modules/level1/winningInChess/64" },
+      { id: "5.5", title: "Capture", url: "coursedetails/modules/level1/winningInChess/65" },
+      { id: "5.6", title: "Draw", url: "coursedetails/modules/level1/winningInChess/66" },
+    ],
+  },
+  {
+    id: 6,
+    title: "Piece Exchange",
+    duration: "10",
+    url: "coursedetails/modules/level1/pieceExchange/71",
+    submodules: [
+      { id: "6.1", title: "Fair Trade", url: "coursedetails/modules/level1/understandingPieceExchanges/71" },
+      { id: "6.2", title: "Exchange Up", url: "coursedetails/modules/level1/understandingPieceExchanges/72" },
+      { id: "6.3", title: "Exchange Down", url: "coursedetails/modules/level1/understandingPieceExchanges/73" },
+      { id: "6.4", title: "Material Up", url: "coursedetails/modules/level1/understandingPieceExchanges/74" },
+      { id: "6.5", title: "Material Down", url: "coursedetails/modules/level1/understandingPieceExchanges/75" },
+    ],
+  },
+  {
+    id: 7,
+    title: "3 Stages Of Chess",
+    duration: "15",
+    url: "coursedetails/modules/level1/stagesOfChess/81",
+    submodules: [
+      { id: "7.1", title: "Opening", url: "coursedetails/modules/level1/stagesOfTheGame/81" },
+      { id: "7.2", title: "Middlegame", url: "coursedetails/modules/level1/stagesOfTheGame/82" },
+      { id: "7.3", title: "Endgame", url: "coursedetails/modules/level1/stagesOfTheGame/83" },
+    ],
+  },
+  {
+    id: 8,
+    title: "Chess Notations",
+    duration: "10",
+    url: "coursedetails/modules/level1/chessNotations/91",
+    submodules: [
+      { id: "8.1", title: "Notation", url: "coursedetails/modules/level1/notation/91" },
+    ],
+  },
+  {
+    id: 9,
+    title: "Chess Game",
+    duration: "10",
+    url: "coursedetails/modules/level1/chessGame/101",
+    submodules: [
+      { id: "9.1", title: "Chess Game", url: "coursedetails/modules/level1/chessGame/101" },
+    ],
+  },
 ];
+
 
 export const myCoursesData2 = [
   { id: 1, title: "Take a Look Graphic De..", duration: "15" },
