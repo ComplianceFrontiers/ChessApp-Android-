@@ -105,7 +105,7 @@ const HomeTab = () => {
             <Text style={globalStyles.headingFour}>
               {userDetails?.child_name?.first || "Guest"}
             </Text>
-            <Text style={[globalStyles.miniButton, { width: "80%" }]}>
+            <Text style={[globalStyles.miniButton, { width: "100%" }]}>
               Learner
             </Text>
           </View>
@@ -117,7 +117,7 @@ const HomeTab = () => {
         </View>
       </View>
 
-      <ScrollView style={{ marginBottom: "18%" }}>
+      {/* <ScrollView style={{ marginBottom: "18%" }}>
         <View>
           <SnapCarousel data={homeSliderData} />
         </View>
@@ -179,7 +179,7 @@ const HomeTab = () => {
         <View style={{ marginVertical: "5%", marginBottom: "7%" }}>
           <MentorCarousal data={mentorsData} />
         </View>
-      </ScrollView>
+      </ScrollView> */}
     </>
   );
 };

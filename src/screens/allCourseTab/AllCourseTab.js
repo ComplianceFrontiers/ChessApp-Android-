@@ -5,13 +5,20 @@ import { popularCoursesDetail } from "../../utils/mockData";
 import SaveIcon from "../../assets/svg/saveIcon.svg";
 import RatingIcon from "../../assets/svg/ratingIcon.svg";
 import { useNavigation } from "@react-navigation/native";
+import HomeTab from "../hometab/HomeTab";
 
 const AllCourseTab = () => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
 
   return (
-    <View style={{ paddingHorizontal: "10%", paddingVertical: "10%" }}>
+    <View>
+   <View style={{ position: "fixed",marginBottom:"0%", paddingHorizontal: "0%", paddingVertical: "0%", paddingLeft: "10%", top: 0, left: 0 }}>
+    <HomeTab />
+</View>
+
+    <View style={{ paddingHorizontal: "10%", paddingVertical: "5%" }}>
+      
       {popularCoursesDetail.map((item) => (
         <TouchableOpacity
           key={item.id}
@@ -57,6 +64,7 @@ const AllCourseTab = () => {
           </TouchableOpacity>
         </TouchableOpacity>
       ))}
+    </View>
     </View>
   );
 };
