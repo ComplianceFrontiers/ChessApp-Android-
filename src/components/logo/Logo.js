@@ -10,7 +10,7 @@ const Logo = () => {
         source={require("../../../assets/appIcon/ll1.png")}
         style={styles.logoImage} // Add this line
       />
-      {/* <Text style={globalStyles.headingFour}>Smartup</Text> */}
+      {/* <Text style={globalStyles.headingFour}>ChessChamps</Text> */}
     </View>
   );
 };

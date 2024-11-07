@@ -43,7 +43,7 @@ const ForgotPassword = () => {
           onPress={() => navigation.navigate("entercode")}
         />
         <Text style={{ textAlign: "center", color: theme.color }}>
-          By continuing, you agree to Smartup{" "}
+          By continuing, you agree to ChessChamps{" "}
           <Text style={globalStyles.yellowTextWithUnderline}>
             Terms and Conditions of Use
           </Text>{" "}
