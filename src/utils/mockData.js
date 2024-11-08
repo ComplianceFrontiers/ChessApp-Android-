@@ -455,7 +455,8 @@ export const mentorDetailsData = [
 export const myCoursesData1 = [
   {
     id: 1,
-    title: "The Chessboard",
+    title: "theChessboard",
+    showntitle:"The Chessboard",
     duration: "15",
     url: "coursedetails/modules/level1/introduction/11",
     submodules: [
@@ -470,7 +471,8 @@ export const myCoursesData1 = [
   },
   {
     id: 2,
-    title: "Introduction To Pieces",
+    title: "introductionToPieces",
+    showntitle: "Introduction To Pieces",
     duration: "10",
     url: "coursedetails/modules/level1/introductionToPieces/31",
     submodules: [
@@ -486,7 +488,8 @@ export const myCoursesData1 = [
   },
   {
     id: 3,
-    title: "Arrangement Of Pieces",
+    title: "ArrangnmentOfPieces",
+    showntitle: "Arrangement Of Pieces",
     duration: "15",
     url: "coursedetails/modules/level1/arrangementOfPieces/41",
     submodules: [
@@ -496,7 +499,8 @@ export const myCoursesData1 = [
   },
   {
     id: 4,
-    title: "Special Moves",
+    title: "specialMoves",
+    showntitle: "Special Moves",
     duration: "10",
     url: "coursedetails/modules/level1/specialMoves/51",
     submodules: [
@@ -507,7 +511,8 @@ export const myCoursesData1 = [
   },
   {
     id: 5,
-    title: "Winning In Chess",
+    title: "winningInChess",
+    showntitle: "Winning In Chess",
     duration: "15",
     url: "coursedetails/modules/level1/winningInChess/61",
     submodules: [
@@ -521,7 +526,8 @@ export const myCoursesData1 = [
   },
   {
     id: 6,
-    title: "Piece Exchange",
+    title: "understandingPieceExchanges",
+    showntitle: "Piece Exchange",
     duration: "10",
     url: "coursedetails/modules/level1/pieceExchange/71",
     submodules: [
@@ -534,7 +540,8 @@ export const myCoursesData1 = [
   },
   {
     id: 7,
-    title: "3 Stages Of Chess",
+    title: "stagesOfTheGame",
+    showntitle: "3 Stages Of Chess",
     duration: "15",
     url: "coursedetails/modules/level1/stagesOfChess/81",
     submodules: [
@@ -545,7 +552,8 @@ export const myCoursesData1 = [
   },
   {
     id: 8,
-    title: "Chess Notations",
+    title: "notation",
+    showntitle: "Chess Notations",
     duration: "10",
     url: "coursedetails/modules/level1/chessNotations/91",
     submodules: [
@@ -554,7 +562,8 @@ export const myCoursesData1 = [
   },
   {
     id: 9,
-    title: "Chess Game",
+    title: "chessGame",
+    showntitle: "Chess Game",
     duration: "10",
     url: "coursedetails/modules/level1/chessGame/101",
     submodules: [

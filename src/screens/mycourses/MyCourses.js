@@ -1,5 +1,6 @@
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
 import PlayBTN from "../../assets/svg/playButton.svg";
@@ -13,10 +14,36 @@ const MyCourses = () => {
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
 
-  // State to track the expanded item
   const [expandedItemId, setExpandedItemId] = useState(null);
+  const [courses, setCourses] = useState(myCoursesData1);
 
-  // Toggle the expanded state of an item
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userDetailsString = await AsyncStorage.getItem("userDetails");
+        const userDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
+
+        if (userDetails && userDetails.registered_inschool_courses) {
+          const updatedCourses = myCoursesData1.map(course => {
+            const registeredCourse = userDetails.registered_inschool_courses.find(
+              regCourse => regCourse.course_title === course.title
+            );
+
+            return {
+              ...course,
+              completed: registeredCourse ? registeredCourse.completed : 0,
+            };
+          });
+          setCourses(updatedCourses);
+        }
+      } catch (error) {
+        console.error("Error fetching data from AsyncStorage:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   const toggleExpand = (itemId) => {
     setExpandedItemId((prevId) => (prevId === itemId ? null : itemId));
   };
@@ -27,33 +54,35 @@ const MyCourses = () => {
         <View style={[globalStyles.container, { marginBottom: "20%" }]}>
           <Header label="Level 1 (Pawn)" />
           <View style={globalStyles.contents}>
-              <View style={{ gap: 20, paddingVertical: "0%" }}>
-                {myCoursesData1.map((item) => (
+            <View style={{ gap: 20, paddingVertical: "0%" }}>
+              {courses.map((item) => (
                 <View key={item.id}>
                   <TouchableOpacity
                     style={styles.videoContainer}
-                    onPress={() => navigation.navigate(item.url)} // Navigate directly to the URL
+                    onPress={() => navigation.navigate(item.url)}
                   >
                     <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
                       <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
                       <View>
-                        <Text style={globalStyles.headingFive}>{item.title}</Text>
-                        <Text style={{ color: theme.color }}>Completion Percentage</Text>
+                        <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
+                        <Text style={{ color: theme.color }}>
+                          Completion Percentage: {item.completed}%
+                        </Text>
                       </View>
                     </View>
                     <PlayBTN onPress={() => toggleExpand(item.id)} />
-                    </TouchableOpacity>
+                  </TouchableOpacity>
 
-                     {expandedItemId === item.id && item.submodules?.map((submodule) => (
+                  {expandedItemId === item.id && item.submodules?.map((submodule) => (
                     <TouchableOpacity
                       key={submodule.id}
                       style={styles.submoduleItem}
                       onPress={() => navigation.navigate(submodule.url)}
                     >
                       <Text style={[styles.submoduleText, globalStyles.text]}>{submodule.title}</Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
+                    </TouchableOpacity>
+                  ))}
+                </View>
               ))}
             </View>
           </View>
@@ -92,7 +121,7 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
   },
   submoduleText: {
-    color: "#555", // Adjust color as needed
+    color: "#555",
   },
   absoluteBtn: {
     position: "absolute",
