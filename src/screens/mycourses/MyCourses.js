@@ -20,24 +20,39 @@ const MyCourses = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userDetailsString = await AsyncStorage.getItem("userDetails");
-        const userDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
+        const email = await AsyncStorage.getItem("email");
+        
+        if (email) {
+          const userDetailsResponse = await fetch(
+            `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
+          );
+          const userDetailsData = await userDetailsResponse.json();
 
-        if (userDetails && userDetails.registered_inschool_courses) {
-          const updatedCourses = myCoursesData1.map(course => {
-            const registeredCourse = userDetails.registered_inschool_courses.find(
-              regCourse => regCourse.course_title === course.title
-            );
+          if (userDetailsData.success) {
+            const newUserDetails = userDetailsData.data;
 
-            return {
-              ...course,
-              completed: registeredCourse ? registeredCourse.completed : 0,
-            };
-          });
-          setCourses(updatedCourses);
+            // Update local storage with the latest user details
+            await AsyncStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+
+            // Update courses with completion percentage from user details
+            const updatedCourses = myCoursesData1.map(course => {
+              const registeredCourse = newUserDetails.registered_inschool_courses.find(
+                regCourse => regCourse.course_title === course.title
+              );
+
+              return {
+                ...course,
+                completed: registeredCourse ? registeredCourse.completed : 0,
+              };
+            });
+
+            setCourses(updatedCourses);
+          } else {
+            console.error("User details fetch failed:", userDetailsData.message);
+          }
         }
       } catch (error) {
-        console.error("Error fetching data from AsyncStorage:", error);
+        console.error("Error fetching user details:", error);
       }
     };
 

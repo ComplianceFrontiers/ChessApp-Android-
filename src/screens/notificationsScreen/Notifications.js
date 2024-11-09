@@ -27,7 +27,7 @@ const Notifications = () => {
         if (userDetails) {
           const parsedDetails = JSON.parse(userDetails);
           setUserLevel(parsedDetails.level);
-          console.log('Fetched user level:', parsedDetails.level); // Debugging statement
+          console.log('Fetched user level:', parsedDetails); // Debugging statement
         }
       } catch (error) {
         console.error('Error fetching user details:', error);
@@ -37,27 +37,71 @@ const Notifications = () => {
     fetchUserDetails();
   }, []);
 
-  const handleNotificationPress = (item) => {
+  const handleNotificationPress = async (item) => {
     if (item.id === 4) {
       navigation.navigate("NotificationsDetails");
+      return;
     } else if (item.id === 1) {
-      navigation.navigate("mycourses");
+      const email = await AsyncStorage.getItem("email");
+      if (!email) {
+        console.error("Email not found in AsyncStorage");
+        return;
+      }
+  
+      try {
+        const response = await fetch(
+          "https://backend-chess-tau.vercel.app/update_registered_courses_inschool",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email,
+              course_title: "thechessboard",
+              status: "In Progress",
+            }),
+          }
+        );
+  
+        const data = await response.json();
+        if (data.success) {
+          // Navigate to "mycourses"
+          navigation.navigate("mycourses");
+  
+          // Fetch and update user details in local storage
+          try {
+            const userDetailsResponse = await fetch(
+              `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
+            );
+            const userDetailsData = await userDetailsResponse.json();
+  
+            if (userDetailsData.success) {
+              // Update local storage and component state with new user details
+              const newUserDetails = userDetailsData.data;
+              await AsyncStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+             } else {
+              console.error("User not found");
+            }
+          } catch (error) {
+            console.error("Error fetching user details:", error);
+          }
+        } else {
+          console.error("Failed to update course status:", data.message);
+        }
+      } catch (error) {
+        console.error("Error updating course status:", error);
+      }
     }
   };
-
+  
+  
   return (
     <ScrollView style={globalStyles.colorBG}>
       <View style={globalStyles.container}>
         <Header label="Your Chess Journey" />
         <View style={globalStyles.contents}>
-          {/* <Text
-            style={[
-              globalStyles.headingFive,
-              { alignSelf: "flex-start", marginBottom: "5%" },
-            ]}
-          >
-            Today
-          </Text> */}
+         
           {notificationDataToday.map((item) => {
             console.log('Current item ID:', item.id); // Debugging statement
             console.log('Current item level:', item.level); // Debugging statement
