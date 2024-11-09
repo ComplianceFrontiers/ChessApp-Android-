@@ -21,7 +21,7 @@ const MyCourses = () => {
     const fetchUserData = async () => {
       try {
         const email = await AsyncStorage.getItem("email");
-        
+
         if (email) {
           const userDetailsResponse = await fetch(
             `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
@@ -43,6 +43,7 @@ const MyCourses = () => {
               return {
                 ...course,
                 completed: registeredCourse ? registeredCourse.completed : 0,
+                status: registeredCourse ? registeredCourse.status : 'default', // add status from API response
               };
             });
 
@@ -63,6 +64,24 @@ const MyCourses = () => {
     setExpandedItemId((prevId) => (prevId === itemId ? null : itemId));
   };
 
+  // Function to determine the background color based on course status
+  const getCourseColor = (status) => {
+    switch (status) {
+      case "Completed":
+        return "#4CAF50"; // Green for completed courses
+      case "In Progress":
+        return "#FFEB3B"; // Yellow for in-progress courses
+      default:
+        return "#FFA500"; // Orange for default or missing course status
+    }
+  };
+
+  // Function to check if the course is clickable
+  const isCourseClickable = (status) => status !== "default"; // Only clickable if not "default"
+
+  // Function to check if the submodule should be clickable
+  const isSubmoduleClickable = (status) => status !== "default"; // Only clickable if course is not "default"
+
   return (
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
       <ScrollView style={[globalStyles.colorBG, { marginBottom: "10%" }]}>
@@ -73,30 +92,43 @@ const MyCourses = () => {
               {courses.map((item) => (
                 <View key={item.id}>
                   <TouchableOpacity
-                    style={styles.videoContainer}
-                    onPress={() => navigation.navigate(item.url)}
+                    style={[
+                      styles.videoContainer,
+                    ]}
+                    onPress={isCourseClickable(item.status) ? () => navigation.navigate(item.url) : null} // Disable onPress if course is "default"
                   >
                     <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-                      <Text style={[styles.id, globalStyles.headingFive]}>{item.id}</Text>
+                      <Text
+                        style={[
+                          styles.id,
+                          globalStyles.headingFive,
+                          { backgroundColor: getCourseColor(item.status) },
+                        ]}
+                      >
+                        {item.id}
+                      </Text>
                       <View>
                         <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
                         <Text style={{ color: theme.color }}>
-                          Completion Percentage: {item.completed}%
+                          Completed Percentage: {item.completed}%
                         </Text>
                       </View>
                     </View>
                     <PlayBTN onPress={() => toggleExpand(item.id)} />
                   </TouchableOpacity>
 
-                  {expandedItemId === item.id && item.submodules?.map((submodule) => (
-                    <TouchableOpacity
-                      key={submodule.id}
-                      style={styles.submoduleItem}
-                      onPress={() => navigation.navigate(submodule.url)}
-                    >
-                      <Text style={[styles.submoduleText, globalStyles.text]}>{submodule.title}</Text>
-                    </TouchableOpacity>
-                  ))}
+                  {expandedItemId === item.id &&
+                    item.submodules?.map((submodule) => (
+                      <TouchableOpacity
+                        key={submodule.id}
+                        style={styles.submoduleItem}
+                        onPress={isSubmoduleClickable(item.status) ? () => navigation.navigate(submodule.url) : null} // Disable onPress if course is "default"
+                      >
+                        <Text style={[styles.submoduleText, globalStyles.text]}>
+                          {submodule.title}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
                 </View>
               ))}
             </View>
@@ -120,7 +152,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   id: {
-    backgroundColor: "#FFC8D3",
     paddingHorizontal: "5%",
     paddingVertical: "2%",
     borderRadius: 30,
