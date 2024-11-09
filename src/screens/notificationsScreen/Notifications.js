@@ -58,7 +58,7 @@ const Notifications = () => {
             },
             body: JSON.stringify({
               email,
-              course_title: "thechessboard",
+              course_title: "theChessboard",
               status: "In Progress",
             }),
           }

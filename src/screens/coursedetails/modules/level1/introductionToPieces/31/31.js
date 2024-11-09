@@ -17,6 +17,7 @@ import CommonButton from "../../../../../../components/commonbutton/CommonButton
 import ThemeContext from "../../../../../../components/Theme/ThemeContext";
 import ClassIcon from "../../../../../../components/classicon/ClassIcon";
 import TimeIcon from "../../../../../../components/timeicon/TimeIcon";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const T11 = () => {
   const route = useRoute();
@@ -44,6 +45,41 @@ const T11 = () => {
         return null;
     }
   };
+  const handleNextButtonPress = async () => {
+    try {
+      const userDetailsString = await AsyncStorage.getItem("userDetails");
+      const storedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
+  
+      if (storedUserDetails) {
+        const requestData = {
+          email: storedUserDetails.email,
+            course_title: 'introductionToPieces',
+            completed: 14
+          };
+  
+        const response = await fetch("https://backend-chess-tau.vercel.app/update-course-completion-inschool", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
+        });
+  
+        const data = await response.json();
+       
+        if (data) { 
+          navigation.navigate("coursedetails/modules/level1/introductionToPieces/32");
+        } else {
+          console.error("Failed to update course completion", data); 
+        }
+      } else {
+        console.error("User details not found in AsyncStorage");
+      }
+    } catch (error) {
+      console.error("Error calling API or navigating:", error);
+    }
+  };
+
 
   return (
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
@@ -126,10 +162,10 @@ const T11 = () => {
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          style={styles.navigationButton}
-          onPress={() => navigation.navigate("coursedetails/modules/level1/introductionToPieces/32")} // Replace with your next screen name
-        >
-          <Text style={styles.buttonText}>Next</Text>
+            style={styles.navigationButton}
+            onPress={handleNextButtonPress}
+          >
+            <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
       </View>
     </View>

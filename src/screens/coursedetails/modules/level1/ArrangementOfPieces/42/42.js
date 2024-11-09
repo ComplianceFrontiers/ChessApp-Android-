@@ -17,6 +17,7 @@ import CommonButton from "../../../../../../components/commonbutton/CommonButton
 import ThemeContext from "../../../../../../components/Theme/ThemeContext";
 import ClassIcon from "../../../../../../components/classicon/ClassIcon";
 import TimeIcon from "../../../../../../components/timeicon/TimeIcon";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const T11 = () => {
   const route = useRoute();
@@ -44,7 +45,83 @@ const T11 = () => {
         return null;
     }
   };
-
+  const handleNextButtonPress = async () => {
+    try {
+      // Retrieve user details from AsyncStorage
+      const userDetailsString = await AsyncStorage.getItem("userDetails");
+      const storedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
+  
+      if (storedUserDetails) {
+        const requestData = {
+        email: storedUserDetails1.email,
+          course_title: 'ArrangnmentOfPieces',
+          completed: 100
+        };
+    
+  
+        // First, update course completion using fetch
+        const response = await fetch("https://backend-chess-tau.vercel.app/update-course-completion-inschool", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData),
+        });
+  
+        const data = await response.json();
+  
+        if (data.success) {
+          // After course completion is updated, update the course status for "theChessboard" to "Completed"
+          const updateCourseResponse = await fetch("https://backend-chess-tau.vercel.app/update_registered_courses_inschool", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: storedUserDetails.email,
+              course_title: "ArrangnmentOfPieces",
+          status: 'Completed',
+            }),
+          });
+  
+          const updateCourseData = await updateCourseResponse.json();
+  
+          if (updateCourseData.success) {
+            // Update status for next course "introductionToPieces" to "In Progress"
+            const updateNextCourseResponse = await fetch("https://backend-chess-tau.vercel.app/update_registered_courses_inschool", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: storedUserDetails.email,
+                course_title: "specialMoves",
+          status: 'In Progress',
+              }),
+            });
+  
+            const updateNextCourseData = await updateNextCourseResponse.json();
+  
+            if (updateNextCourseData.success) {
+              // Navigate to the next screen if everything is successful
+              navigation.navigate("coursedetails/modules/level1/specialMoves/51");
+            } else {
+              console.error("Failed to update next course status:", updateNextCourseData.message);
+            }
+          } else {
+            console.error("Failed to update course status:", updateCourseData.message);
+          }
+        } else {
+          console.error("Failed to update course completion:", data.message);
+        }
+      } else {
+        console.error("User details not found in AsyncStorage");
+      }
+    } catch (error) {
+      console.error("Error calling API or navigating:", error);
+    }
+  };
+  
   return (
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
@@ -120,10 +197,10 @@ const T11 = () => {
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          style={styles.navigationButton}
-          onPress={() => navigation.navigate("coursedetails/modules/level1/specialMoves/51")} // Replace with your next screen name
-        >
-          <Text style={styles.buttonText}>Next</Text>
+            style={styles.navigationButton}
+            onPress={handleNextButtonPress}
+          >
+            <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
       </View>
     </View>
