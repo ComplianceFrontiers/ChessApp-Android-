@@ -69,7 +69,7 @@ const T11 = () => {
   
         const data = await response.json();
   
-        if (data.success) {
+        if (data) {
           // After course completion is updated, update the course status for "theChessboard" to "Completed"
           const updateCourseResponse = await fetch("https://backend-chess-tau.vercel.app/update_registered_courses_inschool", {
             method: "POST",
@@ -150,15 +150,6 @@ const T11 = () => {
           <Text style={globalStyles.headingFour}>
           1.7 Name of the Squares
           </Text>
-           {/* <View style={styles.classDetailsAndPrice}>
-            <View style={styles.classDetails}>
-              <ClassIcon />
-              <Text style={{ color: theme.color }}>21 Classes</Text>
-              <Text style={{ color: theme.color }}>|</Text>
-              <TimeIcon />
-              <Text style={{ color: theme.color }}>42 Hours</Text>
-            </View>
-          </View> */}
           <View style={styles.tabContainer}>
             {tabs.map((item) => (
               <TouchableOpacity

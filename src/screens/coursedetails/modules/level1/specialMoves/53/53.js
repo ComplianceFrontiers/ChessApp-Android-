@@ -70,7 +70,7 @@ const T11 = () => {
   
         const data = await response.json();
   
-        if (data.success) {
+        if (data) {
           // After course completion is updated, update the course status for "theChessboard" to "Completed"
           const updateCourseResponse = await fetch("https://backend-chess-tau.vercel.app/update_registered_courses_inschool", {
             method: "POST",
