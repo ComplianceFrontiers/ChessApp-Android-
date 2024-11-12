@@ -84,13 +84,16 @@ const T11 = () => {
   return (
     <View style={[styles.mainContain, { backgroundColor: theme.background }]}>
       <ScrollView style={globalStyles.colorBG}>
-        <View style={styles.mediaContainer}>
-            <WebView
-              source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
-              style={{ width: "100%", height: 300 }}
-              allowsFullscreenVideo
-            />
-        </View>
+      <View style={styles.mediaContainer}>
+        <WebView
+          source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
+          style={{ width: "100%", height: 240 }}
+          allowsFullscreenVideo
+          scalesPageToFit={true} // Ensures the content scales to fit within the WebView bounds
+          javaScriptEnabled={true} // Enables JavaScript (necessary for embedded videos)
+        />
+      </View>
+
         <View style={globalStyles.container}>
           <View style={styles.absoluteIMG}>
             <Header level = "1" label="" backBTNCLR="white" />

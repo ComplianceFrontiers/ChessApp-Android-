@@ -165,6 +165,8 @@ const styles = StyleSheet.create({
   submoduleItem: {
     paddingVertical: 5,
     paddingLeft: 40,
+    alignSelf: "flex-end",  // Aligns the submodules to the right
+    marginRight: 20,  // Adds some space from the right edge
   },
   submoduleText: {
     color: "#555",

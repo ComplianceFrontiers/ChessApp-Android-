@@ -70,12 +70,13 @@ const Tabs = ({ onSelectTab, activeTab }) => {
 
 const styles = StyleSheet.create({
   tabs: {
+    position: "absolute",
+    bottom: 0,
     backgroundColor: "white",
     width: "100%",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: "5%",
-    paddingHorizontal: "10%",
+    justifyContent: "space-around", // Center items with equal spacing
+    paddingVertical: 15, // Fixed padding for vertical alignment
     flexDirection: "row",
     elevation: 20,
   },

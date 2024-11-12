@@ -43,7 +43,7 @@ const AllCourseTab = () => {
           <View style={{ gap: 10, paddingVertical: 5 }}>
             <Text style={[globalStyles.redTextwithWeight]}>{item.title}</Text>
             <Text>{item.category}</Text>
-            <Text>{item.std}</Text>
+            {/* <Text>{item.std}</Text> */}
             <View
               style={{
                 flexDirection: "row",
@@ -52,9 +52,9 @@ const AllCourseTab = () => {
                 width: "77%",
               }}
             >
-              <Text style={globalStyles.violetText}>${item.price}/-</Text>
+              <Text style={globalStyles.violetText}></Text>
               <View style={styles.absoluteRating}>
-                <RatingIcon />
+                {/* <RatingIcon /> */}
                 {/* <Text>{item.rating}</Text> */}
               </View>
             </View>

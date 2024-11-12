@@ -299,63 +299,63 @@ export const mentorsData = [
 ];
 
 export const popularCoursesDetail = [
-  {
-    id: 1,
-    image: require("../assets/images/uiuxIMG.png"),
-    category: "Online Courses",
-    title: "Online Courses",
-    price: "400",
-    rating: "4.2",
-    std: "12580",
-  },
-  {
-    id: 2,
-    image: require("../assets/images/graphicDesignIMG.png"),
-    category: "Tournments",
-    title: "Tournments",
-    price: "850",
-    rating: "4.2",
-    std: "12580",
-  },
+  // {
+  //   id: 1,
+  //   image: require("../assets/images/uiuxIMG.png"),
+  //   category: "Online Courses",
+  //   title: "Online Courses",
+  //   price: "400",
+  //   rating: "4.2",
+  //   std: "12580",
+  // },
+  // {
+  //   id: 2,
+  //   image: require("../assets/images/graphicDesignIMG.png"),
+  //   category: "Tournments",
+  //   title: "Tournments",
+  //   price: "850",
+  //   rating: "4.2",
+  //   std: "12580",
+  // },
   {
     id: 3,
-    image: require("../assets/images/webDevIMG.png"),
-    category: "Chess For Schools",
+    image: require("../assets/images/graphicDesignIMG.png"),
+    category: "Basics of Chess",
     title: "Chess For Schools",
     price: "850",
     rating: "4.2",
     std: "12580",
   },
-  {
-    id: 4,
-    image: require("../assets/images/seoIMG.png"),
-    category: "Chess Club",
-    title: "Chess Club",
-    price: "850",
-    rating: "4.2",
-    std: "12580",
-  },
-  {
-    id: 5,
-    image: require("../assets/images/seoIMG.png"),
-    category: "Online Store",
-    title: "Online Store",
-    price: "850",
-    rating: "4.2",
-    std: "12580",
-  },
-];
+//   {
+//     id: 4,
+//     image: require("../assets/images/seoIMG.png"),
+//     category: "Chess Club",
+//     title: "Chess Club",
+//     price: "850",
+//     rating: "4.2",
+//     std: "12580",
+//   },
+//   {
+//     id: 5,
+//     image: require("../assets/images/seoIMG.png"),
+//     category: "Online Store",
+//     title: "Online Store",
+//     price: "850",
+//     rating: "4.2",
+//     std: "12580",
+//   },
+// ];
 
-export const checkoutCourse = [
-  {
-    id: 1,
-    image: require("../assets/images/uiuxIMG.png"),
-    category: "UI/ UX Design",
-    title: "Basics & UI flow",
-    price: "400",
-    rating: "4.2",
-    std: "12580",
-  },
+// export const checkoutCourse = [
+//   {
+//     id: 1,
+//     image: require("../assets/images/uiuxIMG.png"),
+//     category: "UI/ UX Design",
+//     title: "Basics & UI flow",
+//     price: "400",
+//     rating: "4.2",
+//     std: "12580",
+//   },
 ];
 
 export const searchTabs = [

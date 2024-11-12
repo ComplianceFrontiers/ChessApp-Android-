@@ -88,7 +88,7 @@ const T11 = () => {
           
             <WebView
               source={{ uri: "https://www.youtube.com/embed/3sxXQOlorwY" }}
-              style={{ width: "100%", height: 300 }}
+              style={{ width: "100%", height: 240 }}
               allowsFullscreenVideo
             />
            </View>

@@ -106,7 +106,7 @@ const HomeTab = () => {
               {userDetails?.child_name?.first || "Guest"}
             </Text>
             <Text style={[globalStyles.miniButton, { width: "100%" }]}>
-              Learner
+              Student
             </Text>
           </View>
         </View>
