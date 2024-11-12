@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import AllCourseTab from "../allCourseTab/AllCourseTab";
 import { popularCategoriesTab } from "../../utils/mockData";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import useGlobalStyles from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
 import Tabs from "../../components/tabs/Tabs";
 import HomeTab from "../hometab/HomeTab";
@@ -18,12 +18,13 @@ import MessagesTab from "../messagestab/MessagesTab";
 import MessageScreen from "../message/MessageScreen";
 
 const PopularCourses = () => {
-  const [selectedTab, setSelectedTab] = useState("mycourses");
+  const [selectedTab, setSelectedTab] = useState("Home");
   const [popularCourseTab, setPopularCourseTab] = useState("All");
 
   const handleTab = (item) => {
     setPopularCourseTab(item);
   };
+
   const renderTabScreen = () => {
     switch (selectedTab) {
       case "Home":
@@ -42,35 +43,27 @@ const PopularCourses = () => {
       case "All":
         return <AllCourseTab />;
     }
+    // Additional popular course tabs can be added here
   };
 
   const globalStyles = useGlobalStyles();
 
   return (
-    <View style={globalStyles.colorBG}>
-      <ScrollView >
-         <View style={globalStyles.contents}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "100%",
-              alignSelf: "center",
-            }}
-          >
-  
+    <View style={[globalStyles.colorBG, { flex: 1 }]}>
+      <ScrollView style={{ flex: 1 }}>
+        <View style={globalStyles.contents}>
+          <View>
+            {renderPopularCourseTabs()}
           </View>
-          {renderPopularCourseTabs()}
-        
         </View>
-     
       </ScrollView>
-   
-      <Tabs
-        activeTab={selectedTab}
-        onSelectTab={(tab) => setSelectedTab(tab)}
-      />
-     
+
+      <View style={styles.fixedTab}>
+        <Tabs
+          activeTab={selectedTab}
+          onSelectTab={(tab) => setSelectedTab(tab)}
+        />
+      </View>
     </View>
   );
 };
@@ -115,6 +108,16 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 15,
     backgroundColor: "#f1f1f1",
+  },
+
+  fixedTab: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#FFFFFF", // Optional: Background color for the tab bar
+    elevation: 10, // Optional: Shadow effect for Android
+    zIndex: 1,
   },
 });
 
