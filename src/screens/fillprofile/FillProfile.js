@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View, Text, ScrollView, Image, Modal } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Text, ScrollView, Image, Modal, Alert } from "react-native";
 import { TextInput } from "react-native-paper";
 import CommonButton from "../../components/commonbutton/CommonButton";
 import CustomDropdown from "../../components/customdropdown/CustomDropdown";
@@ -38,7 +38,7 @@ const FillProfile = () => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const [showAvatarOptions, setShowAvatarOptions] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState(require("../../assets/profilepics/b7.png")); 
+  const [selectedAvatar, setSelectedAvatar] = useState(require("../../assets/profilepics/b7.png"));
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -52,6 +52,7 @@ const FillProfile = () => {
     school: "",
     grade: ""
   });
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleInputChange = (id, value) => {
     const field = id === 1 ? "name" : id === 2 ? "email" : id === 3 ? "phone" : id === 4 ? "school" : "grade";
@@ -68,12 +69,34 @@ const FillProfile = () => {
 
   const handleContinue = () => {
     if (validateRequiredFields()) {
-      navigation.navigate("createpin");
+      fetch("https://backend-chess-tau.vercel.app/signup_app", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          setIsModalVisible(true); // Show success modal
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        if (data?.error) {
+          alert(`Error: ${data.error}`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Failed to submit the form. Please try again.");
+      });
     }
-  };
-  const changeProfilePic = (avatar) => {
-    setSelectedAvatar(avatar);
-    closeAvatarModal();
+  }
+    const changeProfilePic = (avatar) => {
+      setSelectedAvatar(avatar);
+      closeAvatarModal();
   };
 
   return (
@@ -85,11 +108,28 @@ const FillProfile = () => {
           <EditProfile />
         </TouchableOpacity>
       </View>
+      <Modal visible={isModalVisible} transparent animationType="slide">
+  <View style={styles.modalOverlay}>
+    <View style={styles.modalContent}>
+      <Text style={styles.modalTitle}>Signup Successful!</Text>
+      <Text>Your account has been created. Redirecting to Sign In...</Text>
+      <TouchableOpacity
+        style={styles.closeButton}
+        onPress={() => {
+          setIsModalVisible(false);
+          navigation.navigate("signin"); // Redirect to SignIn
+        }}
+      >
+        <Text style={styles.closeButtonText}>OK</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</Modal>
 
-        {/* Avatar Selection Modal */}
+      {/* Avatar Selection Modal */}
       <Modal visible={showAvatarOptions} transparent animationType="slide">
         <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
+          <View style={styles.modalContent}>
               <TouchableOpacity onPress={closeAvatarModal} style={styles.closeButton}>
                 <Text style={styles.closeButtonText}>X</Text>
               </TouchableOpacity>
@@ -116,7 +156,7 @@ const FillProfile = () => {
                   </View>
                 </View>
               </ScrollView>
-            </View>
+          </View>
         </View>
       </Modal>
 
@@ -149,7 +189,7 @@ const FillProfile = () => {
         ))}
 
         <View style={styles.button}>
-          <CommonButton label="Continue" onPress={handleContinue} />
+          <CommonButton label="Send Request To Admin" onPress={handleContinue} />
         </View>
       </ScrollView>
     </View>
@@ -177,30 +217,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
   },
-  closeButton: {
-    position: "absolute",
-    top: 10,
-    right: 10,
-    backgroundColor: "transparent",
-  },
-  closeButtonText: { fontSize: 24, color: "#555" },
-  modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
-  avatarTabs: { flexGrow: 1, width: "100%" },
-  avatarTab: { marginVertical: 15 },
-  tabTitle: { fontSize: 16, fontWeight: "bold", marginBottom: 10 },
-  avatarList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  avatarOption: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    margin: 5,
-    borderColor: "#ddd",
-    borderWidth: 2,
-  },
+    closeButton: {
+      position: "absolute",
+      top: 10,
+      right: 10,
+      backgroundColor: "transparent",
+    },
+    closeButtonText: { fontSize: 24, color: "#555" },
+    modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 15 },
+    avatarTabs: { flexGrow: 1, width: "100%" },
+    avatarTab: { marginVertical: 15 },
+    tabTitle: { fontSize: 16, fontWeight: "bold", marginBottom: 10 },
+    avatarList: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+    },
+    avatarOption: {
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+      margin: 5,
+      borderColor: "#ddd",
+      borderWidth: 2,
+    },
   inputFields: {
     width: "90%",
     marginTop: "10%",
@@ -211,4 +251,26 @@ const styles = StyleSheet.create({
   button: {
     marginTop: "10%",
   },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    padding: 20,
+    width: "80%",
+    alignItems: "center",
+  },
+  modalTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 10 },
+  closeButton: {
+    marginTop: 15,
+    padding: 10,
+    backgroundColor: "#007bff",
+    borderRadius: 5,
+  },
+  closeButtonText: { color: "#fff", fontWeight: "bold" },
+  
 });
