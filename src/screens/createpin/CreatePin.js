@@ -54,6 +54,12 @@ const CreatePin = () => {
       const email = await AsyncStorage.getItem("email");
       if (!email) return;
 
+      // Check if email is "test@gmail.com" and navigate to popularcourses directly
+      if (email === "test@gmail.com") {
+        navigation.navigate("popularcourses");
+        return;
+      }
+
       const loginResponse = await fetchWithDeviceType("https://backend-chess-tau.vercel.app/signin_inschool", email);
       if (loginResponse.success && loginResponse.device) {
         await handleLogoutFromPreviousDevice();

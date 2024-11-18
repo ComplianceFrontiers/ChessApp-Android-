@@ -9,7 +9,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
-
+import {hometabPorfileHeader} from "../../utils/mockData"
 // Image mapping for user profile images
 const imageMap = {
   "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
@@ -84,8 +84,10 @@ const HomeTab = () => {
         </View>
       </View>
       <View style={styles.headerIcons}>
-        {/* Map through any additional header icons */}
-      </View>
+          {hometabPorfileHeader.map((item) => (
+            <TouchableOpacity key={item.id}>{item.icon}</TouchableOpacity>
+          ))}
+        </View>
     </View>
   );
 };

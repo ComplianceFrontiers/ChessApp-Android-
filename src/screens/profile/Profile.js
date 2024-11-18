@@ -31,7 +31,7 @@ const Profile = () => {
     require('../../assets/profilepics/g4.png'),
     require('../../assets/profilepics/g5.png'),
     require('../../assets/profilepics/g6.png'),
-    require('../../assets/profilepics/g7.png'),
+    require('../../assets/profilepics/g8.png'),
   ];
 
   const boyAvatars = [
