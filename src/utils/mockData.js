@@ -107,25 +107,25 @@ export const OnBoardingData = [
     title: "Learn Any Sphere You Like",
     para: "More than 50 courses for various and in demand jobs & skills in one piece",
   },
-  {
-    id: 4,
-    image: OnBoardingImg4,
-    title: "Online Learning",
-    para: "We Provide Classes Online Classes and Pre Recorded Leactures.!",
-  },
-  {
-    id: 5,
-    image: OnBoardingImg5,
-    title: "Learn at Anytime",
-    para: "Booked or Same the Lectures for Future, Lorem ipsum dolor sit amet.",
-  },
-  {
-    id: 6,
-    image: OnBoardingImg6,
+  // {
+  //   id: 4,
+  //   image: OnBoardingImg4,
+  //   title: "Online Learning",
+  //   para: "We Provide Classes Online Classes and Pre Recorded Leactures.!",
+  // },
+  // {
+  //   id: 5,
+  //   image: OnBoardingImg5,
+  //   title: "Learn at Anytime",
+  //   para: "Booked or Same the Lectures for Future, Lorem ipsum dolor sit amet.",
+  // },
+  // {
+  //   id: 6,
+  //   image: OnBoardingImg6,
 
-    title: "Learn Any Sphere You Like",
-    para: "More than 50 courses for various and in demand jobs & skills in one piece",
-  },
+  //   title: "Learn Any Sphere You Like",
+  //   para: "More than 50 courses for various and in demand jobs & skills in one piece",
+  // },
 ];
 
 export const signInData = [

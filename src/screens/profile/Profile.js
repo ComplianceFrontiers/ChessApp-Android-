@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import {
   Image,
+  Modal,
   ScrollView,
   StyleSheet,
   Text,
@@ -18,9 +19,33 @@ import ThemeContext from "../../components/Theme/ThemeContext";
 const Profile = () => {
   const [email, setEmail] = useState(""); // State variable for email
   const [userDetails, setUserDetails] = useState(null); // State for userDetails
+  const [showAvatarOptions, setShowAvatarOptions] = useState(false); // State for modal visibility
 
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
+  const girlAvatars = [
+    require('../../assets/profilepics/g1.png'),
+    require('../../assets/profilepics/g2.png'),
+    require('../../assets/profilepics/g3.png'),
+    require('../../assets/profilepics/g4.png'),
+    require('../../assets/profilepics/g5.png'),
+    require('../../assets/profilepics/g6.png'),
+    // require('../../assets/profilepics/g7.png'),
+    require('../../assets/profilepics/g8.png'),
+  ];
+  
+  const boyAvatars = [
+    require('../../assets/profilepics/b1.png'),
+    require('../../assets/profilepics/b2.png'),
+    require('../../assets/profilepics/b3.png'),
+    require('../../assets/profilepics/b4.png'),
+    require('../../assets/profilepics/b5.png'),
+    require('../../assets/profilepics/b6.png'),
+    require('../../assets/profilepics/b7.png'),
+    // require('../../assets/profilepics/b8.png'),
+    require('../../assets/profilepics/b9.png'),
+  ];
+  
 
   const handleLogout = async () => {
     try {
@@ -40,6 +65,7 @@ const Profile = () => {
       console.log("No respective screen available");
     }
   };
+
   const imageMap = {
     "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
     "/images/portal/g2.png": require("../../assets/images/portal/g2.png"),
@@ -47,7 +73,6 @@ const Profile = () => {
     "/images/portal/g4.png": require("../../assets/images/portal/g4.png"),
     "/images/portal/g5.png": require("../../assets/images/portal/g5.png"),
     "/images/portal/g6.png": require("../../assets/images/portal/g6.png"),
-    // "/images/portal/g7.png": require("../../assets/images/portal/g7.png"),
     "/images/portal/g8.png": require("../../assets/images/portal/g8.png"),
     "/images/portal/g9.png": require("../../assets/images/portal/g9.png"),
     "/images/portal/b1.png": require("../../assets/images/portal/b1.png"),
@@ -57,29 +82,15 @@ const Profile = () => {
     "/images/portal/b5.png": require("../../assets/images/portal/b5.png"),
     "/images/portal/b6.png": require("../../assets/images/portal/b6.png"),
     "/images/portal/b7.png": require("../../assets/images/portal/b7.png"),
-    // "/images/portal/b8.png": require("../../assets/images/portal/b8.png"),
     "/images/portal/b9.png": require("../../assets/images/portal/b9.png"),
   };
-  
-  // Example usage in your component
-  <Image
-    source={
-      userDetails?.image
-        ? imageMap[userDetails.image] || require('../../assets/images/portal/b1.png') // Fallback
-        : require('../../assets/images/portal/b1.png') // Fallback if no image
-    }
-    style={styles.profile}
-  />
-  
 
-  // Function to fetch and log AsyncStorage data
   const logAsyncStorageData = async () => {
     try {
       const storedEmail = await AsyncStorage.getItem("email");
       const userDetailsString = await AsyncStorage.getItem("userDetails");
       const parsedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
 
-      console.log("Egg:", parsedUserDetails.image);
       if (storedEmail) {
         setEmail(storedEmail); // Set the email in state
         setUserDetails(parsedUserDetails);
@@ -95,6 +106,16 @@ const Profile = () => {
 
   const theme = useContext(ThemeContext);
 
+  // Function to open modal
+  const openAvatarModal = () => {
+    setShowAvatarOptions(true);
+  };
+
+  // Function to close modal
+  const closeAvatarModal = () => {
+    setShowAvatarOptions(false);
+  };
+
   return (
     <ScrollView style={globalStyles.colorBG}>
       <View style={globalStyles.container}>
@@ -102,7 +123,7 @@ const Profile = () => {
         <View style={[globalStyles.contents, { paddingTop: 0 }]}>
           <View style={styles.mainContain}>
             <View style={styles.absoluteHead}>
-              <View style={styles.round}>
+              <TouchableOpacity onPress={openAvatarModal} style={styles.round}>
                 {userDetails?.image ? (
                   <Image
                     source={
@@ -117,7 +138,7 @@ const Profile = () => {
                     No Image Found
                   </Text>
                 )}
-              </View>
+              </TouchableOpacity>
               <View style={styles.details}>
                 <Text style={[globalStyles.headingOne, { color: theme.black }]}>
                   {userDetails?.child_name?.first || "Guest"}
@@ -127,6 +148,40 @@ const Profile = () => {
                 </Text>
               </View>
             </View>
+
+            {/* Avatar Options Modal */}
+            <Modal visible={showAvatarOptions} transparent animationType="slide">
+              <View style={styles.modalOverlay}>
+                <View style={styles.modalContent}>
+                  <TouchableOpacity onPress={closeAvatarModal} style={styles.closeButton}>
+                    <Text style={styles.closeButtonText}>X</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.modalTitle}>Select Profile Picture:</Text>
+                  <ScrollView contentContainerStyle={styles.avatarTabs}>
+                    <View style={styles.avatarTab}>
+                      <Text style={styles.tabTitle}>Girls</Text>
+                      <View style={styles.avatarList}>
+                        {girlAvatars.map((avatar, index) => (
+                          <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                            <Image source={avatar} style={styles.avatarOption} />
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                    <View style={styles.avatarTab}>
+                      <Text style={styles.tabTitle}>Boys</Text>
+                      <View style={styles.avatarList}>
+                        {boyAvatars.map((avatar, index) => (
+                          <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                            <Image source={avatar} style={styles.avatarOption} />
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                  </ScrollView>
+                </View>
+              </View>
+            </Modal>
 
             <View style={styles.tabsContainer}>
               {profileData.map((item) => (
@@ -178,7 +233,6 @@ const Profile = () => {
   );
 };
 
-
 export default Profile;
 
 const styles = StyleSheet.create({
@@ -187,7 +241,7 @@ const styles = StyleSheet.create({
     height: 80,
   },
   round: {
-    borderWidth:0,
+    borderWidth: 0,
     borderColor: "#FC4F72",
     borderRadius: 10,
   },
@@ -221,5 +275,56 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     top: -50,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    width: "80%",
+    padding: 20,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  avatarTabs: {
+    flexDirection: "column",
+  },
+  avatarTab: {
+    marginBottom: 20,
+  },
+  tabTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  avatarList: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+  avatarOption: {
+    width: 60,
+    height: 60,
+    margin: 5,
+    borderRadius: 30,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "#FC4F72",
+    padding: 10,
+    borderRadius: 20,
+  },
+  closeButtonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
