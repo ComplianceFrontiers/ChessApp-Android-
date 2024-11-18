@@ -179,14 +179,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     marginTop: 5,
-    width: "100%", // Ensure all progress bars are the same size
+    width: 180, // Fixed width for all progress bars
+    alignSelf: "flex-start", // Align properly within the container
   },
+  
+
   progressBar: {
     height: "100%",
   },
   absoluteBtn: {
     position: "absolute",
-    bottom: 20,
+    bottom: 5,
     width: "95%",
     alignSelf: "center",
   },
