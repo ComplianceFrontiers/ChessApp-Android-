@@ -15,11 +15,12 @@ import { profileData } from "../../utils/mockData";
 import DetailIcon from "../../assets/svg/detailIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
+import axios from 'axios';
 
 const Profile = () => {
-  const [email, setEmail] = useState(""); // State variable for email
-  const [userDetails, setUserDetails] = useState(null); // State for userDetails
-  const [showAvatarOptions, setShowAvatarOptions] = useState(false); // State for modal visibility
+  const [email, setEmail] = useState(""); 
+  const [userDetails, setUserDetails] = useState(null); 
+  const [showAvatarOptions, setShowAvatarOptions] = useState(false); 
 
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
@@ -30,10 +31,9 @@ const Profile = () => {
     require('../../assets/profilepics/g4.png'),
     require('../../assets/profilepics/g5.png'),
     require('../../assets/profilepics/g6.png'),
-    // require('../../assets/profilepics/g7.png'),
     require('../../assets/profilepics/g8.png'),
   ];
-  
+
   const boyAvatars = [
     require('../../assets/profilepics/b1.png'),
     require('../../assets/profilepics/b2.png'),
@@ -42,15 +42,17 @@ const Profile = () => {
     require('../../assets/profilepics/b5.png'),
     require('../../assets/profilepics/b6.png'),
     require('../../assets/profilepics/b7.png'),
-    // require('../../assets/profilepics/b8.png'),
     require('../../assets/profilepics/b9.png'),
   ];
   
+  
+
+
 
   const handleLogout = async () => {
     try {
-      await AsyncStorage.clear(); // Clear AsyncStorage
-      navigation.navigate('signup'); // Navigate to sign-in screen
+      await AsyncStorage.clear(); 
+      navigation.navigate('signup'); 
     } catch (error) {
       console.error("Error clearing AsyncStorage:", error);
     }
@@ -60,7 +62,7 @@ const Profile = () => {
     if (item.screen) {
       navigation.navigate(item.screen);
     } else if (item.action === "logout") {
-      handleLogout(); // Call logout function
+      handleLogout(); 
     } else {
       console.log("No respective screen available");
     }
@@ -92,7 +94,7 @@ const Profile = () => {
       const parsedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
 
       if (storedEmail) {
-        setEmail(storedEmail); // Set the email in state
+        setEmail(storedEmail); 
         setUserDetails(parsedUserDetails);
       }
     } catch (error) {
@@ -101,19 +103,43 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    logAsyncStorageData(); // Call the function when component mounts
+    logAsyncStorageData(); 
   }, []);
 
   const theme = useContext(ThemeContext);
 
-  // Function to open modal
   const openAvatarModal = () => {
     setShowAvatarOptions(true);
   };
 
-  // Function to close modal
   const closeAvatarModal = () => {
     setShowAvatarOptions(false);
+  };
+
+  // Function to change profile picture
+  const changeProfilePic = async (selectedAvatar) => {
+    const newPic = selectedAvatar;
+
+    // API call to update profile picture on the backend
+    const data = {
+      profile_id: userDetails.profile_id,
+      image: newPic,
+    };
+
+    try {
+      const response = await axios.post('https://backend-chess-tau.vercel.app/imageupdateinschool', data);
+
+      if (response.data.success) {
+        const updatedUserDetails = { ...userDetails, image: newPic };
+        await AsyncStorage.setItem('userDetails', JSON.stringify(updatedUserDetails));
+        setUserDetails(updatedUserDetails); 
+        closeAvatarModal(); 
+      } else {
+        console.error('Failed to update profile picture:', response.data.message);
+      }
+    } catch (error) {
+      console.error("Error updating profile picture:", error);
+    }
   };
 
   return (
@@ -135,7 +161,7 @@ const Profile = () => {
                   />
                 ) : (
                   <Text style={[globalStyles.headingFive, { color: theme.black }]}>
-                    No Image Found
+                    No Image Found Click Here To Add Image
                   </Text>
                 )}
               </TouchableOpacity>
@@ -162,7 +188,7 @@ const Profile = () => {
                       <Text style={styles.tabTitle}>Girls</Text>
                       <View style={styles.avatarList}>
                         {girlAvatars.map((avatar, index) => (
-                          <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                          <TouchableOpacity key={index} onPress={() => changeProfilePic(`/images/portal/g${index + 1}.png`)}>
                             <Image source={avatar} style={styles.avatarOption} />
                           </TouchableOpacity>
                         ))}
@@ -172,7 +198,7 @@ const Profile = () => {
                       <Text style={styles.tabTitle}>Boys</Text>
                       <View style={styles.avatarList}>
                         {boyAvatars.map((avatar, index) => (
-                          <TouchableOpacity key={index} onPress={() => changeProfilePic(avatar)}>
+                          <TouchableOpacity key={index} onPress={() => changeProfilePic(`/images/portal/b${index + 1}.png`)}>
                             <Image source={avatar} style={styles.avatarOption} />
                           </TouchableOpacity>
                         ))}
@@ -328,3 +354,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+ 

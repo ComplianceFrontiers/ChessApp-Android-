@@ -12,17 +12,14 @@ const AllCourseTab = () => {
   const globalStyles = useGlobalStyles();
 
   return (
-    <View>
-   <View style={{ position: "fixed",marginBottom:"0%", paddingHorizontal: "10%", paddingVertical: "0%", paddingLeft: "10%", top: 0, left: 0 }}>
-    <HomeTab />
-</View>
+    <View style={{ flex: 1 }}>
+      <View style={{ position: "fixed", marginBottom: "0%", paddingHorizontal: "10%", paddingVertical: "0%", paddingLeft: "10%", top: 0, left: 0 }}>
+        <HomeTab />
+      </View>
 
-    <View style={{ paddingHorizontal: "10%",paddingLeft: "10%",paddingRight: "10%", paddingVertical: "10%" ,marginBottom:"20%"}}>
-      
-      {popularCoursesDetail.map((item) => (
-        <TouchableOpacity
-          key={item.id}
-          style={styles.courses}
+      <View style={{ paddingHorizontal: "10%", paddingLeft: "10%", paddingRight: "10%", paddingVertical: "10%", marginBottom: "20%" }}>
+        {popularCoursesDetail.map((item) => (
+          <View key={item.id} style={styles.courses}
           onPress={() => {
             // Check if the item.id is 4 to navigate to notifications
             if (item.id === 3) {
@@ -39,32 +36,36 @@ const AllCourseTab = () => {
             }
           }}
         >
-          <Image source={item.image} style={styles.image} />
+            <Image source={item.image} style={styles.image} />
           <View style={{ gap: 10, paddingVertical: 5 }}>
-            <Text style={[globalStyles.redTextwithWeight]}>{item.title}</Text>
-            <Text>{item.category}</Text>
-            {/* <Text>{item.std}</Text> */}
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "77%",
-              }}
-            >
-              <Text style={globalStyles.violetText}></Text>
-              <View style={styles.absoluteRating}>
-                {/* <RatingIcon /> */}
-                {/* <Text>{item.rating}</Text> */}
+              <Text style={[globalStyles.redTextwithWeight]}>{item.title}</Text>
+              <Text>{item.category}</Text>
+
+              {/* Start Course Button */}
+              <TouchableOpacity
+                style={styles.startCourseButton}
+                onPress={() =>
+                  navigation.navigate("notifcations", {
+                    data: { title: item.title, category: item.category },
+                  })
+                }
+              >
+                <Text style={styles.startCourseText}>Start Course</Text>
+              </TouchableOpacity>
+
+              <View style={styles.ratingContainer}>
+                <Text style={globalStyles.violetText}></Text>
+                <View style={styles.absoluteRating}>
+
+                </View>
               </View>
             </View>
+            <TouchableOpacity style={styles.saveIcon}>
+              <SaveIcon />
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.saveIcon}>
-            <SaveIcon />
-          </TouchableOpacity>
-        </TouchableOpacity>
-      ))}
-    </View>
+        ))}
+      </View>
     </View>
   );
 };
@@ -82,11 +83,42 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "row",
     gap: 20,
+    paddingBottom: 10,
   },
   saveIcon: {
     position: "absolute",
     right: 15,
     top: 15,
+  },
+  textContainer: {
+    gap: 10,
+    // paddingVertical: 5,
+    // flex: 1,
+  },
+  startCourseButton: {
+    backgroundColor: "#4CAF50", // Button color
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginTop: 10,
+    // marginLeft:90,
+    alignItems: "center",
+    justifyContent: "center",
+    maxWidth: "90%", // Limit the button's width to 80% of its container
+    alignSelf: "flex-start", // Align the button to the start of the container
+  },
+  startCourseText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center", // Centers the text in the button
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "90%",
+    // flex: 1,
   },
   absoluteRating: {
     flexDirection: "row",
