@@ -42,8 +42,10 @@ const MyCourses = () => {
 
               return {
                 ...course,
-                completed: registeredCourse ? registeredCourse.completed : 0,
-                status: registeredCourse ? registeredCourse.status : 'default', // add status from API response
+                completed: registeredCourse && typeof registeredCourse.completed === "number"
+                  ? registeredCourse.completed
+                  : 0, // Default to 0 if invalid
+                status: registeredCourse ? registeredCourse.status : "default",
               };
             });
 
@@ -64,23 +66,16 @@ const MyCourses = () => {
     setExpandedItemId((prevId) => (prevId === itemId ? null : itemId));
   };
 
-  // Function to determine the background color based on course status
   const getCourseColor = (status) => {
     switch (status) {
       case "Completed":
-        return "#4CAF50"; // Green for completed courses
+        return "#4CAF50"; // Green
       case "In Progress":
-        return "#FFEB3B"; // Yellow for in-progress courses
+        return "#FFEB3B"; // Yellow
       default:
-        return "#FFA500"; // Orange for default or missing course status
+        return "#FFA500"; // Orange
     }
   };
-
-  // Function to check if the course is clickable
-  const isCourseClickable = (status) => status !== "default"; // Only clickable if not "default"
-
-  // Function to check if the submodule should be clickable
-  const isSubmoduleClickable = (status) => status !== "default"; // Only clickable if course is not "default"
 
   return (
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
@@ -92,10 +87,8 @@ const MyCourses = () => {
               {courses.map((item) => (
                 <View key={item.id}>
                   <TouchableOpacity
-                    style={[
-                      styles.videoContainer,
-                    ]}
-                    onPress={isCourseClickable(item.status) ? () => navigation.navigate(item.url) : null} // Disable onPress if course is "default"
+                    style={styles.videoContainer}
+                    onPress={() => navigation.navigate(item.url)}
                   >
                     <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
                       <Text
@@ -109,9 +102,18 @@ const MyCourses = () => {
                       </Text>
                       <View>
                         <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
-                        <Text style={{ color: theme.color }}>
-                          Completed Percentage: {item.completed}%
-                        </Text>
+                        <View style={styles.progressBarContainer}>
+                          <View
+                            style={[
+                              styles.progressBar,
+                              {
+                                backgroundColor: getCourseColor(item.status),
+                                width: `${Math.max(0, Math.min(100, item.completed))}%`,
+                              },
+                            ]}
+                          />
+                        </View>
+                        <Text>{item.completed}%</Text>
                       </View>
                     </View>
                     <PlayBTN onPress={() => toggleExpand(item.id)} />
@@ -122,7 +124,7 @@ const MyCourses = () => {
                       <TouchableOpacity
                         key={submodule.id}
                         style={styles.submoduleItem}
-                        onPress={isSubmoduleClickable(item.status) ? () => navigation.navigate(submodule.url) : null} // Disable onPress if course is "default"
+                        onPress={() => navigation.navigate(submodule.url)}
                       >
                         <Text style={[styles.submoduleText, globalStyles.text]}>
                           {submodule.title}
@@ -164,12 +166,23 @@ const styles = StyleSheet.create({
   },
   submoduleItem: {
     paddingVertical: 5,
-    paddingLeft: 40,
-    alignSelf: "flex-end",  // Aligns the submodules to the right
-    marginRight: 20,  // Adds some space from the right edge
+    paddingLeft: 70,
+    alignSelf: "flex-start", // Align submodules to the right
+    marginRight: 20, // Space from the right edge
   },
   submoduleText: {
     color: "#555",
+  },
+  progressBarContainer: {
+    height: 10,
+    backgroundColor: "#ccc", // Default light gray background
+    borderRadius: 5,
+    overflow: "hidden",
+    marginTop: 5,
+    width: "100%", // Ensure all progress bars are the same size
+  },
+  progressBar: {
+    height: "100%",
   },
   absoluteBtn: {
     position: "absolute",
@@ -178,3 +191,5 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
+
+ 

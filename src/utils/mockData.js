@@ -320,8 +320,8 @@ export const popularCoursesDetail = [
   {
     id: 3,
     image: require("../assets/images/graphicDesignIMG.png"),
-    category: "Basics of Chess",
-    title: "Chess For Schools",
+    category: "Online Course",
+    title: "Basics of Chess",
     price: "850",
     rating: "4.2",
     std: "12580",
