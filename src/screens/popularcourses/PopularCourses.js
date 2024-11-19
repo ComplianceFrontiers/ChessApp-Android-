@@ -30,7 +30,7 @@ const PopularCourses = () => {
       case "Home":
         return <HomeTab />;
       case "My courses":
-        return <CoursesTab />;
+        return <HomeTab />;
       case "Message":
         return <MessageScreen />;
       default:
@@ -57,8 +57,9 @@ const PopularCourses = () => {
           </View>
         </View>
       </ScrollView>
+      {renderTabScreen()}
 
-      <View style={styles.fixedTab}>
+      <View style={styles.fixedTab}>  
         <Tabs
           activeTab={selectedTab}
           onSelectTab={(tab) => setSelectedTab(tab)}

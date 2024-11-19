@@ -6,57 +6,27 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import HomeTab from "../hometab/HomeTab";
+
+import React from "react";
 import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
 import ChatTab from "../chattab/ChatTab";
-import CallScreen from "../callScreen/CallScreen";
 
 const MessageScreen = () => {
-  const tabs = [
-    { id: 1, tab: "Chat" },
-    { id: 2, tab: "Calls" },
-  ];
   const globalStyles = useGlobalStyles();
-
-  const [activeTab, setActiveTab] = useState("Chat");
-
-  const handleTabs = (item) => {
-    setActiveTab(item);
-  };
-
-  const renderTabs = () => {
-    switch (activeTab) {
-      case "Chat":
-        return <ChatTab />;
-      case "Calls":
-        return <CallScreen />;
-      default:
-        return <ChatTab />;
-    }
-  };
 
   return (
     <ScrollView style={globalStyles.colorBG}>
+      <View  >
+        <HomeTab />
+      </View>
       <Header label="Messages" backBTN={false} />
       <View style={globalStyles.contents}>
-        <View style={styles.tabContainer}>
-          {tabs.map((item) => (
-            <TouchableOpacity
-              key={item.id}
-              onPress={() => handleTabs(item.tab)}
-            >
-              <Text
-                style={
-                  activeTab === item.tab ? styles.activetab : styles.inactivetab
-                }
-              >
-                {item.tab}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-        {renderTabs()}
+      <View style={styles.tabContainer}>
+        <ChatTab />
+      </View>
+        {/* {renderTabs()} */}
       </View>
     </ScrollView>
   );
@@ -71,22 +41,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "95%",
     alignSelf: "center",
-  },
-  activetab: {
-    backgroundColor: "#FC4F72",
-    color: "white",
-    fontWeight: "600",
-    paddingVertical: "4%",
-    paddingHorizontal: "20%",
-    borderRadius: 30,
-  },
-  inactivetab: {
-    backgroundColor: "#f1f1f1",
-    color: "#000000",
-    fontWeight: "600",
-    paddingVertical: "4%",
-    paddingHorizontal: "20%",
-    borderRadius: 30,
   },
   mentors: {
     flexDirection: "row",
