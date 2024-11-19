@@ -1,16 +1,25 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import { StyleSheet, Text, TouchableOpacity, View, Linking } from "react-native";
+import useGlobalStyles from "../../styles/globalStyles";
 import { signInData } from "../../utils/mockData";
 import CommonButton from "../../components/commonbutton/CommonButton";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
 import Logo from "../../components/logo/Logo";
+import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for icons
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
+
+  // Function to handle email link
+  const handleEmailPress = () => {
+    const emailUrl = "mailto:connect@chesschamps.us?subject=Request From Chess Champs App &body=Hello, I need assistance...";
+    Linking.openURL(emailUrl).catch((err) =>
+      console.error("Failed to open email client", err)
+    );
+  };
 
   return (
     <View style={globalStyles.container}>
@@ -59,6 +68,17 @@ const SignUpScreen = () => {
           </View>
         </View>
       </View>
+
+      {/* Support Icon and Text at the bottom right */}
+      <View style={styles.supportContainer}>
+        <TouchableOpacity 
+          style={styles.supportIcon} 
+          onPress={handleEmailPress}
+        >
+          <FontAwesome name="headphones" size={30} color="white" />
+        </TouchableOpacity>
+        <Text style={styles.supportText}>Having issues? Please connect to Customer Support</Text>
+      </View>
     </View>
   );
 };
@@ -90,6 +110,26 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     gap: 5,
+  },
+  supportContainer: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  supportIcon: {
+    backgroundColor: "#4CAF50", // Background color for the icon
+    borderRadius: 50,
+    padding: 10,
+    elevation: 5, // Add shadow for better visibility
+  },
+  supportText: {
+    color: "white",
+    marginLeft: 10,
+    fontSize: 14,
+    maxWidth: 180, // Prevent the text from going too far
+    lineHeight: 18,
   },
 });
 
