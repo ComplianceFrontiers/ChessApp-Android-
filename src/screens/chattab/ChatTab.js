@@ -9,6 +9,7 @@ import {
 import useGlobalStyles from "../../styles/globalStyles";
 import ThemeContext from "../../components/Theme/ThemeContext";
 
+
 const ChatTab = () => {
   const [chat, setChat] = useState([
     { id: 1, sender: "bot", message: "Hi! How can I help you today?" },
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   optionsContainer: {
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-around",
     padding: 10,
     borderTopWidth: 1,
