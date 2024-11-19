@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import {
+  Image,
   ScrollView,
   StyleSheet,
+  Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import AllCourseTab from "../allCourseTab/AllCourseTab";
@@ -27,14 +30,25 @@ const PopularCourses = () => {
     setPopularCourseTab(item);
   };
 
-  // Render the appropriate tab screen based on the selectedTab state
   const renderTabScreen = () => {
     switch (selectedTab) {
+      case "Home":
+        return <HomeTab />;
+      case "My courses":
+        return <CoursesTab />;
       case "Message":
         navigation.navigate('message'); // Navigate to MessageScreen
         return null;      default:
         return <HomeTab />;
     }
+  };
+
+  const renderPopularCourseTabs = () => {
+    switch (popularCourseTab) {
+      case "All":
+        return <AllCourseTab />;
+    }
+    // Additional popular course tabs can be added here
   };
 
   const globalStyles = useGlobalStyles();
@@ -44,14 +58,13 @@ const PopularCourses = () => {
       <ScrollView style={{ flex: 1 }}>
         <View style={globalStyles.contents}>
           <View>
-            <AllCourseTab />
+            {renderPopularCourseTabs()}
           </View>
         </View>
       </ScrollView>
-      {/* Render Tab Screen Based on Selected Tab */}
       {renderTabScreen()}
 
-      {/* Fixed Tabs at Bottom */}
+
       <View style={styles.fixedTab}>
         <Tabs
           activeTab={selectedTab}
@@ -109,8 +122,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "#FFFFFF",
-    elevation: 10,
+    backgroundColor: "#FFFFFF", // Optional: Background color for the tab bar
+    elevation: 10, // Optional: Shadow effect for Android
     zIndex: 1,
   },
 });
