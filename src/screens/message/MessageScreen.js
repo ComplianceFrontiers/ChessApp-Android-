@@ -28,9 +28,22 @@ const MessageScreen = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
-       <View style={{ position: "fixed", marginBottom: "0%", paddingHorizontal: "10%", paddingVertical: "0%", paddingLeft: "10%", top: 60, left: 0 }}>
-        <HomeTab />
-      </View>
+       <View 
+  style={{ 
+    position: "fixed", 
+    zIndex: 7, 
+    backgroundColor: "#fff", // White background color
+    marginBottom: "0%", 
+    paddingHorizontal: "10%", 
+    paddingVertical: "0%", 
+    paddingLeft: "10%", 
+    top: 60, 
+    left: 0 
+  }}
+>
+  <HomeTab />
+</View>
+
 
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={styles.scrollContent}>

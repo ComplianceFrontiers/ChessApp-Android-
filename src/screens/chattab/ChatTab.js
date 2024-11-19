@@ -57,7 +57,8 @@ const ChatTab = () => {
       marginVertical: "7%",
       marginBottom: "30%",
     }}>
-      <ScrollView style={{ flex: 1, marginVertical: 10 }}>
+      
+      <View style={{ flex: 1, marginVertical: 10 }}>
         {chat.map((msg) => (
           <View
             key={msg.id}
@@ -69,7 +70,7 @@ const ChatTab = () => {
             <Text style={{ color: "white" }}>{msg.message}</Text>
           </View>
         ))}
-      </ScrollView>
+      </View>
 
       {/* Options */}
       <View style={styles.optionsContainer}>
