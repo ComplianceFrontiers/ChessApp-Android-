@@ -12,10 +12,13 @@ const MessageScreen = () => {
   const globalStyles = useGlobalStyles();
   const navigation = useNavigation(); // Initialize the navigation object
 
-  const [selectedTab, setSelectedTab] = useState("Home");
+  const [selectedTab, setSelectedTab] = useState("Message");
 
   const renderTabScreen = () => {
     switch (selectedTab) {
+      case "Home":
+        navigation.navigate('popularcourses'); // Navigate to MessageScreen
+        return null; 
       case "Message":
         navigation.navigate('message'); // Navigate to MessageScreen
         return null;      default:
