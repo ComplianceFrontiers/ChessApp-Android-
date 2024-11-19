@@ -87,7 +87,11 @@ const T11 = () => {
       <View style={styles.mediaContainer}>
         <WebView
           source={{ uri: "https://www.youtube.com/embed/LUvIdC30djI" }}
-          style={{ width: "100%", height: 230 }}
+          style={{ width: "90%",
+                height: 230,
+                alignSelf: "center",
+                borderRadius: 10, // Optional: Adds rounded corners
+                overflow: "hidden" }}
           allowsFullscreenVideo
           scalesPageToFit={true} // Ensures the content scales to fit within the WebView bounds
           javaScriptEnabled={true} // Enables JavaScript (necessary for embedded videos)
