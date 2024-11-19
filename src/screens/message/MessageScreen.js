@@ -1,61 +1,48 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import HomeTab from "../hometab/HomeTab";
-
+import { ScrollView, StyleSheet, View, SafeAreaView } from "react-native";
 import React from "react";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
+import useGlobalStyles from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
+import HomeTab from "../hometab/HomeTab";
 import ChatTab from "../chattab/ChatTab";
 
 const MessageScreen = () => {
   const globalStyles = useGlobalStyles();
 
   return (
-    <ScrollView style={globalStyles.colorBG}>
-      <View  >
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+      {/* Fixed HomeTab */}
+      <View style={styles.fixedContainer}>
         <HomeTab />
       </View>
-      <Header label="Messages" backBTN={false} />
-      <View style={globalStyles.contents}>
-      <View style={styles.tabContainer}>
-        <ChatTab />
-      </View>
-        {/* {renderTabs()} */}
-      </View>
-    </ScrollView>
+
+      {/* Scrollable Content */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Adding space below HomeTab */}
+        <View style={{ marginTop: 70 }}>
+          <Header label="Messages" backBTN={false} />
+          <View style={globalStyles.contents}>
+            <ChatTab />
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 export default MessageScreen;
 
 const styles = StyleSheet.create({
-  tabContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "95%",
-    alignSelf: "center",
+  fixedContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: "#fff", // Background color to overlay content properly
+    paddingHorizontal: 10, // Adjust as needed
+    paddingVertical: 5,
   },
-  mentors: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 15,
-    justifyContent: "space-between",
-  },
-  image: {
-    width: 80,
-    height: 80,
-  },
-  unreadMSG: {
-    color: "white",
-    backgroundColor: "#46007C",
-    padding: "1%",
-    borderRadius: 50,
+  scrollContent: {
+    paddingBottom: 20,
   },
 });

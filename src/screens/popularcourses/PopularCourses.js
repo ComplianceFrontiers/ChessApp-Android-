@@ -29,8 +29,6 @@ const PopularCourses = () => {
     switch (selectedTab) {
       case "Home":
         return <HomeTab />;
-      case "My courses":
-        return <HomeTab />;
       case "Message":
         return <MessageScreen />;
       default:
@@ -57,9 +55,11 @@ const PopularCourses = () => {
           </View>
         </View>
       </ScrollView>
-      {renderTabScreen()}
+      {/* Render Tab Screen Based on Selected Tab */}
+      <View style={{ flex: 1 }}>{renderTabScreen()}</View>
 
-      <View style={styles.fixedTab}>  
+      {/* Fixed Tabs at Bottom */}
+      <View style={styles.fixedTab}>
         <Tabs
           activeTab={selectedTab}
           onSelectTab={(tab) => setSelectedTab(tab)}
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "#FFFFFF", // Optional: Background color for the tab bar
-    elevation: 10, // Optional: Shadow effect for Android
+    backgroundColor: "#FFFFFF",
+    elevation: 10,
     zIndex: 1,
   },
 });
