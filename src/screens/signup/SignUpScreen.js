@@ -113,24 +113,25 @@ const styles = StyleSheet.create({
   },
   supportContainer: {
     position: "absolute",
-    bottom: 20,
-    right: 20,
-    flexDirection: "row",
-    alignItems: "center",
+    bottom: 20, // Keep at the bottom of the screen
+    right: 20, // Align to the right of the screen
+    alignItems: "flex-end", // Align all elements to the right
   },
   supportIcon: {
     backgroundColor: "#4CAF50", // Background color for the icon
-    borderRadius: 50,
-    padding: 10,
+    borderRadius: 25, // Circle shape
+    padding: 10, // Space around the icon
     elevation: 5, // Add shadow for better visibility
   },
   supportText: {
     color: "white",
-    marginLeft: 10,
+    textAlign: "right", // Align text to the right
+    marginTop: 5, // Add spacing between icon and text
     fontSize: 14,
-    maxWidth: 180, // Prevent the text from going too far
+    maxWidth: 180, // Limit the width to prevent overflow
     lineHeight: 18,
   },
+  
 });
 
 export default SignUpScreen;
