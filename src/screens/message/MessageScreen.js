@@ -48,7 +48,7 @@ const MessageScreen = () => {
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Adding space below HomeTab */}
-        <View style={{ marginTop: 70 }}>
+        <View style={{ marginTop: 90 }}>
           <Header label="Messages" backBTN={false} />
           <View style={globalStyles.contents}>
             <ChatTab />

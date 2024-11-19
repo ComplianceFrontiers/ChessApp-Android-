@@ -14,10 +14,10 @@ const useGlobalStyles = () => {
         backgroundColor: theme.background,
       },
       contents: {
-        paddingTop: "10%",
+        paddingTop: "0%",
         alignItems: "center",
         width: "100%",
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
       },
       colorBG: {
         backgroundColor: theme.background,
