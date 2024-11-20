@@ -1,34 +1,16 @@
+import React from "react";
 import { ScrollView, StyleSheet, View, SafeAreaView } from "react-native";
-import React, { useState } from "react";
-import useGlobalStyles from "../../styles/globalStyles";
 import Header from "../../components/header/Header";
+import useGlobalStyles from "../../styles/globalStyles";
 import HomeTab from "../hometab/HomeTab";
-import ChatTab from "../chattab/ChatTab";
-import Tabs from "../../components/tabs/Tabs";
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
+import ChatTab from "../chattab/ChatTab"; // Assuming this is the content for the 'Message' tab
+import Tabs from "../tabscreens/TabScreens";
 
-
-const MessageScreen = () => {
+const MessageScreen = ({ navigation }) => {
   const globalStyles = useGlobalStyles();
-  const navigation = useNavigation(); // Initialize the navigation object
-
-  const [selectedTab, setSelectedTab] = useState("Message");
-
-  const renderTabScreen = () => {
-    switch (selectedTab) {
-      case "Home":
-        navigation.navigate('popularcourses'); // Navigate to MessageScreen
-        return null; 
-      case "Message":
-        navigation.navigate('message'); // Navigate to MessageScreen
-        return null;      default:
-        return <HomeTab />;
-    }
-  };
-
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
-       <View 
+      <View 
   style={{ 
     position: "fixed", 
     zIndex: 7, 
@@ -48,22 +30,15 @@ const MessageScreen = () => {
       {/* Scrollable Content */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Adding space below HomeTab */}
-        <View style={{ marginTop: 90 }}>
-          <Header label="Messages" backBTN={false} />
-          <View style={globalStyles.contents}>
-            <ChatTab />
+        <View style={{ marginTop: 80 }}>
+        <Header label="Messages" backBTN={false} />
+          <View contentContainerStyle={styles.contents}>
+          <ChatTab />
           </View>
         </View>
       </ScrollView>
-      {renderTabScreen()}
 
-      {/* Fixed Tabs at Bottom */}
-      <View style={styles.fixedTab}>
-        <Tabs
-          activeTab={selectedTab}
-          onSelectTab={(tab) => setSelectedTab(tab)}
-        />
-      </View>
+      <Tabs navigation={navigation} />
     </View>
   );
 };
@@ -78,10 +53,16 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 1,
     backgroundColor: "#fff", // Background color to overlay content properly
-    paddingHorizontal: 10, // Adjust as needed
-    paddingVertical: 5,
+    paddingHorizontal: 5, // Adjust as needed
+    paddingVertical: 1,
+  },
+  contents: {
+    paddingTop: "12%",
+    alignItems: "center",
+    width: "100%",
+    paddingHorizontal: 1,
   },
   scrollContent: {
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
 });

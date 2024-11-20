@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Image,
   ScrollView,
@@ -6,71 +6,26 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from "react-native";
-import AllCourseTab from "../allCourseTab/AllCourseTab";
-import { popularCategoriesTab } from "../../utils/mockData";
+} from "react-native";import AllCourseTab from "../allCourseTab/AllCourseTab";
+import Tabs from "../tabscreens/TabScreens";
 import useGlobalStyles from "../../styles/globalStyles";
-import Header from "../../components/header/Header";
-import Tabs from "../../components/tabs/Tabs";
-import HomeTab from "../hometab/HomeTab";
-import CoursesTab from "../coursestab/CoursesTab";
-import MessagesTab from "../messagestab/MessagesTab";
-import MessageScreen from "../message/MessageScreen";
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
 
-const PopularCourses = () => {
-  const [selectedTab, setSelectedTab] = useState("Home");
-  const [popularCourseTab, setPopularCourseTab] = useState("All");
-  const navigation = useNavigation(); // Initialize the navigation object
-
-  
-
-  const handleTab = (item) => {
-    setPopularCourseTab(item);
-  };
-
-  const renderTabScreen = () => {
-    switch (selectedTab) {
-      case "Home":
-        return <HomeTab />;
-      case "My courses":
-        return <CoursesTab />;
-      case "Message":
-        navigation.navigate('message'); // Navigate to MessageScreen
-        return null;      default:
-        return <HomeTab />;
-    }
-  };
-
-  const renderPopularCourseTabs = () => {
-    switch (popularCourseTab) {
-      case "All":
-        return <AllCourseTab />;
-    }
-    // Additional popular course tabs can be added here
-  };
-
+const PopularCourses = ({ navigation }) => {
   const globalStyles = useGlobalStyles();
 
   return (
     <View style={[globalStyles.colorBG, { flex: 1 }]}>
-      <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={{ flex: 1 }}>        
         <View style={globalStyles.contents}>
-          <View>
-            {renderPopularCourseTabs()}
-          </View>
+        <View>
+          <AllCourseTab />
+        </View>
         </View>
       </ScrollView>
-      {renderTabScreen()}
 
-
-      <View style={styles.fixedTab}>
-        <Tabs
-          activeTab={selectedTab}
-          onSelectTab={(tab) => setSelectedTab(tab)}
-        />
-      </View>
+      {/* Render the Tabs component for this screen */}
+      <Tabs navigation={navigation} />
     </View>
   );
 };

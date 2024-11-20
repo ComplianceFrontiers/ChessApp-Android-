@@ -1,38 +1,95 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import Tabs from "../../components/tabs/Tabs";
-import useGlobalStyles, { globalStyles } from "../../styles/globalStyles";
-import HomeTab from "../hometab/HomeTab";
-import CoursesTab from "../coursestab/CoursesTab";
-import MessagesTab from "../messagestab/MessagesTab";
-import MessageScreen from "../message/MessageScreen";
+import React, { useState, useContext } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import useGlobalStyles from "../../styles/globalStyles"; // Assuming you have global styles
+import { tabsData } from "../../utils/mockData"; // Assuming this is the tab data
+import HomeTabIcon from "../../components/hometabIcon/HomeTabIcon";
+import CoursesTabIcon from "../../components/coursetabIcon/CourseTabIcon";
+import MessageTabIcon from "../../components/messagetabIcon/MessageTabIcon";
+import ThemeContext from "../../components/Theme/ThemeContext"; // Assuming you have a Theme context
 
-const TabScreens = () => {
-  const [selectedTab, setSelectedTab] = useState("mycourses");
-  const globalStyles = useGlobalStyles();
+// Main Tabs Component
+const Tabs = ({ navigation }) => {
+  const [selectedTab, setSelectedTab] = useState("Home");
 
-  const renderTabScreen = () => {
-    switch (selectedTab) {
+  const theme = useContext(ThemeContext); // Get theme from context
+  const globalStyles = useGlobalStyles(); // Global styles
+
+  // Update the selected tab and handle navigation
+  const onSelectTab = (tab) => {
+    setSelectedTab(tab);
+    if (tab === "Message") {
+      navigation.navigate("message");
+    } else if (tab === "Home") {
+      navigation.navigate("popularcourses");
+    }
+  };
+
+  // Render icon based on the selected tab
+  const renderIcon = (title) => {
+    switch (title) {
       case "Home":
-        return <HomeTab />;
+        return (
+          <HomeTabIcon
+            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
+          />
+        );
       case "My courses":
-        return <CoursesTab />;
+        return (
+          <CoursesTabIcon
+            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
+          />
+        );
       case "Message":
-        return <MessageScreen />;
+        return (
+          <MessageTabIcon
+            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
+          />
+        );
       default:
-        return <HomeTab />;
+        return null;
     }
   };
 
   return (
     <View style={globalStyles.container}>
-      {renderTabScreen()}
-      <Tabs
-        activeTab={selectedTab}
-        onSelectTab={(tab) => setSelectedTab(tab)}
-      />
+      {/* Add content rendering based on the selected tab */}
+      <View style={styles.tabs}>
+        {tabsData.map((item) => (
+          <TouchableOpacity
+            key={item.title}
+            style={styles.individualTabs}
+            onPress={() => onSelectTab(item.title)}
+          >
+            {renderIcon(item.title)}
+            {/* Ensure to wrap the title with <Text> */}
+            <Text
+              
+            >
+              {item.title}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </View>
   );
 };
 
-export default TabScreens;
+const styles = StyleSheet.create({
+  tabs: {
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: "white",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingVertical: 15,
+    flexDirection: "row",
+    elevation: 20,
+  },
+  individualTabs: {
+    alignItems: "center",
+    gap: 10,
+  },
+});
+
+export default Tabs;

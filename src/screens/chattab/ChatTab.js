@@ -52,10 +52,9 @@ const ChatTab = () => {
 
   return (
     <View  style={{
-      gap: 15,
+      gap: 10,
       width: "90%",
-      marginVertical: "7%",
-      marginBottom: "30%",
+      marginBottom: "10%",
     }}>
       
       <View style={{ flex: 1, marginVertical: 10 }}>
