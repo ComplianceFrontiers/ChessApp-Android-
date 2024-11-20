@@ -12,7 +12,7 @@ import Header from "../../../../../../components/header/Header";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import RatingIcon from "../../../../../../assets/svg/ratingIcon.svg";
 import AboutTab from "../../../../../abouttab/AboutTab";
-import CurriculumTab from "../../../../../curriculumtab/CurriculumTab";
+import MyCourses from "../../../../../mycourses/MyCourses";
 import CommonButton from "../../../../../../components/commonbutton/CommonButton";
 import ThemeContext from "../../../../../../components/Theme/ThemeContext";
 import ClassIcon from "../../../../../../components/classicon/ClassIcon";
@@ -40,9 +40,8 @@ const T11 = () => {
   const renderTabs = () => {
     switch (activeTab) {
       case "Curriculum":
-        return <CurriculumTab />;
-      default:
-        return null;
+        return <MyCourses showHeader={false} />;
+      return null;
     }
   };
 

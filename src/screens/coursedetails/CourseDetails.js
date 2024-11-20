@@ -40,7 +40,7 @@ const CourseDetails = () => {
       case "About":
         return <AboutTab />;
       case "Curriculum":
-        return <CurriculumTab />;
+        return <MyCourses showHeader={false} />;
     }
   };
 

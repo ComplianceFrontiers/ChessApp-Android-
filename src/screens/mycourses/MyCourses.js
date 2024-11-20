@@ -9,7 +9,7 @@ import CommonButton from "../../components/commonbutton/CommonButton";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
 
-const MyCourses = () => {
+const MyCourses = ({ showHeader = true }) => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
@@ -79,64 +79,67 @@ const MyCourses = () => {
 
   return (
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
-      <ScrollView style={[globalStyles.colorBG, { marginBottom: "10%" }]}>
-        <View style={[globalStyles.container, { marginBottom: "20%" }]}>
-          <Header label="Level 1 (Pawn)" />
-          <View style={globalStyles.contents}>
-            <View style={{ gap: 20, paddingVertical: "0%" }}>
-              {courses.map((item) => (
-                <View key={item.id}>
-                  <TouchableOpacity
-                    style={styles.videoContainer}
-                    onPress={() => navigation.navigate(item.url)}
-                  >
-                    <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-                      <Text
-                        style={[
-                          styles.id,
-                          globalStyles.headingFive,
-                          { backgroundColor: getCourseColor(item.status) },
-                        ]}
-                      >
-                        {item.id}
-                      </Text>
-                      <View>
-                        <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
-                        <View style={styles.progressBarContainer}>
-                          <View
-                            style={[
-                              styles.progressBar,
-                              {
-                                backgroundColor: getCourseColor(item.status),
-                                width: `${Math.max(0, Math.min(100, item.completed))}%`,
-                              },
-                            ]}
-                          />
-                        </View>
-                        <Text>{item.completed}%</Text>
-                      </View>
-                    </View>
-                    <PlayBTN onPress={() => toggleExpand(item.id)} />
-                  </TouchableOpacity>
-
-                  {expandedItemId === item.id &&
-                    item.submodules?.map((submodule) => (
-                      <TouchableOpacity
-                        key={submodule.id}
-                        style={styles.submoduleItem}
-                        onPress={() => navigation.navigate(submodule.url)}
-                      >
-                        <Text style={[styles.submoduleText, globalStyles.text]}>
-                          {submodule.title}
-                        </Text>
-                      </TouchableOpacity>
-                    ))}
+      <ScrollView style={[globalStyles.colorBG]}>
+  {showHeader && (
+    <View style={[globalStyles.container]}>
+      <Header label="Level 1 (Pawn)" />
+    </View>
+  )}
+  <View style={globalStyles.contents}>
+    <View style={{ gap: 20, paddingVertical: "0%" }}>
+      {courses.map((item) => (
+        <View key={item.id}>
+          <TouchableOpacity
+            style={styles.videoContainer}
+            onPress={() => navigation.navigate(item.url)}
+          >
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+              <Text
+                style={[
+                  styles.id,
+                  globalStyles.headingFive,
+                  { backgroundColor: getCourseColor(item.status) },
+                ]}
+              >
+                {item.id}
+              </Text>
+              <View>
+                <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
+                <View style={styles.progressBarContainer}>
+                  <View
+                    style={[
+                      styles.progressBar,
+                      {
+                        backgroundColor: getCourseColor(item.status),
+                        width: `${Math.max(0, Math.min(100, item.completed))}%`,
+                      },
+                    ]}
+                  />
                 </View>
-              ))}
+                <Text>{item.completed}%</Text>
+              </View>
             </View>
-          </View>
+            <PlayBTN onPress={() => toggleExpand(item.id)} />
+          </TouchableOpacity>
+
+          {expandedItemId === item.id &&
+            item.submodules?.map((submodule) => (
+              <TouchableOpacity
+                key={submodule.id}
+                style={styles.submoduleItem}
+                onPress={() => navigation.navigate(submodule.url)}
+              >
+                <Text style={[styles.submoduleText, globalStyles.text]}>
+                  {submodule.title}
+                </Text>
+              </TouchableOpacity>
+            ))}
         </View>
-      </ScrollView>
+      ))}
+    </View>
+  </View>
+</ScrollView>
+
       <View style={styles.absoluteBtn}>
         <CommonButton
           label="Start the course"
@@ -146,6 +149,7 @@ const MyCourses = () => {
     </View>
   );
 };
+
 
 export default MyCourses;
 
