@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mediaContainer: {
-    marginVertical: 40,
+    marginVertical: 50,
   },
 });
 
