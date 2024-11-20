@@ -10,8 +10,7 @@ import ThemeContext from "../../components/Theme/ThemeContext"; // Assuming you 
 // Main Tabs Component
 const Tabs = ({ navigation }) => {
   const [selectedTab, setSelectedTab] = useState("Home");
-
-  const theme = useContext(ThemeContext); // Get theme from context
+  const { whiteOrBlack } = useContext(ThemeContext); // Get theme from context
   const globalStyles = useGlobalStyles(); // Global styles
 
   // Update the selected tab and handle navigation
@@ -28,23 +27,11 @@ const Tabs = ({ navigation }) => {
   const renderIcon = (title) => {
     switch (title) {
       case "Home":
-        return (
-          <HomeTabIcon
-            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
-          />
-        );
+        return <HomeTabIcon color={whiteOrBlack} />;
       case "My courses":
-        return (
-          <CoursesTabIcon
-            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
-          />
-        );
+        return <CoursesTabIcon color={whiteOrBlack} />;
       case "Support":
-        return (
-          <MessageTabIcon
-            color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
-          />
-        );
+        return <MessageTabIcon color={whiteOrBlack} />;
       default:
         return null;
     }
@@ -52,7 +39,6 @@ const Tabs = ({ navigation }) => {
 
   return (
     <View style={globalStyles.container}>
-      {/* Add content rendering based on the selected tab */}
       <View style={styles.tabs}>
         {tabsData.map((item) => (
           <TouchableOpacity
@@ -61,12 +47,7 @@ const Tabs = ({ navigation }) => {
             onPress={() => onSelectTab(item.title)}
           >
             {renderIcon(item.title)}
-            {/* Ensure to wrap the title with <Text> */}
-            <Text
-              
-            >
-              {item.title}
-            </Text>
+            <Text>{item.title}</Text>
           </TouchableOpacity>
         ))}
       </View>
