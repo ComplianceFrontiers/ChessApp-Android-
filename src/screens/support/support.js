@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import useGlobalStyles from "../../styles/globalStyles";
 import HomeTab from "../hometab/HomeTab";
 import ChatTab from "../chattab/ChatTab"; // Assuming this is the content for the 'Message' tab
-import Tabs from "../tabscreens/TabScreens";
+import Tabs from "../tab/Tab";
 
 const MessageScreen = ({ navigation }) => {
   const globalStyles = useGlobalStyles();

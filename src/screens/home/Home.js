@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";import AllCourseTab from "../allCourseTab/AllCourseTab";
-import Tabs from "../tabscreens/TabScreens";
+import Tabs from "../tab/Tab";
 import useGlobalStyles from "../../styles/globalStyles";
 
 

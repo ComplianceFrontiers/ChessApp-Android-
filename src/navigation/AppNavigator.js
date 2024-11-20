@@ -10,9 +10,9 @@ import CreatePin from "../screens/createpin/CreatePin";
 import ForgotPassword from "../screens/forgotpassword/ForgotPassword";
 import EnterCode from "../screens/entercode/EnterCode";
 import NewPassword from "../screens/newpassword/NewPassword";
-import TabScreens from "../screens/tabscreens/TabScreens";
+import Tab from "../screens/tab/Tab";
 import Categories from "../screens/categories/Categories";
-import PopularCourses from "../screens/popularcourses/PopularCourses";
+import Home from "../screens/home/Home";
 import TopMentors from "../screens/topmentors/TopMentors";
 import SearchScreen from "../screens/searchscreen/SearchScreen";
 import FilterScreen from "../screens/filerScreen/FilterScreen";
@@ -45,7 +45,7 @@ import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51
 import Level1Sm2 from "../screens/coursedetails/modules/level1/specialMoves/52/52"
 import Level1Sm3 from "../screens/coursedetails/modules/level1/specialMoves/53/53"
 import CourseComplete from "../screens/certificate/CourseComplete";
-import MessageScreen from "../screens/message/MessageScreen";
+import Support from "../screens/support/support";
 import PersonalMessageScreen from "../screens/personalmessagescreen/PersonalMessageScreen";
 import CallingScreen from "../screens/callingscreen/CallingScreen";
 import CertificateDownload from "../screens/certificatedownload/CertificateDownload";
@@ -67,7 +67,7 @@ const AppNavigator = () => {
         const email = await AsyncStorage.getItem('email');
         console.log(email)
         if (email) {
-          setInitialRoute('popularcourses'); // User has onboarded, go to SignIn
+          setInitialRoute('home'); // User has onboarded, go to SignIn
         } else {
           setInitialRoute('onboarding'); // User hasn't onboarded, go to Onboarding
         }
@@ -100,9 +100,9 @@ const AppNavigator = () => {
       <Stack.Screen name="forgotpassword" component={ForgotPassword} />
       <Stack.Screen name="entercode" component={EnterCode} />
       <Stack.Screen name="newpassword" component={NewPassword} />
-      <Stack.Screen name="tabscreens" component={TabScreens} />
+      <Stack.Screen name="tab" component={Tab} />
       <Stack.Screen name="categories" component={Categories} />
-      <Stack.Screen name="popularcourses" component={PopularCourses} />
+      <Stack.Screen name="home" component={Home} />
       <Stack.Screen name="topmentors" component={TopMentors} />
       <Stack.Screen name="search" component={SearchScreen} />
       <Stack.Screen name="filterscreen" component={FilterScreen} />
@@ -135,7 +135,7 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/52" component={Level1Sm2} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/53" component={Level1Sm3} />
       <Stack.Screen name="certificate" component={CourseComplete} />
-      <Stack.Screen name="message" component={MessageScreen} />
+      <Stack.Screen name="support" component={Support} />
       <Stack.Screen name="personalmessage" component={PersonalMessageScreen} />
       <Stack.Screen name="callingscreen" component={CallingScreen} />
       <Stack.Screen

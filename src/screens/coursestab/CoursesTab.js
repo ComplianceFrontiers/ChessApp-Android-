@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
-import PopularCourses from "../popularcourses/PopularCourses";
+import PopularCourses from "../home/Home";
 
 const CoursesTab = () => {
   return (

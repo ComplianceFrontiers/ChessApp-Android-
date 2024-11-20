@@ -17,9 +17,9 @@ const Tabs = ({ navigation }) => {
   const onSelectTab = (tab) => {
     setSelectedTab(tab);
     if (tab === "Support") {
-      navigation.navigate("message");
+      navigation.navigate("support");
     } else if (tab === "Home") {
-      navigation.navigate("popularcourses");
+      navigation.navigate("home");
     }
   };
 

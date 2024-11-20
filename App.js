@@ -10,7 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
-  const [initialRoute, setInitialRoute] = useState('tabscreens');
+  const [initialRoute, setInitialRoute] = useState('tab');
 
   useEffect(() => {
     const listener = EventRegister.addEventListener("ChangeTheme", (data) => {
@@ -20,7 +20,7 @@ export default function App() {
     const checkAsyncStorage = async () => {
       const data = await AsyncStorage.getItem('email'); // Check if email exists
       if (data) {
-        setInitialRoute('popularcourses'); // Set to 'tabscreens' if email exists
+        setInitialRoute('home'); // Set to 'tab' if email exists
       } else {
         setInitialRoute('onboarding'); // Set to 'onboarding' otherwise
       }
