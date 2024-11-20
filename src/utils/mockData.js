@@ -185,7 +185,7 @@ export const newPasswordData = [
 export const tabsData = [
   { id: 1, title: "My courses" },
   { id: 2, title: "Home" },
-  { id: 3, title: "Message" },
+  { id: 3, title: "Support" },
 ];
 
 export const hometabPorfileHeader = [

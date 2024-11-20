@@ -28,7 +28,7 @@ const MessageScreen = ({ navigation }) => {
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={{ marginTop: 80 }}>
-        <Header label="Messages" backBTN={false} />
+        <Header label="Need Support" backBTN={false} />
           <View contentContainerStyle={styles.contents}>
           <ChatTab />
           </View>

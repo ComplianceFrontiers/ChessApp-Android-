@@ -17,7 +17,7 @@ const Tabs = ({ navigation }) => {
   // Update the selected tab and handle navigation
   const onSelectTab = (tab) => {
     setSelectedTab(tab);
-    if (tab === "Message") {
+    if (tab === "Support") {
       navigation.navigate("message");
     } else if (tab === "Home") {
       navigation.navigate("popularcourses");
@@ -39,7 +39,7 @@ const Tabs = ({ navigation }) => {
             color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
           />
         );
-      case "Message":
+      case "Support":
         return (
           <MessageTabIcon
             color={selectedTab === title ? theme.whiteOrBlack : theme.whiteOrBlack}
