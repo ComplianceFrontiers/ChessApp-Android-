@@ -77,7 +77,7 @@ const SignUpScreen = () => {
         >
           <FontAwesome name="headphones" size={30} color="white" />
         </TouchableOpacity>
-        <Text style={styles.supportText}>Having issues? Please connect to Customer Support</Text>
+        <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
       </View>
     </View>
   );
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     elevation: 5, // Add shadow for better visibility
   },
   supportText: {
-    color: "white",
+    color: "black",
     textAlign: "right", // Align text to the right
     marginTop: 5, // Add spacing between icon and text
     fontSize: 14,

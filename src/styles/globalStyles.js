@@ -10,7 +10,7 @@ const useGlobalStyles = () => {
       container: {
         flex: 1,
         alignItems: "center",
-        paddingTop: "10%",
+        paddingTop: "20%",
         backgroundColor: theme.background,
       },
       contents: {

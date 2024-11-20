@@ -72,18 +72,17 @@ const AllCourseTab = () => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 128,
-    height: 133,
+    width: 138,
+    height: 153,
   },
   courses: {
     elevation: 3,
     backgroundColor: "white",
     width: "100%",
-    marginBottom: 20,
+    marginBottom: 10,
     borderRadius: 20,
     flexDirection: "row",
-    gap: 20,
-    paddingBottom: 10,
+    gap: 20
   },
   saveIcon: {
     position: "absolute",
