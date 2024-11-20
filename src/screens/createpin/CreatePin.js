@@ -56,7 +56,7 @@ const CreatePin = () => {
 
       // Check if email is "test@gmail.com" and navigate to popularcourses directly
       if (email === "test@gmail.com") {
-        navigation.navigate("popularcourses");
+        navigation.navigate("home");
         return;
       }
 
