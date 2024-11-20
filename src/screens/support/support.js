@@ -7,7 +7,6 @@ import ChatTab from "../chattab/ChatTab"; // Assuming this is the content for th
 import Tabs from "../tab/Tab";
 
 const MessageScreen = ({ navigation }) => {
-  const globalStyles = useGlobalStyles();
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View 
