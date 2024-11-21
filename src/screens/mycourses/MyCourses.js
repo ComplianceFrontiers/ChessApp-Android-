@@ -80,83 +80,77 @@ const MyCourses = ({ showHeader = true }) => {
   return (
     <View style={[styles.mainContainer, { backgroundColor: theme.background }]}>
       <ScrollView style={[globalStyles.colorBG]}>
-  {showHeader && (
-    <View style={[globalStyles.container]}>
-      <Header label="Level 1 (Pawn)" />
-    </View>
-  )}
-  <View style={globalStyles.contents}>
-    <View style={{ gap: 20, paddingVertical: "0%" }}>
-      {courses.map((item) => (
-        <View key={item.id}>
-          <TouchableOpacity
-            style={styles.videoContainer}
-            onPress={() => navigation.navigate(item.url)}
-          >
-            <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-              <Text
-                style={[
-                  styles.id,
-                  globalStyles.headingFive,
-                  { backgroundColor: getCourseColor(item.status) },
-                ]}
-              >
-                {item.id}
-              </Text>
-              <View>
-                <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
-                <View style={styles.progressBarContainer}>
-  <View
-    style={[
-      styles.progressBar,
-      {
-        backgroundColor: getCourseColor(item.status),
-        width: `${Math.max(0, Math.min(100, item.completed))}%`,
-      },
-    ]}
-  />
-  <View style={styles.progressTextContainer}>
-  <Text
-  style={[
-    styles.progressText,
-    {
-      left: `${Math.max(0, Math.min(100, item.completed))}%`,
-      transform: [
-        { translateX: item.completed === 0 ? 0 : item.completed === 100 ? -30 : -8 },
-      ],
-    },
-  ]}
->
-  {item.completed}%
-</Text>
+        {showHeader && (
+          <View style={[globalStyles.container]}>
+            <Header label="Level 1 (Pawn)" />
+          </View>
+        )}
+        <View style={globalStyles.contents}>
+          <View style={{ gap: 20, paddingVertical: "0%" }}>
+            {courses.map((item) => (
+              <View key={item.id}>
+                <TouchableOpacity
+                  style={styles.videoContainer}
+                  onPress={() => navigation.navigate(item.url)}
+                >
+                  <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+                    <Text
+                      style={[
+                        styles.id,
+                        globalStyles.headingFive,
+                        { backgroundColor: getCourseColor(item.status) },
+                      ]}
+                    >
+                      {item.id}
+                    </Text>
+                    <View>
+                      <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
+                      <View style={styles.progressBarContainer}>
+                        <View
+                          style={[
+                            styles.progressBar,
+                            {
+                              backgroundColor: getCourseColor(item.status),
+                              width: `${Math.max(0, Math.min(100, item.completed))}%`,
+                            },
+                          ]}
+                        />
+                        <View style={styles.progressTextContainer}>
+                          <Text
+                            style={[
+                              styles.progressText,
+                              {
+                                left: `${Math.max(0, Math.min(100, item.completed))}%`,
+                                textAlign: "center", // Center the text horizontally
+                              },
+                            ]}
+                          >
+                            {item.completed}%
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <PlayBTN onPress={() => toggleExpand(item.id)} />
+                </TouchableOpacity>
 
-  </View>
-</View>
-
-
-
+                {expandedItemId === item.id &&
+                  item.submodules?.map((submodule) => (
+                    <TouchableOpacity
+                      key={submodule.id}
+                      style={styles.submoduleItem}
+                      onPress={() => navigation.navigate(submodule.url)}
+                    >
+                      <Text style={[styles.submoduleText, globalStyles.text]}>
+                        {submodule.title}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
               </View>
-            </View>
-            <PlayBTN onPress={() => toggleExpand(item.id)} />
-          </TouchableOpacity>
-
-          {expandedItemId === item.id &&
-            item.submodules?.map((submodule) => (
-              <TouchableOpacity
-                key={submodule.id}
-                style={styles.submoduleItem}
-                onPress={() => navigation.navigate(submodule.url)}
-              >
-                <Text style={[styles.submoduleText, globalStyles.text]}>
-                  {submodule.title}
-                </Text>
-              </TouchableOpacity>
             ))}
+          </View>
         </View>
-      ))}
-    </View>
-  </View>
-</ScrollView>
+      </ScrollView>
 
       <View style={styles.absoluteBtn}>
         <CommonButton
@@ -167,7 +161,6 @@ const MyCourses = ({ showHeader = true }) => {
     </View>
   );
 };
-
 
 export default MyCourses;
 
@@ -202,15 +195,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     marginTop: 5,
-    width: 180, // Fixed width for the progress bar
+    width: 180, // Width of the progress bar
     alignSelf: "flex-start",
   },
   progressBar: {
     height: "100%", // Fill the container's height
   },
+  progressTextContainer: {
+    position: "absolute", // Position it on top of the progress bar
+    top: 0,
+    left: "50%", // Move the text to the center
+    transform: [{ translateX: -50 }], // Offset by half of the text width
+  },
   progressText: {
-    position: "absolute",
-    top: -14, // Place the text above the progress bar
     fontSize: 10, // Adjust font size for better visibility
     color: "#000", // Ensure text color contrasts with the background
     fontWeight: "bold", // Make the text bold for emphasis
@@ -222,5 +219,3 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 });
-
- 
