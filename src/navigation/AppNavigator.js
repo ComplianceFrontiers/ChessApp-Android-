@@ -55,6 +55,7 @@ import AddNewCard from "../screens/addnewcard/AddNewCard";
 import TermsNConditions from "../screens/terms&conditions/TermsNConditions";
 import InviteFriends from "../screens/invitefriends/InviteFriends";
 import DarkMode from "../screens/darkmode/DarkMode";
+import EditProfile from "../screens/editProfile/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -143,6 +144,7 @@ const AppNavigator = () => {
         component={CertificateDownload}
       />
       <Stack.Screen name="profile" component={Profile} />
+      <Stack.Screen name="edit-profile" component={EditProfile} />
       <Stack.Screen name="language" component={LanguageScreen} />
       <Stack.Screen name="addcard" component={AddNewCard} />
       <Stack.Screen name="termsnconditions" component={TermsNConditions} />

@@ -686,7 +686,7 @@ export const callsData = [
 ];
 
 export const profileData = [
-  { id: 1, title: "Edit Profile", icon: <EditProfile /> },
+  { id: 1, title: "Edit Profile", icon: <EditProfile />, screen: "edit-profile" },
   { id: 2, title: "Payment Option", icon: <PaymentIcon />, screen: "addcard" },
   {
     id: 3,
