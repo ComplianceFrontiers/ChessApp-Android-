@@ -122,6 +122,8 @@ const MyCourses = ({ showHeader = true }) => {
                               {
                                 left: `${Math.max(0, Math.min(100, item.completed))}%`,
                                 textAlign: "center", // Center the text horizontally
+                                color: item.completed === 100 ? "#fff": "#000", // Change color to black for 100% and white for others
+
                               },
                             ]}
                           >
