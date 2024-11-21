@@ -131,8 +131,8 @@ const MyCourses = ({ showHeader = true }) => {
                       </View>
                     </View>
                   </View>
-                  <PlayBTN onPress={() => toggleExpand(item.id)} />
-                </TouchableOpacity>
+                  <PlayBTN onPress={() => toggleExpand(item.id)} style={styles.rotatedPlayButton} />
+                  </TouchableOpacity>
 
                 {expandedItemId === item.id &&
                   item.submodules?.map((submodule) => (
@@ -217,5 +217,7 @@ const styles = StyleSheet.create({
     bottom: 5,
     width: "95%",
     alignSelf: "center",
+  },rotatedPlayButton: {
+    transform: [{ rotate: "90deg" }], // Rotate the play button 90 degrees downwards
   },
 });
