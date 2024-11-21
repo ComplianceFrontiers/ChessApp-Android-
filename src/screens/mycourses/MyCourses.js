@@ -106,17 +106,35 @@ const MyCourses = ({ showHeader = true }) => {
               <View>
                 <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
                 <View style={styles.progressBarContainer}>
-                  <View
-                    style={[
-                      styles.progressBar,
-                      {
-                        backgroundColor: getCourseColor(item.status),
-                        width: `${Math.max(0, Math.min(100, item.completed))}%`,
-                      },
-                    ]}
-                  />
-                </View>
-                <Text>{item.completed}%</Text>
+  <View
+    style={[
+      styles.progressBar,
+      {
+        backgroundColor: getCourseColor(item.status),
+        width: `${Math.max(0, Math.min(100, item.completed))}%`,
+      },
+    ]}
+  />
+  <View style={styles.progressTextContainer}>
+  <Text
+  style={[
+    styles.progressText,
+    {
+      left: `${Math.max(0, Math.min(100, item.completed))}%`,
+      transform: [
+        { translateX: item.completed === 0 ? 0 : item.completed === 100 ? -30 : -8 },
+      ],
+    },
+  ]}
+>
+  {item.completed}%
+</Text>
+
+  </View>
+</View>
+
+
+
               </View>
             </View>
             <PlayBTN onPress={() => toggleExpand(item.id)} />
@@ -178,18 +196,24 @@ const styles = StyleSheet.create({
     color: "#555",
   },
   progressBarContainer: {
-    height: 10,
-    backgroundColor: "#ccc", // Default light gray background
+    position: "relative", // Make this the parent container for absolute positioning
+    height: 12,
+    backgroundColor: "#ccc", // Default light gray background for the progress bar
     borderRadius: 5,
     overflow: "hidden",
     marginTop: 5,
-    width: 180, // Fixed width for all progress bars
-    alignSelf: "flex-start", // Align properly within the container
+    width: 180, // Fixed width for the progress bar
+    alignSelf: "flex-start",
   },
-  
-
   progressBar: {
-    height: "100%",
+    height: "100%", // Fill the container's height
+  },
+  progressText: {
+    position: "absolute",
+    top: -14, // Place the text above the progress bar
+    fontSize: 10, // Adjust font size for better visibility
+    color: "#000", // Ensure text color contrasts with the background
+    fontWeight: "bold", // Make the text bold for emphasis
   },
   absoluteBtn: {
     position: "absolute",
