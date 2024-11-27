@@ -169,7 +169,7 @@ const PasswordUpdatedPopup = ({ isVisible, onClose }) => {
           }}
         >
           <TouchableOpacity
-            onPress={() => navigation.navigate("popularcourses")}
+            onPress={() => navigation.navigate("home")}
             style={{ position: "absolute", top: 20, right: 20 }}
           >
             <Ionicons name="close-circle" size={24} color="#FC4F72" />

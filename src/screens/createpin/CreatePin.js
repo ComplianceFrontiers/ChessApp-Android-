@@ -83,7 +83,7 @@ const CreatePin = () => {
       if (data.success) {
         await AsyncStorage.setItem("signin", "true");
         setIsModalVisible(true);
-        navigation.navigate("popularcourses");
+        navigation.navigate("home");
       } else {
         Alert.alert("Invalid OTP", "Please check your OTP and try again.");
       }
@@ -102,7 +102,7 @@ const CreatePin = () => {
     if (isModalVisible) {
       const timer = setTimeout(() => {
         setIsModalVisible(false);
-        navigation.navigate("popularcourses");
+        navigation.navigate("home");
       }, 1000);
       return () => clearTimeout(timer);
     }

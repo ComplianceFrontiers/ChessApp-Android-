@@ -129,8 +129,8 @@ export const OnBoardingData = [
 ];
 
 export const signInData = [
-  { id: 1, icon: <Google />, title: "Continue with Google" },
-  { id: 2, icon: <Apple />, title: "Continue with Apple" },
+  { id: 1, icon: <Google />, title: "Continue with Email" },
+  // { id: 2, icon: <Apple />, title: "Continue with Apple" },
 ];
 
 export const singinTextInput = [

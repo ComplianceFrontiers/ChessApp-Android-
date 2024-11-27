@@ -56,10 +56,10 @@ const LetsSingup = () => {
                 secureTextEntry={item.securetext}
               />
             ))}
-             <CommonButton
+             {/* <CommonButton
             label="Sign In with Your Account"
             onPress={() => navigation.navigate("signin")}
-          />
+          /> */}
           </View>
          
           <View style={styles.checkBox}>
@@ -119,6 +119,20 @@ const styles = StyleSheet.create({
     paddingTop: "20%",
     height: "80%",
   },
+  signinBTNS: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderRadius: 50,
+    borderColor: "lightgrey",
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    width: "80%", // Adjust width to fit better
+    backgroundColor: "#f5f5f5", // Optional background color
+    marginTop: 20, // Optional spacing
+  },
+  
   signinBTNS: {
     flexDirection: "row",
     alignItems: "center",
