@@ -40,11 +40,24 @@ const LeaderBoardScreen = () => {
     fetchStudents();
   }, [group]);
 
+  // Helper function to calculate the score based on the number of registered courses
+  const calculateScore = (courses) => {
+    return courses.length * 10; // Example score logic: 10 points per course
+  };
+
+  // Sort students based on score in descending order
+  const sortedStudents = students
+    .map((student) => ({
+      ...student,
+      score: calculateScore(student.registered_inschool_courses || []),
+    }))
+    .sort((a, b) => b.score - a.score);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {students.length > 0 ? (
         <>
-          {students.map((student, index) => {
+          {sortedStudents.map((student, index) => {
             const studentImage = imageMap[student.image] || imageMap["/images/portal/b4.png"];
 
             return (
@@ -56,6 +69,7 @@ const LeaderBoardScreen = () => {
                     {student.child_name?.first} {student.child_name?.last}
                   </Text>
                   <Text style={styles.email}>Email: {student.email}</Text>
+                  <Text style={styles.score}>Score: {student.score}</Text>
                 </View>
               </View>
             );
@@ -77,13 +91,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     backgroundColor: "#f7f7f7",
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "#2d2d2d",
-    marginBottom: 20,
-    textAlign: "center",
   },
   card: {
     backgroundColor: "#fff",
@@ -129,6 +136,12 @@ const styles = StyleSheet.create({
   email: {
     fontSize: 14,
     color: "#555",
+  },
+  score: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#1a73e8",
+    marginTop: 5,
   },
   loadingText: {
     fontSize: 16,
