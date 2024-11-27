@@ -5,8 +5,9 @@ import useGlobalStyles from "../../styles/globalStyles";
 import HomeTab from "../hometab/HomeTab";
 import ChatTab from "../chattab/ChatTab"; // Assuming this is the content for the 'Message' tab
 import Tabs from "../tab/Tab";
+import LearderBoardScreen from "../learderboardscreen/learderboardscreen";
 
-const Support = ({ navigation }) => {
+const LearderBoard = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View 
@@ -27,9 +28,9 @@ const Support = ({ navigation }) => {
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={{ marginTop: 80 }}>
-        <Header label="Need Support" backBTN={false} />
+        <Header label="LearderBoard" backBTN={false} />
           <View contentContainerStyle={styles.contents}>
-          <ChatTab />
+          <LearderBoardScreen />
           </View>
         </View>
       </ScrollView>
@@ -39,7 +40,7 @@ const Support = ({ navigation }) => {
   );
 };
 
-export default Support;
+export default LearderBoard;
 
 const styles = StyleSheet.create({
   fixedContainer: {

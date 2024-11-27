@@ -46,6 +46,7 @@ import Level1Sm2 from "../screens/coursedetails/modules/level1/specialMoves/52/5
 import Level1Sm3 from "../screens/coursedetails/modules/level1/specialMoves/53/53"
 import CourseComplete from "../screens/certificate/CourseComplete";
 import Support from "../screens/support/support";
+import LearderBoard from "../screens/learderboard/learderboard";
 import PersonalMessageScreen from "../screens/personalmessagescreen/PersonalMessageScreen";
 import CallingScreen from "../screens/callingscreen/CallingScreen";
 import CertificateDownload from "../screens/certificatedownload/CertificateDownload";
@@ -137,6 +138,9 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/53" component={Level1Sm3} />
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="support" component={Support} />
+      <Stack.Screen name="learderboard" component={LearderBoard} />
+
+      
       <Stack.Screen name="personalmessage" component={PersonalMessageScreen} />
       <Stack.Screen name="callingscreen" component={CallingScreen} />
       <Stack.Screen

@@ -183,7 +183,7 @@ export const newPasswordData = [
 ];
 
 export const tabsData = [
-  { id: 1, title: "My courses" },
+  { id: 1, title: "Learder Board" },
   { id: 2, title: "Home" },
   { id: 3, title: "Support" },
 ];

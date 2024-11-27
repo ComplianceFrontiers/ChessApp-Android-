@@ -20,6 +20,8 @@ const Tabs = ({ navigation }) => {
       navigation.navigate("support");
     } else if (tab === "Home") {
       navigation.navigate("home");
+    }else if (tab === "Learder Board") {
+      navigation.navigate("learderboard");
     }
   };
 
@@ -28,7 +30,7 @@ const Tabs = ({ navigation }) => {
     switch (title) {
       case "Home":
         return <HomeTabIcon color={whiteOrBlack} />;
-      case "My courses":
+      case "Learder Board":
         return <CoursesTabIcon color={whiteOrBlack} />;
       case "Support":
         return <MessageTabIcon color={whiteOrBlack} />;
