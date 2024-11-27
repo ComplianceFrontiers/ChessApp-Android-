@@ -53,18 +53,61 @@ export default function EditProfile() {
     fetchUserDetails();
   }, []);
 
-  const handleUpdate = () => {
-    // Example: Send data to API
-    console.log("Profile updated:", { 
-      email, 
-      schoolName, 
-      grade, 
-      level, 
-      childFirstName, 
-      childLastName, 
-      parentName 
-    });
+  const handleUpdate = async () => {
+    // Create the updated user data
+    const updatedData = {
+      child_name: {
+        first: childFirstName,
+        last: childLastName,
+      },
+      child_grade: grade,
+      email: email,
+      SchoolName: schoolName,
+      level: level,
+    };
+ 
+    try {
+      const response = await fetch('https://backend-chess-tau.vercel.app/update_student_records', {
+        method: 'PUT', // HTTP method
+        headers: {
+          'Content-Type': 'application/json', // Specify JSON content
+        },
+        body: JSON.stringify(updatedData), // Send the data as JSON
+      });
+  
+      const result = await response.json(); // Parse JSON response
+   
+      if (result.message=="Document updated successfully") {
+        // Handle successful response
+        console.log('Profile updated successfully');
+         alert('Profile updated successfully!');
+         const userDetailsResponse = await fetch(
+          `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
+        );
+        const userDetailsData = await userDetailsResponse.json();
+  
+        if (userDetailsData.success) {
+          const newUserDetails = userDetailsData.data;
+  
+          // Update local storage with the latest user details
+          await AsyncStorage.setItem("userDetails", JSON.stringify(newUserDetails));
+  
+          // Navigate to the profile page after successful update
+          navigation.navigate("home");
+        // Optionally, you can navigate back to profile screen after update
+         
+      } }else {
+        // Handle API failure
+        console.error('Failed to update profile:', result.message);
+        alert('Failed to update profile. Please try again.');
+      }
+    } catch (error) {
+      // Handle error during the API call
+      console.error('Error updating profile:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
+  
   const imageMap = {
     "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
     "/images/portal/g2.png": require("../../assets/images/portal/g2.png"),
@@ -194,8 +237,9 @@ export default function EditProfile() {
       </View>
 
       <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-        <Text style={styles.updateButtonText}>Update Profile Details</Text>
-      </TouchableOpacity>
+  <Text style={styles.updateButtonText}>Update Profile Details</Text>
+</TouchableOpacity>
+
     </ScrollView>
   );
 }
