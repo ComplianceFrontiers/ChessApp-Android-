@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import Header from "../../components/header/Header";
-
+import Loading from "../loading/Loading"; // Import Loading component
 
 export default function EditProfile() {
   const navigation = useNavigation();
@@ -17,9 +17,11 @@ export default function EditProfile() {
   const [childLastName, setChildLastName] = useState("");
   const [parentName, setParentName] = useState("");
   const [profileImage, setProfileImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);  // Loading state
 
   useEffect(() => {
     const fetchUserDetails = async () => {
+      setIsLoading(true); // Start loading
       try {
         const email = await AsyncStorage.getItem("email");
         if (email) {
@@ -47,13 +49,18 @@ export default function EditProfile() {
         }
       } catch (error) {
         console.error("Error fetching user details:", error);
+      } finally {
+        setIsLoading(false); // Stop loading
       }
     };
   
     fetchUserDetails();
   }, []);
+  
 
   const handleUpdate = async () => {
+    setIsLoading(true);  // Start loading indicator
+
     // Create the updated user data
     const updatedData = {
       child_name: {
@@ -77,11 +84,11 @@ export default function EditProfile() {
   
       const result = await response.json(); // Parse JSON response
    
-      if (result.message=="Document updated successfully") {
+      if (result.message == "Document updated successfully") {
         // Handle successful response
         console.log('Profile updated successfully');
-         alert('Profile updated successfully!');
-         const userDetailsResponse = await fetch(
+        alert('Profile updated successfully!');
+        const userDetailsResponse = await fetch(
           `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
         );
         const userDetailsData = await userDetailsResponse.json();
@@ -94,9 +101,8 @@ export default function EditProfile() {
   
           // Navigate to the profile page after successful update
           navigation.navigate("home");
-        // Optionally, you can navigate back to profile screen after update
-         
-      } }else {
+        }
+      } else {
         // Handle API failure
         console.error('Failed to update profile:', result.message);
         alert('Failed to update profile. Please try again.');
@@ -105,9 +111,11 @@ export default function EditProfile() {
       // Handle error during the API call
       console.error('Error updating profile:', error);
       alert('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false); // Stop loading indicator
     }
   };
-  
+
   const imageMap = {
     "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
     "/images/portal/g2.png": require("../../assets/images/portal/g2.png"),
@@ -127,26 +135,30 @@ export default function EditProfile() {
     "/images/portal/b9.png": require("../../assets/images/portal/b9.png"),
   };
 
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Back Button */}
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.navigate("profile")} // Replace with your actual route
-      >
-       </TouchableOpacity>
+  {/* Back Button */}
+  <TouchableOpacity
+    style={styles.backButton}
+    onPress={() => navigation.navigate("profile")} // Replace with your actual route
+  >
+    {/* Add your back button icon or text here */}
+  </TouchableOpacity>
 
-       <Header label="Edit Profile" />
+  <Header label="Edit Profile" />
 
+  {/* Conditionally render loading component */}
+  {isLoading ? (
+    <Loading />
+  ) : (
+    <>
       {/* Profile Image */}
       <View style={styles.imageContainer}>
         {profileImage ? (
-                   <Image
-                   source={imageMap[profileImage] || require("../../assets/images/portal/b6.png")}
-                   style={styles.profileImage}
-                 />
-       
+          <Image
+            source={imageMap[profileImage] || require("../../assets/images/portal/b6.png")}
+            style={styles.profileImage}
+          />
         ) : (
           <Text style={styles.noImageText}>No Image Available</Text>
         )}
@@ -226,21 +238,23 @@ export default function EditProfile() {
             onValueChange={(itemValue) => setLevel(itemValue)}
             style={styles.picker}
           >
-      <Picker.Item label="Level 1" value="Level 1" />
-      <Picker.Item label="Level 2" value="Level 2" />
-      <Picker.Item label="Level 3" value="Level 3" />
-      <Picker.Item label="Level 4" value="Level 4" />
-      <Picker.Item label="Level 5" value="Level 5" />
-      <Picker.Item label="Level 6" value="Level 6" />
-    </Picker>
+            <Picker.Item label="Level 1" value="Level 1" />
+            <Picker.Item label="Level 2" value="Level 2" />
+            <Picker.Item label="Level 3" value="Level 3" />
+            <Picker.Item label="Level 4" value="Level 4" />
+            <Picker.Item label="Level 5" value="Level 5" />
+            <Picker.Item label="Level 6" value="Level 6" />
+          </Picker>
         </View>
       </View>
 
       <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-  <Text style={styles.updateButtonText}>Update Profile Details</Text>
-</TouchableOpacity>
+        <Text style={styles.updateButtonText}>Update Profile Details</Text>
+      </TouchableOpacity>
+    </>
+  )}
+</ScrollView>
 
-    </ScrollView>
   );
 }
 
