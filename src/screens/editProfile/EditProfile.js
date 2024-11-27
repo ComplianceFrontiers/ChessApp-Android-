@@ -1,74 +1,135 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from "react-native";
 import { Picker } from '@react-native-picker/picker'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native'; // Import navigation hook
-import { Ionicons } from '@expo/vector-icons'; // Use Ionicons for back arrow
+import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function EditProfile() {
-  const navigation = useNavigation(); // Initialize navigation
-  const [name, setName] = useState("");
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [schoolName, setSchoolName] = useState("");
   const [grade, setGrade] = useState("");
   const [level, setLevel] = useState("");
-  const [childName, setChildName] = useState("");
+  const [childFirstName, setChildFirstName] = useState("");
+  const [childLastName, setChildLastName] = useState("");
   const [parentName, setParentName] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
         const email = await AsyncStorage.getItem("email");
         if (email) {
-          const userDetailsResponse = await fetch(
+          const response = await fetch(
             `https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`
           );
-          const userDetailsData = await userDetailsResponse.json();
-          
-          setEmail(userDetailsData.email);
-          setSchoolName(userDetailsData.SchoolName);
-          setGrade(userDetailsData.child_grade);
-          setLevel(userDetailsData.level);
-          setChildName(userDetailsData.child_name ? userDetailsData.child_name.first : "");
-          setParentName(userDetailsData.parent_name ? userDetailsData.parent_name.first : "");
+          const result = await response.json();
+          console.log("Fetched user details:", result);
+  
+          if (result.success && result.data) {
+            const userData = result.data;
+            setEmail(userData.email || "");
+            setSchoolName(userData.SchoolName || "");
+            setGrade(userData.child_grade || "");
+            setLevel(userData.level || "");
+            setChildFirstName(userData.child_name?.first || "");
+            setChildLastName(userData.child_name?.last || "");
+            setParentName(userData.parent_name?.first || "");
+            setProfileImage(userData.image || null);
+          } else {
+            console.error("Failed to fetch valid user details.");
+          }
+        } else {
+          console.warn("No email found in AsyncStorage.");
         }
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
     };
-
+  
     fetchUserDetails();
   }, []);
 
   const handleUpdate = () => {
-    // Handle update logic here
-    console.log("Profile updated:", { name, email, schoolName, grade, level });
     // Example: Send data to API
+    console.log("Profile updated:", { 
+      email, 
+      schoolName, 
+      grade, 
+      level, 
+      childFirstName, 
+      childLastName, 
+      parentName 
+    });
   };
+  const imageMap = {
+    "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
+    "/images/portal/g2.png": require("../../assets/images/portal/g2.png"),
+    "/images/portal/g3.png": require("../../assets/images/portal/g3.png"),
+    "/images/portal/g4.png": require("../../assets/images/portal/g4.png"),
+    "/images/portal/g5.png": require("../../assets/images/portal/g5.png"),
+    "/images/portal/g6.png": require("../../assets/images/portal/g6.png"),
+    "/images/portal/g8.png": require("../../assets/images/portal/g8.png"),
+    "/images/portal/g9.png": require("../../assets/images/portal/g9.png"),
+    "/images/portal/b1.png": require("../../assets/images/portal/b1.png"),
+    "/images/portal/b2.png": require("../../assets/images/portal/b2.png"),
+    "/images/portal/b3.png": require("../../assets/images/portal/b3.png"),
+    "/images/portal/b4.png": require("../../assets/images/portal/b4.png"),
+    "/images/portal/b5.png": require("../../assets/images/portal/b5.png"),
+    "/images/portal/b6.png": require("../../assets/images/portal/b6.png"),
+    "/images/portal/b7.png": require("../../assets/images/portal/b7.png"),
+    "/images/portal/b9.png": require("../../assets/images/portal/b9.png"),
+  };
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* Back Button */}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.navigate("profile")} // Replace "Profile" with your actual profile page route
+        onPress={() => navigation.navigate("profile")} // Replace with your actual route
       >
-        <Ionicons name="arrow-back" size={24} color="#333" />
-        <Text style={styles.backButtonText}>Back</Text>
-      </TouchableOpacity>
+       </TouchableOpacity>
 
       <Text style={styles.title}>Edit Profile</Text>
 
+      {/* Profile Image */}
+      <View style={styles.imageContainer}>
+        {profileImage ? (
+                   <Image
+                   source={imageMap[profileImage] || require("../../assets/images/portal/b6.png")}
+                   style={styles.profileImage}
+                 />
+       
+        ) : (
+          <Text style={styles.noImageText}>No Image Available</Text>
+        )}
+      </View>
+
+      {/* Child's First Name */}
       <View style={styles.formGroup}>
-        <Text style={styles.label}>Name</Text>
+        <Text style={styles.label}>Child's First Name</Text>
         <TextInput
           style={styles.input}
-          placeholder="Enter your name"
-          value={name}
-          onChangeText={setName}
+          placeholder="Enter child's first name"
+          value={childFirstName}
+          onChangeText={setChildFirstName}
         />
       </View>
 
+      {/* Child's Last Name */}
+      <View style={styles.formGroup}>
+        <Text style={styles.label}>Child's Last Name</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter child's last name"
+          value={childLastName}
+          onChangeText={setChildLastName}
+        />
+      </View>
+
+      {/* Email */}
       <View style={styles.formGroup}>
         <Text style={styles.label}>Email</Text>
         <TextInput
@@ -81,6 +142,7 @@ export default function EditProfile() {
         />
       </View>
 
+      {/* School Name */}
       <View style={styles.formGroup}>
         <Text style={styles.label}>School Name</Text>
         <TextInput
@@ -91,6 +153,7 @@ export default function EditProfile() {
         />
       </View>
 
+      {/* Grade */}
       <View style={styles.formGroup}>
         <Text style={styles.label}>Select Grade</Text>
         <View style={styles.pickerContainer}>
@@ -109,6 +172,7 @@ export default function EditProfile() {
         </View>
       </View>
 
+      {/* Level */}
       <View style={styles.formGroup}>
         <Text style={styles.label}>Select Level</Text>
         <View style={styles.pickerContainer}>
@@ -117,11 +181,13 @@ export default function EditProfile() {
             onValueChange={(itemValue) => setLevel(itemValue)}
             style={styles.picker}
           >
-            <Picker.Item label="Select your level" value="" />
-            <Picker.Item label="Beginner" value="beginner" />
-            <Picker.Item label="Intermediate" value="intermediate" />
-            <Picker.Item label="Advanced" value="advanced" />
-          </Picker>
+      <Picker.Item label="Level 1" value="Level 1" />
+      <Picker.Item label="Level 2" value="Level 2" />
+      <Picker.Item label="Level 3" value="Level 3" />
+      <Picker.Item label="Level 4" value="Level 4" />
+      <Picker.Item label="Level 5" value="Level 5" />
+      <Picker.Item label="Level 6" value="Level 6" />
+    </Picker>
         </View>
       </View>
 
@@ -139,30 +205,42 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   backButton: {
-    flexDirection: "row", // Align icon and text side by side
-    alignItems: "center", // Center vertically
-    marginBottom: 15, // Space below the button
-    padding: 10, // Add padding for better click area
-    backgroundColor: "#f9f9f9", // Light background for contrast
-    borderRadius: 8, // Rounded corners
-    shadowColor: "#000", // Shadow effect for depth
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+    padding: 10,
+    backgroundColor: "#f9f9f9",
+    borderRadius: 8,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
-    elevation: 2, // Shadow for Android
+    elevation: 2,
   },
   backButtonText: {
-    fontSize: 16, // Text size
-    marginLeft: 5, // Space between icon and text
-    color: "#007BFF", // Blue color for visibility
-    fontWeight: "bold", // Bold for emphasis
+    fontSize: 16,
+    marginLeft: 5,
+    color: "#007BFF",
+    fontWeight: "bold",
   },
-  
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
+  },
+  imageContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  noImageText: {
+    fontSize: 14,
+    color: "#aaa",
   },
   formGroup: {
     marginBottom: 15,
