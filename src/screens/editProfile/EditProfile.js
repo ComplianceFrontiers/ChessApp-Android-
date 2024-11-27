@@ -4,6 +4,8 @@ import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import Header from "../../components/header/Header";
+
 
 export default function EditProfile() {
   const navigation = useNavigation();
@@ -92,7 +94,7 @@ export default function EditProfile() {
       >
        </TouchableOpacity>
 
-      <Text style={styles.title}>Edit Profile</Text>
+       <Header label="Edit Profile" />
 
       {/* Profile Image */}
       <View style={styles.imageContainer}>
