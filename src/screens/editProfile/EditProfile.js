@@ -220,6 +220,7 @@ export default function EditProfile() {
             style={styles.picker}
           >
             <Picker.Item label="Select your grade" value="" />
+            <Picker.Item label="K" value="K" />
             <Picker.Item label="Grade 1" value="1" />
             <Picker.Item label="Grade 2" value="2" />
             <Picker.Item label="Grade 3" value="3" />
