@@ -44,7 +44,14 @@ const SignIn = () => {
       Alert.alert("Please enter your email.");
       return;
     }
+    const responseneworold = await fetch("https://backend-chess-tau.vercel.app/new_app_user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email:emailToSignIn}),
+    });
 
+    const data = await responseneworold.json();
+    
     try {
       setLoading(true);
       await AsyncStorage.setItem("email", emailToSignIn);

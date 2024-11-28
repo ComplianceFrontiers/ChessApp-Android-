@@ -59,8 +59,13 @@ const CreatePin = () => {
         navigation.navigate("home");
         return;
       }
-
+      
       const loginResponse = await fetchWithDeviceType("https://backend-chess-tau.vercel.app/signin_inschool", email);
+       if("data" in loginResponse){
+        await handleLogoutFromPreviousDevice();
+       }
+
+
       if (loginResponse.success && loginResponse.device) {
         await handleLogoutFromPreviousDevice();
       }
@@ -81,7 +86,7 @@ const CreatePin = () => {
 
       const data = await response.json();
       if (data.success) {
-        await AsyncStorage.setItem("signin", "true");
+        await AsyncStorage.setItem("email",email);
         setIsModalVisible(true);
         navigation.navigate("home");
       } else {
