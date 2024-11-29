@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     position: "absolute", // Position it on top of the progress bar
     top: 0,
     left: "50%", // Move the text to the center
-    transform: [{ translateX: -50 }], // Offset by half of the text width
+    transform: [{ translateX: -40 }], // Offset by half of the text width
   },
   progressText: {
     fontSize: 8, // Adjust font size for better visibility
