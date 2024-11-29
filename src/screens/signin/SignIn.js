@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Alert,
+  Linking,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
@@ -15,6 +16,8 @@ import { TextInput } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
 import Logo from "../../components/logo/Logo";
+import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for icons 
+
 
 const SignIn = () => {
   const [emailToSignIn, setEmailToSignIn] = useState("");
@@ -22,6 +25,13 @@ const SignIn = () => {
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
+  // Function to handle email link
+  const handleEmailPress = () => {
+    const emailUrl = "mailto:connect@chesschamps.us?subject=Request From Chess Champs App &body=Hello, I need assistance...";
+    Linking.openURL(emailUrl).catch((err) =>
+      console.error("Failed to open email client", err)
+    );
+  };
 
   useEffect(() => {
     const fetchEmail = async () => {
@@ -93,7 +103,7 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView style={globalStyles.scrollView}>
+    <View style={globalStyles.container}>
       <View style={styles.contents}>
         <Logo />
         <View style={styles.childContents}>
@@ -132,20 +142,22 @@ const SignIn = () => {
               disabled={loading}
             />
           </View>
+         
 
-          <View style={[styles.register, globalStyles.absoluteContents]}>
-            <Text style={{ textAlign: "center", color: theme.color }}>
-              Don’t have an Account?{" "}
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("fillprofile")}>
-              <Text style={[globalStyles.yellowText, { fontWeight: "500" }]}>
-                SIGN UP
-              </Text>
-            </TouchableOpacity>
-          </View>
         </View>
       </View>
-    </ScrollView>
+
+      <View style={styles.supportContainer}>
+        <TouchableOpacity 
+          style={styles.supportIcon} 
+          onPress={handleEmailPress}
+        >
+          <FontAwesome name="headphones" size={30} color="white" />
+        </TouchableOpacity>
+        <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
+      </View>
+     
+    </View>
   );
 };
 
@@ -180,6 +192,25 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     gap: 5,
+  },supportContainer: {
+    position: "absolute",
+    bottom: 20, // Keep at the bottom of the screen
+    right: 20, // Align to the right of the screen
+    alignItems: "flex-end", // Align all elements to the right
+  },
+  supportIcon: {
+    backgroundColor: "#4CAF50", // Background color for the icon
+    borderRadius: 25, // Circle shape
+    padding: 10, // Space around the icon
+    elevation: 5, // Add shadow for better visibility
+  },
+  supportText: {
+    color: "black",
+    textAlign: "right", // Align text to the right
+    marginTop: 5, // Add spacing between icon and text
+    fontSize: 14,
+    maxWidth: 180, // Limit the width to prevent overflow
+    lineHeight: 18,
   },
 });
 

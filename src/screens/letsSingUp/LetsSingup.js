@@ -91,19 +91,9 @@ const LetsSingup = () => {
             </View>
           </View>
         </View>
-        <View style={[styles.register, globalStyles.absoluteContents]}>
-          <Text style={{ textAlign: "center", color: theme.color }}>
-            Don’t have an Account?{" "}
-          </Text>
-          <TouchableOpacity>
-            <Text style={[globalStyles.yellowText, { fontWeight: "500" }]}>
-              SIGN UP
-            </Text>
-          </TouchableOpacity>
-        </View>
       </View>
 
-      {/* </View> */}
+      
     </ScrollView>
   );
 };

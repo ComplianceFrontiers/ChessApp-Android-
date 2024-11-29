@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image 
 import { Picker } from '@react-native-picker/picker'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
 import Header from "../../components/header/Header";
 import Loading from "../loading/Loading"; // Import Loading component
 
