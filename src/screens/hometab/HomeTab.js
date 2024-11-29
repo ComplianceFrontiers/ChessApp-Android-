@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between", // Space between profile and logo
     alignItems: "center",
     width: "100%",
-    paddingHorizontal: "6%",
+    paddingHorizontal: "3%",
     paddingVertical: "2%",
   },
   profileIcon: {

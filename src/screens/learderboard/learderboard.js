@@ -7,33 +7,21 @@ import ChatTab from "../chattab/ChatTab"; // Assuming this is the content for th
 import Tabs from "../tab/Tab";
 import LearderBoardScreen from "../learderboardscreen/learderboardscreen";
 
-const LearderBoard = ({ navigation }) => {
-  return (
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
-      <View 
-          style={{ 
-            position: "fixed", 
-            zIndex: 7, 
-            backgroundColor: "#fff", // White background color
-            marginBottom: "0%", 
-            paddingHorizontal: "10%", 
-            paddingVertical: "0%", 
-            paddingLeft: "10%", 
-            top: 60, 
-            left: 0 
-          }}
-        >
-          <HomeTab />
-    </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={{ marginTop: 80 }}>
-        <Header label="LearderBoard" backBTN={false} />
-          <View contentContainerStyle={styles.contents}>
-          <LearderBoardScreen />
-          </View>
-        </View>
-      </ScrollView>
+const LearderBoard = ({ navigation }) => {
+ 
+  return (
+<View style={styles.container}>
+ 
+
+      <View contentContainerStyle={styles.scrollContent}>
+      <HomeTab />
+
+                 <Header label="LearderBoard" backBTN={false} />
+                 <ScrollView>
+           <LearderBoardScreen />
+           </ScrollView>
+      </View>
 
       <Tabs navigation={navigation} />
     </View>
@@ -43,6 +31,17 @@ const LearderBoard = ({ navigation }) => {
 export default LearderBoard;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: "14%",
+    backgroundColor: "white",
+
+  },
+  individualTabs: {
+    alignItems: "center",
+    gap: 10,
+  },
   fixedContainer: {
     position: "absolute",
     top: 0,
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 1,
     backgroundColor: "#fff", // Background color to overlay content properly
-    paddingHorizontal: 5, // Adjust as needed
+    paddingHorizontal: 1, // Adjust as needed
     paddingVertical: 1,
   },
   contents: {
