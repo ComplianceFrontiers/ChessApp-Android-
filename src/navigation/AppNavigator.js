@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import SignUpScreen from "../screens/signup/SignUpScreen";
 import OnboardingScreen from "../screens/onboarding/OnboardingScreen";
 import SignIn from "../screens/signin/SignIn";
 import LetsSingup from "../screens/letsSingUp/LetsSingup";
@@ -94,9 +93,7 @@ const AppNavigator = () => {
       initialRouteName={initialRoute}
     >
       <Stack.Screen name="onboarding" component={OnboardingScreen} />
-      <Stack.Screen name="signup" component={SignUpScreen} />
       <Stack.Screen name="signin" component={SignIn} />
-      <Stack.Screen name="letssignUp" component={LetsSingup} />
       <Stack.Screen name="fillprofile" component={FillProfile} />
       <Stack.Screen name="createpin" component={CreatePin} />
       <Stack.Screen name="forgotpassword" component={ForgotPassword} />

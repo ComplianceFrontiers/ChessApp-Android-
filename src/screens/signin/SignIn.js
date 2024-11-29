@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -18,14 +18,14 @@ import ThemeContext from "../../components/Theme/ThemeContext";
 import Logo from "../../components/logo/Logo";
 import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for icons 
 
-
 const SignIn = () => {
   const [emailToSignIn, setEmailToSignIn] = useState("");
   const [loading, setLoading] = useState(false);
+  const scrollViewRef = useRef(null); // Ref for ScrollView
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
-  // Function to handle email link
+
   const handleEmailPress = () => {
     const emailUrl = "mailto:connect@chesschamps.us?subject=Request From Chess Champs App &body=Hello, I need assistance...";
     Linking.openURL(emailUrl).catch((err) =>
@@ -49,19 +49,10 @@ const SignIn = () => {
   }, []);
 
   const handleSignIn = async () => {
-    console.log("Current emailToSignIn value:", emailToSignIn);
     if (!emailToSignIn) {
       Alert.alert("Please enter your email.");
       return;
     }
-    const responseneworold = await fetch("https://backend-chess-tau.vercel.app/new_app_user", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email:emailToSignIn}),
-    });
-
-    const data = await responseneworold.json();
-    
     try {
       setLoading(true);
       await AsyncStorage.setItem("email", emailToSignIn);
@@ -75,12 +66,9 @@ const SignIn = () => {
           },
         }
       );
-      console.log("local5", emailToSignIn, response);
 
       if (response.ok) {
-        console.log("locallll1", AsyncStorage);
         const userDetailsResponse = await response.json();
-        console.log("API Response:", userDetailsResponse);
 
         if (!userDetailsResponse.data) {
           Alert.alert("User details not found.");
@@ -89,7 +77,6 @@ const SignIn = () => {
         const userDetails = userDetailsResponse.data;
 
         await AsyncStorage.setItem("userDetails", JSON.stringify(userDetails));
-        console.log("locallll3", AsyncStorage);
         navigation.navigate("createpin");
       } else {
         Alert.alert("Failed to sign in. Please try again.");
@@ -103,7 +90,11 @@ const SignIn = () => {
   };
 
   return (
-    <View style={globalStyles.container}>
+    <ScrollView 
+      ref={scrollViewRef} // Attach the ref
+      contentContainerStyle={globalStyles.container}
+      keyboardShouldPersistTaps="handled"
+    >
       <View style={styles.contents}>
         <Logo />
         <View style={styles.childContents}>
@@ -134,6 +125,14 @@ const SignIn = () => {
                     setEmailToSignIn(text);
                   }
                 }}
+                onFocus={() => {
+                  if (scrollViewRef.current) {
+                    scrollViewRef.current.scrollTo({
+                      y: 100, // Adjust based on where the email field is located
+                      animated: true,
+                    });
+                  }
+                }}
               />
             ))}
             <CommonButton
@@ -142,8 +141,6 @@ const SignIn = () => {
               disabled={loading}
             />
           </View>
-         
-
         </View>
       </View>
 
@@ -156,8 +153,7 @@ const SignIn = () => {
         </TouchableOpacity>
         <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
       </View>
-     
-    </View>
+    </ScrollView>
   );
 };
 
