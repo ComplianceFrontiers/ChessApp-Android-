@@ -78,9 +78,6 @@ const HomeTab = () => {
           <Text style={globalStyles.headingFour}>
             {userDetails?.child_name?.first || "Guest"}
           </Text>
-          <Text style={[globalStyles.miniButton, { width: "100%" }]}>
-            Student
-          </Text>
         </View>
       </View>
       <View style={styles.headerIcons}>

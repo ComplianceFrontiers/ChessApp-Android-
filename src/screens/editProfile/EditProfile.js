@@ -15,6 +15,7 @@ export default function EditProfile() {
   const [level, setLevel] = useState("");
   const [childFirstName, setChildFirstName] = useState("");
   const [childLastName, setChildLastName] = useState("");
+  const [phone, setPhone] = useState("");
   const [parentName, setParentName] = useState("");
   const [profileImage, setProfileImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);  // Loading state
@@ -39,6 +40,7 @@ export default function EditProfile() {
             setLevel(userData.level || "");
             setChildFirstName(userData.child_name?.first || "");
             setChildLastName(userData.child_name?.last || "");
+            setPhone(userData.phone || "");
             setParentName(userData.parent_name?.first || "");
             setProfileImage(userData.image || null);
           } else {
@@ -71,6 +73,7 @@ export default function EditProfile() {
       email: email,
       SchoolName: schoolName,
       level: level,
+      phone,phone,
     };
  
     try {
@@ -185,6 +188,15 @@ export default function EditProfile() {
           onChangeText={setChildLastName}
         />
       </View>
+      <View style={styles.formGroup}>
+        <Text style={styles.label}>Contact Number</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Contact Number<"
+          value={phone}
+          onChangeText={setPhone}
+        />
+      </View>
 
       {/* Email */}
       <View style={styles.formGroup}>
@@ -230,24 +242,30 @@ export default function EditProfile() {
         </View>
       </View>
 
-      {/* Level */}
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Select Level</Text>
-        <View style={styles.pickerContainer}>
-          <Picker
-            selectedValue={level}
-            onValueChange={(itemValue) => setLevel(itemValue)}
-            style={styles.picker}
-          >
-            <Picker.Item label="Level 1" value="Level 1" />
-            <Picker.Item label="Level 2" value="Level 2" />
-            <Picker.Item label="Level 3" value="Level 3" />
-            <Picker.Item label="Level 4" value="Level 4" />
-            <Picker.Item label="Level 5" value="Level 5" />
-            <Picker.Item label="Level 6" value="Level 6" />
-          </Picker>
-        </View>
-      </View>
+<View style={styles.formGroup}>
+  <Text style={styles.label}>Level</Text>
+  <View style={styles.pickerContainer}>
+    {/* Display selected level as text if it is disabled */}
+    {level ? (
+      <Text style={styles.input}>{level}</Text>
+    ) : (
+      <Picker
+        selectedValue={level}
+        onValueChange={(itemValue) => setLevel(itemValue)}
+        style={styles.input}
+        enabled={false} // Disable Picker (no interaction)
+      >
+        <Picker.Item label="Level 1" value="Level 1" />
+        <Picker.Item label="Level 2" value="Level 2" />
+        <Picker.Item label="Level 3" value="Level 3" />
+        <Picker.Item label="Level 4" value="Level 4" />
+        <Picker.Item label="Level 5" value="Level 5" />
+        <Picker.Item label="Level 6" value="Level 6" />
+      </Picker>
+    )}
+  </View>
+</View>
+
 
       <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
         <Text style={styles.updateButtonText}>Update Profile Details</Text>

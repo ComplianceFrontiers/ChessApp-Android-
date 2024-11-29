@@ -68,7 +68,6 @@ const LeaderBoardScreen = () => {
                   <Text style={styles.name}>
                     {student.child_name?.first} {student.child_name?.last}
                   </Text>
-                  <Text style={styles.email}>Email: {student.email}</Text>
                   <Text style={styles.score}>Score: {student.score}</Text>
                 </View>
               </View>
