@@ -23,7 +23,9 @@ const LearderBoard = ({ navigation }) => {
            </ScrollView>
       </View>
 
-      <Tabs navigation={navigation} />
+      <View style={styles.tabsContainer}>
+          <Tabs navigation={navigation} />
+        </View>
     </View>
   );
 };
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: "14%",
+    paddingBottom: "14%",
     backgroundColor: "white",
 
   },
@@ -60,5 +63,12 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 10,
+  },tabsContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    borderTopWidth: 1,
+    borderColor: "#ccc",
   },
 });
