@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import {
+  KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -7,6 +9,7 @@ import {
   View,
   Alert,
   Linking,
+  Keyboard, // Import Keyboard API
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
@@ -21,7 +24,8 @@ import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for i
 const SignIn = () => {
   const [emailToSignIn, setEmailToSignIn] = useState("");
   const [loading, setLoading] = useState(false);
-  const scrollViewRef = useRef(null); // Ref for ScrollView
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false); // State to track keyboard visibility
+  const scrollViewRef = useRef(null);
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
@@ -34,18 +38,19 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    const fetchEmail = async () => {
-      try {
-        const email = await AsyncStorage.getItem("email");
-        if (email) {
-          setEmailToSignIn(email);
-        }
-      } catch (error) {
-        console.error("Failed to fetch email:", error);
-      }
-    };
+    // Add listeners for keyboard events
+    const keyboardDidShowListener = Keyboard.addListener("keyboardDidShow", () =>
+      setIsKeyboardVisible(true)
+    );
+    const keyboardDidHideListener = Keyboard.addListener("keyboardDidHide", () =>
+      setIsKeyboardVisible(false)
+    );
 
-    fetchEmail();
+    return () => {
+      // Cleanup listeners
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
   }, []);
 
   const handleSignIn = async () => {
@@ -91,70 +96,78 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView 
-        ref={scrollViewRef} // Attach the ref
-        contentContainerStyle={globalStyles.container}
-        keyboardShouldPersistTaps="handled"
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={styles.container}
       >
-        <View style={styles.contents}>
-          <Logo />
-          <View style={styles.childContents}>
-            <Text style={globalStyles.headingOne}>Let's Sign In</Text>
-            <Text style={globalStyles.paragraph}>
-              Login to Your Account to Continue your Courses
-            </Text>
+        <ScrollView
+          ref={scrollViewRef}
+          contentContainerStyle={globalStyles.container}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.contents}>
+            <Logo />
+            <View style={styles.childContents}>
+              <Text style={globalStyles.headingOne}>Let's Sign In</Text>
+              <Text style={globalStyles.paragraph}>
+                Login to Your Account to Continue your Courses
+              </Text>
 
-            <View style={{ paddingTop: "1%", gap: 20, paddingBottom: "1%" }}>
-              {singinTextInput.map((item) => (
-                <TextInput
-                  key={item.id}
-                  placeholder={item.placeholder}
-                  style={globalStyles.input}
-                  left={<TextInput.Icon icon={item.icon} />}
-                  right={<TextInput.Icon icon={item.rightIcon} />}
-                  underlineColor="transparent"
-                  theme={{
-                    colors: {
-                      primary: "transparent",
-                      underlineColor: "transparent",
-                    },
-                  }}
-                  secureTextEntry={item.securetext}
-                  value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
-                  onChangeText={(text) => {
-                    if (item.placeholder.trim() === "Email") {
-                      setEmailToSignIn(text);
-                    }
-                  }}
-                  onFocus={() => {
-                    if (scrollViewRef.current) {
-                      scrollViewRef.current.scrollTo({
-                        y: 100, // Adjust based on where the email field is located
-                        animated: true,
-                      });
-                    }
-                  }}
+              <View style={{ paddingTop: "1%", gap: 20, paddingBottom: "1%" }}>
+                {singinTextInput.map((item) => (
+                  <TextInput
+                    key={item.id}
+                    placeholder={item.placeholder}
+                    style={globalStyles.input}
+                    left={<TextInput.Icon icon={item.icon} />}
+                    right={<TextInput.Icon icon={item.rightIcon} />}
+                    underlineColor="transparent"
+                    theme={{
+                      colors: {
+                        primary: "transparent",
+                        underlineColor: "transparent",
+                      },
+                    }}
+                    secureTextEntry={item.securetext}
+                    value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
+                    onChangeText={(text) => {
+                      if (item.placeholder.trim() === "Email") {
+                        setEmailToSignIn(text);
+                      }
+                    }}
+                    onFocus={() => {
+                      if (scrollViewRef.current) {
+                        scrollViewRef.current.scrollTo({
+                          y: 100, // Adjust based on where the email field is located
+                          animated: true,
+                        });
+                      }
+                    }}
+                  />
+                ))}
+                <CommonButton
+                  label={loading ? "Signing In..." : "Sign In"}
+                  onPress={handleSignIn}
+                  disabled={loading}
                 />
-              ))}
-              <CommonButton
-                label={loading ? "Signing In..." : "Sign In"}
-                onPress={handleSignIn}
-                disabled={loading}
-              />
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
 
-      <View style={styles.supportContainer}>
-        <TouchableOpacity 
-          style={styles.supportIcon} 
-          onPress={handleEmailPress}
-        >
-          <FontAwesome name="headphones" size={30} color="white" />
-        </TouchableOpacity>
-        <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
-      </View>
+      {/* Support View - Conditional Rendering */}
+      {!isKeyboardVisible && (
+        <View style={styles.supportContainer}>
+          <TouchableOpacity 
+            style={styles.supportIcon} 
+            onPress={handleEmailPress}
+          >
+            <FontAwesome name="headphones" size={30} color="white" />
+          </TouchableOpacity>
+          <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -178,12 +191,13 @@ const styles = StyleSheet.create({
     bottom: 20,
     right: 20,
     alignItems: "flex-end",
+    zIndex: 10, // Ensure it is above other elements
+    elevation: 5, // Add shadow for better visibility
   },
   supportIcon: {
     backgroundColor: "#4CAF50",
     borderRadius: 25,
     padding: 10,
-    elevation: 5,
   },
   supportText: {
     color: "black",
