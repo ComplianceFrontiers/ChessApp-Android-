@@ -90,59 +90,61 @@ const SignIn = () => {
   };
 
   return (
-    <ScrollView 
-      ref={scrollViewRef} // Attach the ref
-      contentContainerStyle={globalStyles.container}
-      keyboardShouldPersistTaps="handled"
-    >
-      <View style={styles.contents}>
-        <Logo />
-        <View style={styles.childContents}>
-          <Text style={globalStyles.headingOne}>Let's Sign In</Text>
-          <Text style={globalStyles.paragraph}>
-            Login to Your Account to Continue your Courses
-          </Text>
+    <View style={styles.container}>
+      <ScrollView 
+        ref={scrollViewRef} // Attach the ref
+        contentContainerStyle={globalStyles.container}
+        keyboardShouldPersistTaps="handled"
+      >
+        <View style={styles.contents}>
+          <Logo />
+          <View style={styles.childContents}>
+            <Text style={globalStyles.headingOne}>Let's Sign In</Text>
+            <Text style={globalStyles.paragraph}>
+              Login to Your Account to Continue your Courses
+            </Text>
 
-          <View style={{ paddingTop: "8%", gap: 20, paddingBottom: "5%" }}>
-            {singinTextInput.map((item) => (
-              <TextInput
-                key={item.id}
-                placeholder={item.placeholder}
-                style={globalStyles.input}
-                left={<TextInput.Icon icon={item.icon} />}
-                right={<TextInput.Icon icon={item.rightIcon} />}
-                underlineColor="transparent"
-                theme={{
-                  colors: {
-                    primary: "transparent",
-                    underlineColor: "transparent",
-                  },
-                }}
-                secureTextEntry={item.securetext}
-                value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
-                onChangeText={(text) => {
-                  if (item.placeholder.trim() === "Email") {
-                    setEmailToSignIn(text);
-                  }
-                }}
-                onFocus={() => {
-                  if (scrollViewRef.current) {
-                    scrollViewRef.current.scrollTo({
-                      y: 100, // Adjust based on where the email field is located
-                      animated: true,
-                    });
-                  }
-                }}
+            <View style={{ paddingTop: "1%", gap: 20, paddingBottom: "1%" }}>
+              {singinTextInput.map((item) => (
+                <TextInput
+                  key={item.id}
+                  placeholder={item.placeholder}
+                  style={globalStyles.input}
+                  left={<TextInput.Icon icon={item.icon} />}
+                  right={<TextInput.Icon icon={item.rightIcon} />}
+                  underlineColor="transparent"
+                  theme={{
+                    colors: {
+                      primary: "transparent",
+                      underlineColor: "transparent",
+                    },
+                  }}
+                  secureTextEntry={item.securetext}
+                  value={item.placeholder.trim() === "Email" ? emailToSignIn : undefined}
+                  onChangeText={(text) => {
+                    if (item.placeholder.trim() === "Email") {
+                      setEmailToSignIn(text);
+                    }
+                  }}
+                  onFocus={() => {
+                    if (scrollViewRef.current) {
+                      scrollViewRef.current.scrollTo({
+                        y: 100, // Adjust based on where the email field is located
+                        animated: true,
+                      });
+                    }
+                  }}
+                />
+              ))}
+              <CommonButton
+                label={loading ? "Signing In..." : "Sign In"}
+                onPress={handleSignIn}
+                disabled={loading}
               />
-            ))}
-            <CommonButton
-              label={loading ? "Signing In..." : "Sign In"}
-              onPress={handleSignIn}
-              disabled={loading}
-            />
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
 
       <View style={styles.supportContainer}>
         <TouchableOpacity 
@@ -153,59 +155,42 @@ const SignIn = () => {
         </TouchableOpacity>
         <Text style={styles.supportText}>Having issues? Please connect With Email</Text>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   contents: {
     flex: 1,
-    paddingTop: "20%",
+    paddingTop: "5%", 
     alignItems: "center",
-    paddingBottom: 60,
+    paddingBottom: 30, 
   },
   childContents: {
-    paddingTop: "20%",
-    height: "70%",
+    paddingTop: "1%", 
+    height: "auto",
   },
-  continueWith: {
-    paddingTop: "8%",
-    alignItems: "center",
-  },
-  icons: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 20,
-    paddingTop: "20%",
-  },
-  socialIcons: {
-    backgroundColor: "lightgrey",
-    padding: 10,
-    borderRadius: 50,
-  },
-  register: {
-    flexDirection: "row",
-    alignSelf: "center",
-    alignItems: "center",
-    gap: 5,
-  },supportContainer: {
+  supportContainer: {
     position: "absolute",
-    bottom: 20, // Keep at the bottom of the screen
-    right: 20, // Align to the right of the screen
-    alignItems: "flex-end", // Align all elements to the right
+    bottom: 20,
+    right: 20,
+    alignItems: "flex-end",
   },
   supportIcon: {
-    backgroundColor: "#4CAF50", // Background color for the icon
-    borderRadius: 25, // Circle shape
-    padding: 10, // Space around the icon
-    elevation: 5, // Add shadow for better visibility
+    backgroundColor: "#4CAF50",
+    borderRadius: 25,
+    padding: 10,
+    elevation: 5,
   },
   supportText: {
     color: "black",
-    textAlign: "right", // Align text to the right
-    marginTop: 5, // Add spacing between icon and text
+    textAlign: "right",
+    marginTop: 5,
     fontSize: 14,
-    maxWidth: 180, // Limit the width to prevent overflow
+    maxWidth: 180,
     lineHeight: 18,
   },
 });
