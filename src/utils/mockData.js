@@ -543,7 +543,7 @@ export const myCoursesData1 = [
     title: "stagesOfTheGame",
     showntitle: "3 Stages Of Chess",
     duration: "15",
-    url: "coursedetails/modules/level1/stagesOfChess/81",
+    url: "coursedetails/modules/level1/stagesOfTheGame/81",
     submodules: [
       { id: "7.1", title: "7.1 Opening", url: "coursedetails/modules/level1/stagesOfTheGame/81" },
       { id: "7.2", title: "7.2 Middlegame", url: "coursedetails/modules/level1/stagesOfTheGame/82" },
