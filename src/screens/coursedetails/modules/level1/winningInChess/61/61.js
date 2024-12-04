@@ -68,7 +68,7 @@ const T11 = () => {
         const data = await response.json();
        
         if (data) { 
-          navigation.navigate("coursedetails/modules/level1/specialMoves/52");
+          navigation.navigate("coursedetails/modules/level1/winningInChess/62");
         } else {
           console.error("Failed to update course completion", data); 
         }
@@ -88,7 +88,7 @@ const T11 = () => {
           
            
             <WebView
-              source={{ uri: "https://www.youtube.com/embed/watch?v=TWgcG2MOLA8" }}
+              source={{ uri: "https://www.youtube.com/embed/watch?v=OfmKjkbkRoE" }}
               style={{ width: "90%",
                 height: 230,
                 alignSelf: "center",
@@ -111,7 +111,7 @@ const T11 = () => {
         >
            
           <Text style={globalStyles.headingFour}>
-          5.4 Attack & Defense
+          5.1 Checkmate
           </Text>
            {/* <View style={styles.classDetailsAndPrice}>
             <View style={styles.classDetails}>

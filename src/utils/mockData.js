@@ -557,7 +557,7 @@ export const myCoursesData1 = [
     duration: "10",
     url: "coursedetails/modules/level1/chessNotations/91",
     submodules: [
-      { id: "8.1", title: "8.1 Notation", url: "coursedetails/modules/level1/notation/91" },
+      { id: "8", title: "8 Notation", url: "coursedetails/modules/level1/notation/91" },
     ],
   },
   {
@@ -567,7 +567,7 @@ export const myCoursesData1 = [
     duration: "10",
     url: "coursedetails/modules/level1/chessGame/101",
     submodules: [
-      { id: "9.1", title: "9.1 Chess Game", url: "coursedetails/modules/level1/chessGame/101" },
+      { id: "9", title: "9 Chess Game", url: "coursedetails/modules/level1/chessGame/101" },
     ],
   },
 ];

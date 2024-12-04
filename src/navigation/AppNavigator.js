@@ -43,6 +43,14 @@ import Level1Aop2 from "../screens/coursedetails/modules/level1/arrangementOfPie
 import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51"
 import Level1Sm2 from "../screens/coursedetails/modules/level1/specialMoves/52/52"
 import Level1Sm3 from "../screens/coursedetails/modules/level1/specialMoves/53/53"
+
+import Level1Wic from "../screens/coursedetails/modules/level1/winningInChess/61/61"
+import Level1Wic2 from "../screens/coursedetails/modules/level1/winningInChess/62/62"
+import Level1Wic3 from "../screens/coursedetails/modules/level1/winningInChess/63/63"
+import Level1Wic4 from "../screens/coursedetails/modules/level1/winningInChess/64/64"
+import Level1Wic5 from "../screens/coursedetails/modules/level1/winningInChess/65/65"
+import Level1Wic6 from "../screens/coursedetails/modules/level1/winningInChess/66/66"
+
 import CourseComplete from "../screens/certificate/CourseComplete";
 import Support from "../screens/support/support";
 import LearderBoard from "../screens/learderboard/learderboard";
@@ -133,6 +141,14 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/51" component={Level1Sm} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/52" component={Level1Sm2} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/53" component={Level1Sm3} />
+
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/61" component={Level1Wic} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/62" component={Level1Wic2} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/63" component={Level1Wic3} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/64" component={Level1Wic4} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/65" component={Level1Wic5} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/66" component={Level1Wic6} />
+
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="support" component={Support} />
       <Stack.Screen name="learderboard" component={LearderBoard} />
