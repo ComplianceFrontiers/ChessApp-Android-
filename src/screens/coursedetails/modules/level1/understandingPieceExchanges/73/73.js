@@ -143,34 +143,12 @@ const T11 = () => {
  {renderTabs()}
 {activeTab === "About" && (
   <>
-    <Text style={globalStyles.paragraph}>
-      Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-    <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Conditions for Castling:</Text>
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    1. The King and Rook involved in the castling move must not have moved previously.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    2. There must be no pieces between the Rook and King on the castling side.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    3. Neither the King nor any squares on the castling side can be under check during the castling move.
-  </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Kingside castling, also known as short castling, is a strategic chess move where the king moves two squares toward the rook on its starting side, and the rook then moves to the square right next to the king. This maneuver is primarily used to increase the king's safety by positioning it behind a protective wall of pawns and connecting the rooks, which enhances their ability to work together. For kingside castling to be legal, several conditions must be met: neither the king nor the rook involved in the castling move can have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check or move through or land on a square that is under attack. Kingside castling is typically faster than queenside castling because it involves fewer squares, allowing the king to reach safety quickly and enabling the rook to take an active role in the game.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Queenside castling, also known as long castling, is a strategic chess move where the king moves two squares toward the rook on the queen's side of the board, and the rook then moves to the square right next to the king. This move aims to enhance the king's safety while also bringing the rook into a more active and central position on the board. For queenside castling to be legal, several conditions must be met: the king and the rook involved in the castling must not have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check, nor can it pass through or land on a square that is under attack.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Compared to kingside castling, queenside castling often takes more time to set up because it involves more squares and usually requires more preparation, such as moving the queen and another piece out of the way. However, it can be a powerful move, as it often places the king in a more central position while allowing the rook to immediately control an important central file.
-    </Text>
+    <Text style={styles.paragraph}>
+                Being 'exchange down' in chess refers to a material disadvantage where you have traded a higher-value piece, typically a rook, for a lower-value piece, usually a knight or bishop. In standard piece valuation, a rook is worth five points, while a knight or bishop is worth three points. Losing a rook in exchange for a knight or bishop results in a net loss of two points. Being exchange down can make the endgame more difficult, as rooks are often more powerful in open positions and can control more squares than knights or bishops. Additionally, losing a rook means giving up control of open files and ranks, which can make it harder to exert pressure on the opponent and control key areas of the board.
+            </Text>
+            <Text style={styles.paragraph}>
+                Being exchange down can be strategically acceptable in certain situations. Positional compensation can justify the decision if it leads to significant advantages, such as control of the center, a strong pawn structure, or a powerful knight or bishop. Additionally, dynamic potential plays a role, where the activity of your remaining pieces or the creation of threats can offset the material loss, especially in the middlegame. However, there are risks associated with being exchange down. It can leave you in a vulnerable position, particularly susceptible to an opponent's attack if they effectively utilize their rooks to dominate the board. The endgame also becomes more challenging when down in material, as the opponent's rooks can outmaneuver your minor pieces, making it difficult to defend or create winning chances.
+            </Text>
     </>
 )}
 </View>
@@ -179,7 +157,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack("coursedetails/modules/level1/arrangementOfPieces/42")} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/understandingPieceExchanges/72")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>

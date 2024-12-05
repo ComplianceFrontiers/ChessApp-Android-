@@ -143,34 +143,40 @@ const T11 = () => {
  {renderTabs()}
 {activeTab === "About" && (
   <>
-    <Text style={globalStyles.paragraph}>
-      Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
-    </Text>
+     <Text style={styles.paragraph}>
+                In chess, being "material down" refers to having fewer or less valuable pieces or pawns than your opponent, resulting in a numerical or positional disadvantage. This can happen in a couple of ways. First, you might lose a piece like a knight, bishop, or even a queen without gaining a piece of equal or greater value in return. Additionally, players sometimes sacrifice material intentionally to gain positional advantages or launch an attack, but if the compensation is not sufficient, this can leave them material down.
+            </Text>
+            <Text style={styles.paragraph}>
+                Being material down presents significant challenges, especially in defense. With fewer pieces, it becomes harder to defend your position, protect your king, and maintain control over key squares on the board.
+            </Text>
 
-    <Text style={globalStyles.paragraph}>
-    <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Conditions for Castling:</Text>
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    1. The King and Rook involved in the castling move must not have moved previously.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    2. There must be no pieces between the Rook and King on the castling side.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    3. Neither the King nor any squares on the castling side can be under check during the castling move.
-  </Text>
+            <Text style={styles.subheading}>Disadvantages of Being Material Down</Text>
+            <View style={styles.list}>
+                <Text style={styles.listItem}>
+                    <Text style={styles.bold}>Limited Offensive Potential:</Text> When you're material down, you have fewer resources for launching effective attacks. This limitation can make it hard to create winning chances and apply pressure on your opponent.
+                </Text>
+                <Text style={styles.listItem}>
+                    <Text style={styles.bold}>Endgame Difficulties:</Text> In the endgame, being down in material is particularly problematic. Your opponent's extra pieces or pawns can be used to create decisive threats, such as promoting a pawn, which can be challenging to counter.
+                </Text>
+            </View>
 
-    <Text style={globalStyles.paragraph}>
-      Kingside castling, also known as short castling, is a strategic chess move where the king moves two squares toward the rook on its starting side, and the rook then moves to the square right next to the king. This maneuver is primarily used to increase the king's safety by positioning it behind a protective wall of pawns and connecting the rooks, which enhances their ability to work together. For kingside castling to be legal, several conditions must be met: neither the king nor the rook involved in the castling move can have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check or move through or land on a square that is under attack. Kingside castling is typically faster than queenside castling because it involves fewer squares, allowing the king to reach safety quickly and enabling the rook to take an active role in the game.
-    </Text>
+            <Text style={styles.subheading}>Strategies to Compensate for Material Loss</Text>
+            <View style={styles.list}>
+                <Text style={styles.listItem}>
+                    <Text style={styles.bold}>Creating Counterplay:</Text> To offset a material disadvantage, focus on creating active threats and targeting weak points in your opponent’s position. Launching a counterattack can sometimes turn the game in your favor.
+                </Text>
+                <Text style={styles.listItem}>
+                    <Text style={styles.bold}>Positional Play:</Text> Strong piece placement, control of key squares, and a solid pawn structure can sometimes compensate for being material down. This approach makes it harder for your opponent to fully capitalize on their material advantage.
+                </Text>
+                <Text style={styles.listItem}>
+                    <Text style={styles.bold}>Avoiding Further Trades:</Text> When material down, it is crucial to avoid unnecessary exchanges of pieces. Such trades can simplify the position and highlight your material deficit, making it even more challenging to recover.
+                </Text>
+            </View>
 
-    <Text style={globalStyles.paragraph}>
-      Queenside castling, also known as long castling, is a strategic chess move where the king moves two squares toward the rook on the queen's side of the board, and the rook then moves to the square right next to the king. This move aims to enhance the king's safety while also bringing the rook into a more active and central position on the board. For queenside castling to be legal, several conditions must be met: the king and the rook involved in the castling must not have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check, nor can it pass through or land on a square that is under attack.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Compared to kingside castling, queenside castling often takes more time to set up because it involves more squares and usually requires more preparation, such as moving the queen and another piece out of the way. However, it can be a powerful move, as it often places the king in a more central position while allowing the rook to immediately control an important central file.
-    </Text>
+            <Text style={styles.subheading}>When to Consider Sacrificing More Material</Text>
+            <Text style={styles.paragraph}>
+                <Text style={styles.bold}>Dynamic Compensation:</Text> In certain situations, sacrificing additional material can lead to significant positional advantages, create an unstoppable attack, or force a draw. This dynamic compensation can sometimes turn the tables on your opponent, shifting the balance of power.
+            </Text>
     </>
 )}
 </View>
@@ -179,7 +185,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack("coursedetails/modules/level1/arrangementOfPieces/42")} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/understandingPieceExchanges/74")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
@@ -200,11 +206,24 @@ const styles = StyleSheet.create({
     height: 320,
     marginTop: "8%",
   },
+  bold: {
+    fontWeight: 'bold',
+},
   absoluteIMG: {
     position: "absolute",
     top: -270,
     width: "100%",
   },
+  list: {
+    marginLeft: 16,
+    marginBottom: 16,
+},
+listItem: {
+    fontFamily: 'Montserrat',
+    color: 'black',
+    fontSize: 16,
+    marginBottom: 8,
+},
   parallaxContainer: {
     marginTop: -100,
     width: "100%",

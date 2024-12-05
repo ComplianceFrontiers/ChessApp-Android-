@@ -143,34 +143,18 @@ const T11 = () => {
  {renderTabs()}
 {activeTab === "About" && (
   <>
-    <Text style={globalStyles.paragraph}>
-      Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-    <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Conditions for Castling:</Text>
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    1. The King and Rook involved in the castling move must not have moved previously.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    2. There must be no pieces between the Rook and King on the castling side.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    3. Neither the King nor any squares on the castling side can be under check during the castling move.
-  </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Kingside castling, also known as short castling, is a strategic chess move where the king moves two squares toward the rook on its starting side, and the rook then moves to the square right next to the king. This maneuver is primarily used to increase the king's safety by positioning it behind a protective wall of pawns and connecting the rooks, which enhances their ability to work together. For kingside castling to be legal, several conditions must be met: neither the king nor the rook involved in the castling move can have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check or move through or land on a square that is under attack. Kingside castling is typically faster than queenside castling because it involves fewer squares, allowing the king to reach safety quickly and enabling the rook to take an active role in the game.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Queenside castling, also known as long castling, is a strategic chess move where the king moves two squares toward the rook on the queen's side of the board, and the rook then moves to the square right next to the king. This move aims to enhance the king's safety while also bringing the rook into a more active and central position on the board. For queenside castling to be legal, several conditions must be met: the king and the rook involved in the castling must not have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check, nor can it pass through or land on a square that is under attack.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Compared to kingside castling, queenside castling often takes more time to set up because it involves more squares and usually requires more preparation, such as moving the queen and another piece out of the way. However, it can be a powerful move, as it often places the king in a more central position while allowing the rook to immediately control an important central file.
-    </Text>
+     <Text style={styles.paragraph}>
+                In chess, being "material up" means having more valuable pieces or pawns than your opponent, providing you with either a numerical or positional advantage. To gain a material advantage, you can focus on capturing your opponent’s pieces—such as a knight, bishop, or even a queen—without losing a piece of equal or greater value. Additionally, winning extra pawns can give you an edge, especially if it leads to passed pawns or weakens your opponent's pawn structure.
+            </Text>
+            <Text style={styles.paragraph}>
+                Once you have a material advantage, converting it into a win involves simplifying the position by trading down pieces. This makes it easier to push your advantage without giving your opponent opportunities for counterplay. Playing cautiously to avoid unnecessary risks, such as sacrifices or tactical blunders, is key to maintaining your edge and preventing your opponent from recovering material or equalizing the position.
+            </Text>
+            <Text style={styles.paragraph}>
+                When you are material up in chess, several strategic benefits come into play. First, having more material allows you to control the game by exerting greater influence over the board, dominating key squares, and limiting your opponent’s options. This extra material also enhances your attack, enabling you to launch stronger threats that are harder for your opponent to counter. Furthermore, in the endgame, having a material advantage—especially with extra pawns—gives you a higher chance of promoting a pawn and securing checkmate.
+            </Text>
+            <Text style={styles.paragraph}>
+                However, being material up can lead to common pitfalls. Overconfidence may cause players to overlook their opponent’s threats or make careless moves. Additionally, having a material advantage does not always guarantee victory. Ignoring important positional factors, such as king safety, pawn structure, or piece activity, can result in blunders or stalemates.
+            </Text>
     </>
 )}
 </View>
@@ -179,7 +163,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack("coursedetails/modules/level1/arrangementOfPieces/42")} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/understandingPieceExchanges/73")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>

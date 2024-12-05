@@ -143,34 +143,36 @@ const T11 = () => {
  {renderTabs()}
 {activeTab === "About" && (
   <>
-    <Text style={globalStyles.paragraph}>
-      Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
-    </Text>
+     <Text style={styles.paragraph}>
+          Understanding and avoiding checkmates in chess is crucial for players.
+          Checkmate occurs when the opponent’s king is placed in a position of
+          direct threat, or "check," from which there is no escape. This ends
+          the game, granting victory to the player who delivered the checkmate.
+          To achieve checkmate, you must coordinate your pieces to control key
+          squares around the king, ensuring that all escape routes are blocked.
+          This often involves using a combination of rooks, queens, and
+          sometimes bishops or knights to deliver the check and cover the
+          king’s potential moves.
+        </Text>
+        <Text style={styles.paragraph}>
+          Learning common checkmate patterns, such as using a queen and king,
+          two rooks, or a rook and king combination, is essential for improving
+          your game. Additionally, always ensure your king has an escape route
+          to avoid being checkmated.
+        </Text>
 
-    <Text style={globalStyles.paragraph}>
-    <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Conditions for Castling:</Text>
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    1. The King and Rook involved in the castling move must not have moved previously.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    2. There must be no pieces between the Rook and King on the castling side.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    3. Neither the King nor any squares on the castling side can be under check during the castling move.
-  </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Kingside castling, also known as short castling, is a strategic chess move where the king moves two squares toward the rook on its starting side, and the rook then moves to the square right next to the king. This maneuver is primarily used to increase the king's safety by positioning it behind a protective wall of pawns and connecting the rooks, which enhances their ability to work together. For kingside castling to be legal, several conditions must be met: neither the king nor the rook involved in the castling move can have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check or move through or land on a square that is under attack. Kingside castling is typically faster than queenside castling because it involves fewer squares, allowing the king to reach safety quickly and enabling the rook to take an active role in the game.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Queenside castling, also known as long castling, is a strategic chess move where the king moves two squares toward the rook on the queen's side of the board, and the rook then moves to the square right next to the king. This move aims to enhance the king's safety while also bringing the rook into a more active and central position on the board. For queenside castling to be legal, several conditions must be met: the king and the rook involved in the castling must not have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check, nor can it pass through or land on a square that is under attack.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Compared to kingside castling, queenside castling often takes more time to set up because it involves more squares and usually requires more preparation, such as moving the queen and another piece out of the way. However, it can be a powerful move, as it often places the king in a more central position while allowing the rook to immediately control an important central file.
-    </Text>
+        <Text style={styles.subHeading}>Chessboard Info</Text>
+        <Text style={styles.paragraph}>
+          In addition to Ranks and Files, there are also Diagonals on the
+          chessboard. Diagonals are the slanting lines that connect squares of
+          the same color. Each Diagonal is named based on its starting and
+          ending squares, such as A1-H8.
+        </Text>
+        <Text style={styles.paragraph}>
+          While Diagonals are important for understanding board dynamics, they
+          are not commonly referenced in game notations. For now, we will
+          simply introduce the concept and move forward.
+        </Text>
     </>
 )}
 </View>
@@ -179,7 +181,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack("coursedetails/modules/level1/arrangementOfPieces/42")} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/specialMoves/53")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
@@ -213,6 +215,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
+  },
+  subHeading: {
+    fontSize: 18,
+    fontWeight: "600",
+    margin: 15,
+    color: "black",
   },
   classDetailsAndPrice: {
     flexDirection: "row",

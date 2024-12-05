@@ -143,34 +143,15 @@ const T11 = () => {
  {renderTabs()}
 {activeTab === "About" && (
   <>
-    <Text style={globalStyles.paragraph}>
-      Castling is a unique move in chess involving the king and a rook, primarily for defensive purposes. To castle, several conditions must be met: neither the king nor the rook can have moved previously, the squares between them must be unoccupied, and the king must not be in check, nor can it move through or land on a square under attack. During castling, the king moves two squares towards the rook, and the rook moves to the square immediately next to the king. This maneuver can be performed on either side of the board. Kingside castling involves the king moving towards the h-file rook, while queenside castling involves the king moving towards the a-file rook.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-    <Text style={[globalStyles.paragraph, { fontWeight: 'bold' }]}>Conditions for Castling:</Text>
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    1. The King and Rook involved in the castling move must not have moved previously.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    2. There must be no pieces between the Rook and King on the castling side.
-  </Text>
-  <Text style={globalStyles.paragraph}>
-    3. Neither the King nor any squares on the castling side can be under check during the castling move.
-  </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Kingside castling, also known as short castling, is a strategic chess move where the king moves two squares toward the rook on its starting side, and the rook then moves to the square right next to the king. This maneuver is primarily used to increase the king's safety by positioning it behind a protective wall of pawns and connecting the rooks, which enhances their ability to work together. For kingside castling to be legal, several conditions must be met: neither the king nor the rook involved in the castling move can have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check or move through or land on a square that is under attack. Kingside castling is typically faster than queenside castling because it involves fewer squares, allowing the king to reach safety quickly and enabling the rook to take an active role in the game.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Queenside castling, also known as long castling, is a strategic chess move where the king moves two squares toward the rook on the queen's side of the board, and the rook then moves to the square right next to the king. This move aims to enhance the king's safety while also bringing the rook into a more active and central position on the board. For queenside castling to be legal, several conditions must be met: the king and the rook involved in the castling must not have moved earlier in the game, there must be no pieces between the king and the rook, and the king cannot be in check, nor can it pass through or land on a square that is under attack.
-    </Text>
-
-    <Text style={globalStyles.paragraph}>
-      Compared to kingside castling, queenside castling often takes more time to set up because it involves more squares and usually requires more preparation, such as moving the queen and another piece out of the way. However, it can be a powerful move, as it often places the king in a more central position while allowing the rook to immediately control an important central file.
-    </Text>
+     <Text style={styles.paragraph}>
+                In chess, fair trade refers to the exchange of pieces of equal value, maintaining balance in material and ensuring that neither player gains an immediate advantage from the trade. Pawns, worth one point, are the most basic units and are often exchanged with other pawns in the opening to control the center or create open lines. Knights and bishops, each worth three points, are typically traded with each other when players seek to simplify the position or create specific strategic opportunities. Rooks, valued at 5 points, are often exchanged in the endgame to reduce material and head towards a more manageable conclusion. Queens, worth nine points, are usually traded to neutralize threats or transition into a simpler, more predictable endgame.
+            </Text>
+            <Text style={styles.paragraph}>
+                In chess, trading pieces can be a strategic decision that involves careful consideration of the position. Fair trade is often made to simplify the position, eliminating unnecessary complexity, and making the board easier to manage, especially as the game approaches the endgame, which is a concept that will be discussed later. Another reason for a fair trade might be to eliminate a threat; by trading a piece that poses a significant danger, a player can neutralize an opponent's attack or disrupt their strategy. Additionally, creating balance is an important aspect of fair trading, as it helps maintain material parity and prevents one side from gaining a decisive advantage.
+            </Text>
+            <Text style={styles.paragraph}>
+                However, there are situations where trading pieces might not be advisable. For example, if you have a positional advantage, where your piece holds a strong position or exerts significant influence on the board, it might be better to avoid trading. Another reason to refrain from trading is when your piece has greater dynamic potential than your opponent's. If your piece is more active or has the potential to become more powerful, keeping it on the board might allow you to leverage its strength to gain an advantage.
+            </Text>
     </>
 )}
 </View>
@@ -179,7 +160,7 @@ const T11 = () => {
       <View style={[styles.buttonContainer, { backgroundColor: theme.background }]}>
         <TouchableOpacity 
           style={styles.navigationButton}
-          onPress={() => navigation.goBack("coursedetails/modules/level1/arrangementOfPieces/42")} // Replace with your actual logic for Previous
+          onPress={() => navigation.goBack("coursedetails/modules/level1/winningInChess/66")} // Replace with your actual logic for Previous
         >
           <Text style={styles.buttonText}>Previous</Text>
         </TouchableOpacity>
