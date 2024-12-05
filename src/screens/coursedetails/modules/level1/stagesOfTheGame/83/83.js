@@ -68,7 +68,7 @@ const T11 = () => {
         const data = await response.json();
        
         if (data) { 
-          navigation.navigate("coursedetails/modules/level1/specialMoves/52");
+          navigation.navigate("coursedetails/modules/level1/notation/91");
         } else {
           console.error("Failed to update course completion", data); 
         }

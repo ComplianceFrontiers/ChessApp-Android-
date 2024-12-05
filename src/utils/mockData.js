@@ -129,8 +129,8 @@ export const OnBoardingData = [
 ];
 
 export const signInData = [
-  { id: 1, icon: <Google />, title: "Continue with Google" },
-  { id: 2, icon: <Apple />, title: "Continue with Apple" },
+  { id: 1, icon: <Google />, title: "Continue with Email" },
+  // { id: 2, icon: <Apple />, title: "Continue with Apple" },
 ];
 
 export const singinTextInput = [
@@ -422,9 +422,9 @@ export const curriculumData = [
   { id: 3, title: "Arrangement Of Pieces", duration: "15", url: "coursedetails/modules/level1/arrangementOfPieces/41" },
   { id: 4, title: "Special Moves", duration: "10", url: "coursedetails/modules/level1/specialMoves/51" },
   { id: 5, title: "Winning In Chess", duration: "15", url: "coursedetails/modules/level1/winningInChess/61" },
-  { id: 6, title: "Piece Exchange", duration: "10", url: "coursedetails/modules/level1/pieceExchange/71" },
+  { id: 6, title: "Piece Exchange", duration: "10", url: "coursedetails/modules/level1/understandingPieceExchange/71" },
   { id: 7, title: "3 Stages Of Chess", duration: "15", url: "coursedetails/modules/level1/stagesOfChess/81" },
-  { id: 8, title: "Chess Notations", duration: "10", url: "coursedetails/modules/level1/chessNotations/91" },
+  { id: 8, title: "Chess Notations", duration: "10", url: "coursedetails/modules/level1/notation/91" },
   { id: 9, title: "Chess Game", duration: "10", url: "coursedetails/modules/level1/chessGame/10" },
 ];
 
@@ -529,7 +529,7 @@ export const myCoursesData1 = [
     title: "understandingPieceExchanges",
     showntitle: "Piece Exchange",
     duration: "10",
-    url: "coursedetails/modules/level1/pieceExchange/71",
+    url: "coursedetails/modules/level1/understandingPieceExchanges/71",
     submodules: [
       { id: "6.1", title: "6.1 Fair Trade", url: "coursedetails/modules/level1/understandingPieceExchanges/71" },
       { id: "6.2", title: "6.2 Exchange Up", url: "coursedetails/modules/level1/understandingPieceExchanges/72" },
@@ -543,7 +543,7 @@ export const myCoursesData1 = [
     title: "stagesOfTheGame",
     showntitle: "3 Stages Of Chess",
     duration: "15",
-    url: "coursedetails/modules/level1/stagesOfChess/81",
+    url: "coursedetails/modules/level1/stagesOfTheGame/81",
     submodules: [
       { id: "7.1", title: "7.1 Opening", url: "coursedetails/modules/level1/stagesOfTheGame/81" },
       { id: "7.2", title: "7.2 Middlegame", url: "coursedetails/modules/level1/stagesOfTheGame/82" },
@@ -555,9 +555,9 @@ export const myCoursesData1 = [
     title: "notation",
     showntitle: "Chess Notations",
     duration: "10",
-    url: "coursedetails/modules/level1/chessNotations/91",
+    url: "coursedetails/modules/level1/notation/91",
     submodules: [
-      { id: "8.1", title: "8.1 Notation", url: "coursedetails/modules/level1/notation/91" },
+      { id: "8", title: "8 Notation", url: "coursedetails/modules/level1/notation/91" },
     ],
   },
   {
@@ -567,7 +567,7 @@ export const myCoursesData1 = [
     duration: "10",
     url: "coursedetails/modules/level1/chessGame/101",
     submodules: [
-      { id: "9.1", title: "9.1 Chess Game", url: "coursedetails/modules/level1/chessGame/101" },
+      { id: "9", title: "9 Chess Game", url: "coursedetails/modules/level1/chessGame/101" },
     ],
   },
 ];

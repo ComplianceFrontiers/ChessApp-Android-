@@ -16,13 +16,13 @@ const PopularCourses = ({ navigation }) => {
 
   return (
     <View style={[globalStyles.colorBG, { flex: 1 }]}>
-        <ScrollView style={{ flex: 1 }}>        
+        <View style={{ flex: 1 }}>        
         <View style={globalStyles.contents}>
         <View>
           <AllCourseTab />
         </View>
         </View>
-      </ScrollView>
+      </View>
 
       {/* Render the Tabs component for this screen */}
       <Tabs navigation={navigation} />

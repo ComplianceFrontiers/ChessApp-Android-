@@ -82,10 +82,10 @@ const MyCourses = ({ showHeader = true }) => {
       <ScrollView style={[globalStyles.colorBG]}>
         {showHeader && (
           <View style={[globalStyles.container]}>
-            <Header label="Level 1 (Pawn)" />
+            <Header label="Basics Of Chess" />
           </View>
         )}
-        <View style={globalStyles.contents}>
+        <View style={{ paddingTop: 20,alignItems:"center",paddingHorizontal:20}}>
           <View style={{ gap: 20, paddingVertical: "0%" }}>
             {courses.map((item) => (
               <View key={item.id}>
@@ -94,15 +94,17 @@ const MyCourses = ({ showHeader = true }) => {
                   onPress={() => navigation.navigate(item.url)}
                 >
                   <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-                    <Text
-                      style={[
-                        styles.id,
-                        globalStyles.headingFive,
-                        { backgroundColor: getCourseColor(item.status) },
-                      ]}
-                    >
-                      {item.id}
-                    </Text>
+                  <Text
+  style={[
+    styles.id,
+    globalStyles.headingFive,
+    { backgroundColor: getCourseColor(item.status) },
+    getCourseColor(item.status) === "#4CAF50" && { color: "#fff" }, // Add this condition to change text color to white if green
+  ]}
+>
+  {item.id}
+</Text>
+
                     <View>
                       <Text style={globalStyles.headingFive}>{item.showntitle}</Text>
                       <View style={styles.progressBarContainer}>
@@ -207,10 +209,10 @@ const styles = StyleSheet.create({
     position: "absolute", // Position it on top of the progress bar
     top: 0,
     left: "50%", // Move the text to the center
-    transform: [{ translateX: -50 }], // Offset by half of the text width
+    transform: [{ translateX: -40 }], // Offset by half of the text width
   },
   progressText: {
-    fontSize: 10, // Adjust font size for better visibility
+    fontSize: 8, // Adjust font size for better visibility
     color: "#000", // Ensure text color contrasts with the background
     fontWeight: "bold", // Make the text bold for emphasis
   },

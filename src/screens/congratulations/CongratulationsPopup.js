@@ -169,7 +169,7 @@ const CongratulationsPopup = ({ isVisible, onClose }) => {
           <TouchableOpacity
             onPress={() => {
               onClose(); // Call onClose function to close the modal
-              navigation.navigate("popularcourses"); // Navigate to the desired page
+              navigation.navigate("home"); // Navigate to the desired page
             }}
             style={{ position: "absolute", top: 20, right: 20 }}
           >

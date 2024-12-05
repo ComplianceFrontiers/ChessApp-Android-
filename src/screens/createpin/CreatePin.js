@@ -7,6 +7,7 @@ import CommonButton from "../../components/commonbutton/CommonButton";
 import CongratulationsPopup from "../congratulations/CongratulationsPopup";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Logo from "../../components/logo/Logo";
 
 const CreatePin = () => {
   const [otp, setOtp] = useState("");
@@ -59,8 +60,13 @@ const CreatePin = () => {
         navigation.navigate("home");
         return;
       }
-
+      
       const loginResponse = await fetchWithDeviceType("https://backend-chess-tau.vercel.app/signin_inschool", email);
+       if("data" in loginResponse){
+        await handleLogoutFromPreviousDevice();
+       }
+
+
       if (loginResponse.success && loginResponse.device) {
         await handleLogoutFromPreviousDevice();
       }
@@ -81,9 +87,9 @@ const CreatePin = () => {
 
       const data = await response.json();
       if (data.success) {
-        await AsyncStorage.setItem("signin", "true");
+        await AsyncStorage.setItem("email",email);
         setIsModalVisible(true);
-        navigation.navigate("popularcourses");
+        navigation.navigate("home");
       } else {
         Alert.alert("Invalid OTP", "Please check your OTP and try again.");
       }
@@ -102,7 +108,7 @@ const CreatePin = () => {
     if (isModalVisible) {
       const timer = setTimeout(() => {
         setIsModalVisible(false);
-        navigation.navigate("popularcourses");
+        navigation.navigate("home");
       }, 1000);
       return () => clearTimeout(timer);
     }
@@ -110,7 +116,9 @@ const CreatePin = () => {
 
   return (
     <View style={globalStyles.container}>
-      <Header label="Enter OTP From Your Email" />
+      <Text style={globalStyles.headingOne}>Enter OTP</Text>
+      <Logo />
+
       <View style={globalStyles.contents}>
         <Text style={globalStyles.paragraph}>Enter OTP to Make Your Account more Secure</Text>
         <View style={{ marginVertical: "5%" }}>

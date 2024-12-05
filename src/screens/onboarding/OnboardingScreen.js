@@ -106,7 +106,7 @@ const OnboardingScreen = () => {
           <CommonButton
             label="Get Started"
             style={styles.buttonCls}
-            onPress={() => navigation.navigate("signup")}
+            onPress={() => navigation.navigate("signin")}
           />
         ) : (
           <CommonButton

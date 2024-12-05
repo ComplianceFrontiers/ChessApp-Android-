@@ -25,16 +25,13 @@ const LeaderBoardScreen = () => {
   const [students, setStudents] = useState([]);
   const group = "In School Program"; // Dynamic group parameter
 
-  // Fetch data from the updated API
   useEffect(() => {
     const fetchStudents = async () => {
       try {
         const response = await axios.get(
-          `https://backend-chess-tau.vercel.app/get_forms_group?group=${encodeURIComponent(
-            group
-          )}`
+          `https://backend-chess-tau.vercel.app/get_forms_group?group=${encodeURIComponent(group)}`
         );
-        setStudents(response.data); // Assuming API returns an array of students
+        setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);
       }
@@ -43,27 +40,40 @@ const LeaderBoardScreen = () => {
     fetchStudents();
   }, [group]);
 
+  // Helper function to calculate the score based on the number of registered courses
+  const calculateScore = (courses) => {
+    return courses.length * 10; // Example score logic: 10 points per course
+  };
+
+  // Sort students based on score in descending order
+  const sortedStudents = students
+    .map((student) => ({
+      ...student,
+      score: calculateScore(student.registered_inschool_courses || []),
+    }))
+    .sort((a, b) => b.score - a.score);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {students.length > 0 ? (
-        students.map((student, index) => {
-          // Use the imageMap to find the image or default to "/images/portal/g1.png"
-          const studentImage =
-            imageMap[student.image] || imageMap["/images/portal/b4.png"];
+        <>
+          {sortedStudents.map((student, index) => {
+            const studentImage = imageMap[student.image] || imageMap["/images/portal/b4.png"];
 
-          return (
-            <View key={index} style={styles.card}>
-              <Image source={studentImage} style={styles.image} />
-              <Text style={styles.name}>
-                Profile ID: {student.profile_id}
-              </Text>
-              <Text style={styles.name}>
-                Name: {student.child_name?.first} {student.child_name?.last}
-              </Text>
-              <Text style={styles.email}>Email: {student.email}</Text>
-            </View>
-          );
-        })
+            return (
+              <View key={index} style={styles.card}>
+                <Text style={styles.rank}>{index + 1}</Text>
+                <Image source={studentImage} style={styles.image} />
+                <View style={styles.textContainer}>
+                  <Text style={styles.name}>
+                    {student.child_name?.first} {student.child_name?.last}
+                  </Text>
+                  <Text style={styles.score}>Score: {student.score}</Text>
+                </View>
+              </View>
+            );
+          })}
+        </>
       ) : (
         <Text style={styles.loadingText}>Loading students...</Text>
       )}
@@ -75,36 +85,62 @@ export default LeaderBoardScreen;
 
 const styles = StyleSheet.create({
   container: {
-    gap: 10,
-    width: "90%",
-    marginVertical: "10%",
-    alignSelf: "center",
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 20,
+    paddingBottom: 20,
+    backgroundColor: "#f7f7f7",
   },
   card: {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#fff",
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 10,
     shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    marginBottom: 10,
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 8,
+    marginBottom: 15,
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-start",
+    width: "90%",
+    maxWidth: 400,
+  },
+  rank: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#1e1e1e",
+    marginRight: 20,
+    width: 30,
+    textAlign: "center",
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 10,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    borderWidth: 2,
+    borderColor: "#ddd",
+    marginRight: 15,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: "center",
   },
   name: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 18,
+    fontWeight: "600",
     color: "#333",
+    marginBottom: 5,
   },
   email: {
     fontSize: 14,
     color: "#555",
+  },
+  score: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "#1a73e8",
+    marginTop: 5,
   },
   loadingText: {
     fontSize: 16,

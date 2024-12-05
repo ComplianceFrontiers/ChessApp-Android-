@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import useGlobalStyles from "../../styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import {hometabPorfileHeader} from "../../utils/mockData"
+import Logo from "../../components/logo/Logo";
 // Image mapping for user profile images
 const imageMap = {
   "/images/portal/g1.png": require("../../assets/images/portal/g1.png"),
@@ -63,48 +64,50 @@ const HomeTab = () => {
 
   return (
     <View style={styles.profileHeader}>
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-        <TouchableOpacity onPress={() => navigation.navigate("profile")}>
-          <Image
-            source={
-              userDetails?.image && imageMap[userDetails.image]
-                ? imageMap[userDetails.image] || require("../../assets/images/portal/b1.png") // Fallback
-                : require("../../assets/images/profileIcon.png") // Default icon
-            }
-            style={styles.profileIcon}
-          />
-        </TouchableOpacity>
-        <View style={{ gap: 10 }}>
-          <Text style={globalStyles.headingFour}>
-            {userDetails?.child_name?.first || "Guest"}
-          </Text>
-          <Text style={[globalStyles.miniButton, { width: "100%" }]}>
-            Student
-          </Text>
-        </View>
+    <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+      <TouchableOpacity onPress={() => navigation.navigate("profile")}>
+        <Image
+          source={
+            userDetails?.image && imageMap[userDetails.image]
+              ? imageMap[userDetails.image] || require("../../assets/images/portal/b1.png")
+              : require("../../assets/images/profileIcon.png")
+          }
+          style={styles.profileIcon}
+        />
+      </TouchableOpacity>
+      <View style={{ gap: 10 }}>
+        <Text style={globalStyles.headingFour}>
+          {userDetails?.child_name?.first || "Guest"}
+        </Text>
       </View>
-      <View style={styles.headerIcons}>
-          {hometabPorfileHeader.map((item) => (
-            <TouchableOpacity key={item.id}>{item.icon}</TouchableOpacity>
-          ))}
-        </View>
     </View>
+    <Image
+      source={require("../../../assets/appIcon/ll1.png")}
+      style={styles.logoImage}
+    />
+  </View>
+  
   );
 };
 
 const styles = StyleSheet.create({
+  logoImage: {
+    width: 150, // Desired width
+    height: 50, // Desired height
+    resizeMode: "contain", // Maintain aspect ratio
+  },
   profileHeader: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-between", // Space between profile and logo
     alignItems: "center",
     width: "100%",
-    paddingHorizontal: "6%",
+    paddingHorizontal: "3%",
     paddingVertical: "2%",
   },
   profileIcon: {
-    width: 40, // Set your desired width
-    height: 40, // Set your desired height
-    borderRadius: 20, // Optional: for rounded corners
+    width: 40, // Desired width
+    height: 40, // Desired height
+    borderRadius: 20, // Rounded corners
   },
   headerIcons: {
     flexDirection: "row",
@@ -112,5 +115,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
 });
+
 
 export default HomeTab;

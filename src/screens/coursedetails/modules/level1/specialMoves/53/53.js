@@ -104,7 +104,7 @@ const T11 = () => {
   
             if (updateNextCourseData.success) {
               // Navigate to the next screen if everything is successful
-              navigation.navigate("coursedetails/modules/level1/theChessboard/21");
+              navigation.navigate("coursedetails/modules/level1/winningInChess/61");
             } else {
               console.error("Failed to update next course status:", updateNextCourseData.message);
             }

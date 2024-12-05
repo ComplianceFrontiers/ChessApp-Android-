@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import SignUpScreen from "../screens/signup/SignUpScreen";
 import OnboardingScreen from "../screens/onboarding/OnboardingScreen";
 import SignIn from "../screens/signin/SignIn";
 import LetsSingup from "../screens/letsSingUp/LetsSingup";
@@ -44,6 +43,28 @@ import Level1Aop2 from "../screens/coursedetails/modules/level1/arrangementOfPie
 import Level1Sm from "../screens/coursedetails/modules/level1/specialMoves/51/51"
 import Level1Sm2 from "../screens/coursedetails/modules/level1/specialMoves/52/52"
 import Level1Sm3 from "../screens/coursedetails/modules/level1/specialMoves/53/53"
+
+import Level1Wic from "../screens/coursedetails/modules/level1/winningInChess/61/61"
+import Level1Wic2 from "../screens/coursedetails/modules/level1/winningInChess/62/62"
+import Level1Wic3 from "../screens/coursedetails/modules/level1/winningInChess/63/63"
+import Level1Wic4 from "../screens/coursedetails/modules/level1/winningInChess/64/64"
+import Level1Wic5 from "../screens/coursedetails/modules/level1/winningInChess/65/65"
+import Level1Wic6 from "../screens/coursedetails/modules/level1/winningInChess/66/66"
+
+import Level1Upe from "../screens/coursedetails/modules/level1/understandingPieceExchanges/71/71"
+import Level1Upe2 from "../screens/coursedetails/modules/level1/understandingPieceExchanges/72/72"
+import Level1Upe3 from "../screens/coursedetails/modules/level1/understandingPieceExchanges/73/73"
+import Level1Upe4 from "../screens/coursedetails/modules/level1/understandingPieceExchanges/74/74"
+import Level1Upe5 from "../screens/coursedetails/modules/level1/understandingPieceExchanges/75/75"
+
+import Level1Sotg from "../screens/coursedetails/modules/level1/stagesOfTheGame/81/81"
+import Level1Sotg2 from "../screens/coursedetails/modules/level1/stagesOfTheGame/82/82"
+import Level1Sotg3 from "../screens/coursedetails/modules/level1/stagesOfTheGame/83/83"
+
+import Level1no from "../screens/coursedetails/modules/level1/notation/91/91"
+
+import Level1Tcg from "../screens/coursedetails/modules/level1/chessGame/101/101"
+
 import CourseComplete from "../screens/certificate/CourseComplete";
 import Support from "../screens/support/support";
 import LearderBoard from "../screens/learderboard/learderboard";
@@ -94,9 +115,7 @@ const AppNavigator = () => {
       initialRouteName={initialRoute}
     >
       <Stack.Screen name="onboarding" component={OnboardingScreen} />
-      <Stack.Screen name="signup" component={SignUpScreen} />
       <Stack.Screen name="signin" component={SignIn} />
-      <Stack.Screen name="letssignUp" component={LetsSingup} />
       <Stack.Screen name="fillprofile" component={FillProfile} />
       <Stack.Screen name="createpin" component={CreatePin} />
       <Stack.Screen name="forgotpassword" component={ForgotPassword} />
@@ -136,6 +155,30 @@ const AppNavigator = () => {
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/51" component={Level1Sm} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/52" component={Level1Sm2} />
       <Stack.Screen name="coursedetails/modules/level1/specialMoves/53" component={Level1Sm3} />
+
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/61" component={Level1Wic} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/62" component={Level1Wic2} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/63" component={Level1Wic3} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/64" component={Level1Wic4} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/65" component={Level1Wic5} />
+      <Stack.Screen name="coursedetails/modules/level1/winningInChess/66" component={Level1Wic6} />
+
+      <Stack.Screen name="coursedetails/modules/level1/understandingPieceExchanges/71" component={Level1Upe} />
+      <Stack.Screen name="coursedetails/modules/level1/understandingPieceExchanges/72" component={Level1Upe2} />
+      <Stack.Screen name="coursedetails/modules/level1/understandingPieceExchanges/73" component={Level1Upe3} />
+      <Stack.Screen name="coursedetails/modules/level1/understandingPieceExchanges/74" component={Level1Upe4} />
+      <Stack.Screen name="coursedetails/modules/level1/understandingPieceExchanges/75" component={Level1Upe5} />
+
+      <Stack.Screen name="coursedetails/modules/level1/stagesOfTheGame/81" component={Level1Sotg} />
+      <Stack.Screen name="coursedetails/modules/level1/stagesOfTheGame/82" component={Level1Sotg2} />
+      <Stack.Screen name="coursedetails/modules/level1/stagesOfTheGame/83" component={Level1Sotg3} />
+
+      <Stack.Screen name="coursedetails/modules/level1/notation/91" component={Level1no} />
+
+      <Stack.Screen name="coursedetails/modules/level1/chessGame/101" component={Level1Tcg} />
+
+
+
       <Stack.Screen name="certificate" component={CourseComplete} />
       <Stack.Screen name="support" component={Support} />
       <Stack.Screen name="learderboard" component={LearderBoard} />

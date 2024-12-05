@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Linking } from "react-native";
 import useGlobalStyles from "../../styles/globalStyles";
 import { signInData } from "../../utils/mockData";
-import CommonButton from "../../components/commonbutton/CommonButton";
+// import CommonView from "../../components/commonView/CommonView";
 import { useNavigation } from "@react-navigation/native";
 import ThemeContext from "../../components/Theme/ThemeContext";
 import Logo from "../../components/logo/Logo";
-import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for icons
+import { FontAwesome } from "@expo/vector-icons"; // Importing FontAwesome for icons 
 
 const SignUpScreen = () => {
+
   const navigation = useNavigation();
   const globalStyles = useGlobalStyles();
   const theme = useContext(ThemeContext);
@@ -26,16 +27,17 @@ const SignUpScreen = () => {
       <View style={styles.contents}>
         <Logo />
         <View style={styles.childContents}>
-          <View style={{ paddingVertical: "8%", gap: 20 }}>
+        <View style={{ paddingVertical: "30%", gap: 70 }}>
             {signInData.map((item) => (
               <TouchableOpacity
                 style={styles.signinBTNS}
                 key={item.id}
                 onPress={() => {
-                  if (item.title === "Continue with Google") {
+                  if (item.title === "Continue with Email") {
                     navigation.navigate("signin");
-                  } else if (item.title === "Continue with Apple") {
-                    navigation.navigate("signin");
+                    // promptAsync()
+                                    } else if (item.title === "Continue with Apple") {
+                    
                   }
                 }}
               >
@@ -44,28 +46,7 @@ const SignUpScreen = () => {
               </TouchableOpacity>
             ))}
           </View>
-          <Text
-            style={[
-              globalStyles.headingFour,
-              { textAlign: "center", marginBottom: "10%" },
-            ]}
-          >
-            (Or)
-          </Text>
-          <CommonButton
-            label="Sign In with Your Account"
-            onPress={() => navigation.navigate("signin")}
-          />
-          <View style={[styles.register, globalStyles.absoluteContents]}>
-            <Text style={{ textAlign: "center", color: theme.color }}>
-              Don’t have an Account?{" "}
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate("fillprofile")}>
-              <Text style={[globalStyles.yellowText, { fontWeight: "500" }]}>
-                SIGN UP
-              </Text>
-            </TouchableOpacity>
-          </View>
+          
         </View>
       </View>
 

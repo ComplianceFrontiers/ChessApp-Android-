@@ -6,6 +6,8 @@ import {
   View,
   Image,
 } from "react-native";
+import HomeTab from "../hometab/HomeTab";
+
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import useGlobalStyles from "../../styles/globalStyles";
@@ -14,6 +16,7 @@ import { notificationDataToday } from "../../utils/mockData";
 import ThemeContext from "../../components/Theme/ThemeContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loading from "../loading/Loading"; // Import Loading component
+import Tabs from "../tab/Tab";
 
 const Notifications = () => {
   const globalStyles = useGlobalStyles();
@@ -96,12 +99,19 @@ const Notifications = () => {
   };
 
   return (
-    <ScrollView style={globalStyles.colorBG}>
-      <View style={globalStyles.container}>
-        <Header label="Your Chess Journey" />
-        <View style={globalStyles.contents}>
-          {loading ? ( // Show Loading component if loading is true
+<View style={styles.container}>
+ 
+
+ <View contentContainerStyle={styles.scrollContent}>
+ <HomeTab />
+
+ <View style={globalStyles.container}>
+ <View style={styles.contents}>
+
+ {loading ? ( // Show Loading component if loading is true
+ <View style={styles.loading1}>
             <Loading />
+            </View>
           ) : (
             notificationDataToday.map((item) => {
               const isHighlighted = userLevel === item.level;
@@ -130,12 +140,29 @@ const Notifications = () => {
             })
           )}
         </View>
-      </View>
-    </ScrollView>
+        </View>
+ </View>
+
+ <View style={styles.tabsContainer}>
+     <Tabs navigation={navigation} />
+   </View>
+</View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: "14%",
+    // paddingBottom: "14%",
+    backgroundColor: "white",
+
+  },
+  individualTabs: {
+    alignItems: "center",
+    gap: 10,
+  },
   notifications: {
     flexDirection: "row",
     alignItems: "center",
@@ -146,6 +173,38 @@ const styles = StyleSheet.create({
     paddingVertical: "3%",
     borderRadius: 15,
     width: "100%",
+  },
+  fixedContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: "#fff", // Background color to overlay content properly
+    paddingHorizontal: 1, // Adjust as needed
+    paddingVertical: 1,
+  },
+  contents: {
+    alignItems: "center",
+    width: "100%",
+    paddingHorizontal: 1,
+  },
+  scrollContent: {
+    paddingBottom: 10,
+  },tabsContainer: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    borderTopWidth: 1,
+    borderColor: "#ccc",
+  },
+  loading1: {
+    alignItems: "center",
+    width: "100%",
+    paddingTop: 250,
+
+    // paddingHorizontal: 1,
   },
   highlighted: {
     backgroundColor: "#f26722", // Highlight color for the current level
