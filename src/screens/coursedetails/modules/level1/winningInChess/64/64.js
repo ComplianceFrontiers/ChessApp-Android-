@@ -88,7 +88,7 @@ const T11 = () => {
           
            
             <WebView
-              source={{ uri: "https://www.youtube.com/embed/watch?v=VZW94M_zaVs" }}
+              source={{ uri: "https://www.youtube.com/embed/VZW94M_zaVs" }}
               style={{ width: "90%",
                 height: 230,
                 alignSelf: "center",
